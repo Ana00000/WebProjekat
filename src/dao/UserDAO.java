@@ -1,14 +1,20 @@
 package dao;
 
-import java.io.BufferedReader;
-import java.io.File;
+
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
-import java.util.StringTokenizer;
 
-import beans.Amenity;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+
 import beans.Gender;
 import beans.Roles;
 import beans.User;
@@ -40,43 +46,44 @@ public class UserDAO {
 		return users.values();
 	}
 
-	private void loadUsers(String contextPath) {
-		/*
-		BufferedReader in = null;
-		try {
-			File file = new File(contextPath + "/users.txt");
-			in = new BufferedReader(new FileReader(file));
-			String line;
-			StringTokenizer st;
-			while ((line = in.readLine()) != null) {
-				line = line.trim();
-				if (line.equals("") || line.indexOf('#') == 0)
-					continue;
-				st = new StringTokenizer(line, ";");
-				while (st.hasMoreTokens()) {
-					String username = st.nextToken().trim();
-					String password = st.nextToken().trim();
-					String name = st.nextToken().trim();
-					String surname = st.nextToken().trim();
-					String genderStr = st.nextToken().trim();
-					Gender gender = Gender.valueOf(genderStr);
-					String roleStr = st.nextToken().trim();
-					Roles role = Roles.valueOf(roleStr);
-					users.put(username, new User(username, password, name, surname, gender, role));
-				}
-				
-			}
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		} finally {
-			if (in != null) {
-				try {
-					in.close();
-				}
-				catch (Exception e) { }
-			}
+
+	@SuppressWarnings("unchecked")
+	public void loadUsers(String contextPath) {
+			JSONParser jsonParser = new JSONParser();
+			try (FileReader reader = new FileReader(contextPath+"/users.json") )
+	        {
+				JSONObject obj =(JSONObject) jsonParser.parse(reader);
+	 
+	            JSONArray usersList =(JSONArray) obj.get("user");
+	            Iterator<JSONObject> iterator = usersList.iterator();
+	            while (iterator.hasNext()) {
+	      
+	            	parseUsersObject(iterator.next());
+	            }
+	            
+	 
+	        } catch (FileNotFoundException e) {
+	            e.printStackTrace();
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        } catch (ParseException e) {
+	            e.printStackTrace();
+	        }
 		}
-		*/
-	}
+		
+		private void parseUsersObject(JSONObject userObject) {
+			
+	        String username = userObject.get("username").toString();
+			String password = userObject.get("password").toString();
+			String name = userObject.get("name").toString();
+			String surname = userObject.get("surname").toString();
+			String genderStr = userObject.get("gender").toString();
+			Gender gender = Gender.valueOf(genderStr);
+			String roleStr = userObject.get("role").toString();
+			Roles role = Roles.valueOf(roleStr);
+			
+			users.put(username, new User(username, password, name, surname, gender, role));
+
+		}
 
 }

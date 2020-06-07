@@ -1,6 +1,12 @@
 {
-	"amenities":{
-		"id": 1011,
-		"name": "Chair"
-	}
-}
+    "amenities": [
+      {
+        "id": 1011,
+        "name": "Chair"
+      },
+      {
+        "id": 1012,
+        "name": "Bed"
+      }
+    ]
+ } 

@@ -1,10 +1,19 @@
 {
-	"users": {
+	"user":[ {
 		"username": "Ana123",
 		"password": "aaaaaa",
 		"name": "Ana",
 		"surname": "Atanackovic",
 		"gender": "FEMALE",
 		"role": "GUEST"
+	},
+	{
+		"username": "Sladja123",
+		"password": "ssssss",
+		"name": "Sladja",
+		"surname": "Atanackovic",
+		"gender": "FEMALE",
+		"role": "GUEST"
 	}
+	]
 }

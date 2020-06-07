@@ -4,8 +4,13 @@ public class gla {
 
 	public static void main(String[] args) {
 		
+		String path="WebContent/";
+		
 		AmenityDAO a = new AmenityDAO();
-		a.loadAmenities("WebContent/");
+		a.loadAmenities(path);
+		
+		UserDAO u=new UserDAO();
+		u.loadUsers(path);
 	}
 
 }

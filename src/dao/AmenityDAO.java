@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import beans.Amenity;
@@ -47,14 +48,15 @@ public class AmenityDAO {
 		JSONParser jsonParser = new JSONParser();
 		try (FileReader reader = new FileReader(contextPath+"/amenities.json") )
         {
-            Object obj = jsonParser.parse(reader);
- 
-            JSONArray amenitiesList = new JSONArray();
+			JSONObject obj =(JSONObject) jsonParser.parse(reader);
             
-            amenitiesList.add(obj);
-             
-            amenitiesList.forEach( amenity -> parseAmenitiesObject((JSONObject) amenity));
- 
+            JSONArray amenityList = (JSONArray) obj.get("amenities");
+            Iterator<JSONObject> iterator = amenityList.iterator();
+            while (iterator.hasNext()) {
+      
+                parseAmenitiesObject(iterator.next());
+            }
+            
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -63,16 +65,13 @@ public class AmenityDAO {
             e.printStackTrace();
         }
 	}
+            
+            
 	
 	private void parseAmenitiesObject(JSONObject amenity) {
-		
-		JSONObject amenityObject = (JSONObject) amenity.get("amenities");
-        
-		String idStr = amenityObject.get("id").toString();
+		String idStr = amenity.get("id").toString();
 		int id = Integer.parseInt(idStr);    
-		
-        String name = (String) amenityObject.get("name");
-
+        String name = (String) amenity.get("name");
         amenities.put(id, new Amenity(id, name));
 	}
 	
