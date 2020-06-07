@@ -11,8 +11,8 @@ public class Guest extends User{
 		super();
 	}
 	
-	public Guest(String username, String password, String name, String surname, Gender gender, Roles roles, List<Apartment> rented, List<Reservation> reservations) {
-		super(username, password, name, surname, gender, roles);
+	public Guest(String username, String password, String name, String surname, Gender gender, Roles role, List<Apartment> rented, List<Reservation> reservations) {
+		super(username, password, name, surname, gender, role);
 		this.rented = rented;
 		this.reservations = reservations;
 	}
@@ -21,7 +21,7 @@ public class Guest extends User{
 	public String toString() {
 		return "Guest [rented=" + rented + ", reservations=" + reservations + ", getUsername()=" + getUsername()
 				+ ", getPassword()=" + getPassword() + ", getName()=" + getName() + ", getSurname()=" + getSurname()
-				+ ", getGender()=" + getGender() + ", getRoles()=" + getRoles() + "]";
+				+ ", getGender()=" + getGender() + ", getRoles()=" + getRole() + "]";
 	}
 
 	public List<Apartment> getRented() {

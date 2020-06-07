@@ -1,31 +1,31 @@
 package beans;
 
-public abstract class User {
+public class User {
 	private String username;
 	private String password;
 	private String name;
 	private String surname;
 	private Gender gender;
-	private Roles roles;
+	private Roles role;
 	
 	public User() {
 		super();
 	}
 	
-	public User(String username, String password, String name, String surname, Gender gender, Roles roles) {
+	public User(String username, String password, String name, String surname, Gender gender, Roles role) {
 		super();
 		this.username = username;
 		this.password = password;
 		this.name = name;
 		this.surname = surname;
 		this.gender = gender;
-		this.roles = roles;
+		this.role = role;
 	}
 	
 	@Override
 	public String toString() {
 		return "User [username=" + username + ", password=" + password + ", name=" + name + ", surname=" + surname
-				+ ", gender=" + gender + ", roles=" + roles + "]";
+				+ ", gender=" + gender + ", roles=" + role + "]";
 	}
 	
 	public String getUsername() {
@@ -68,11 +68,11 @@ public abstract class User {
 		this.gender = gender;
 	}
 	
-	public Roles getRoles() {
-		return roles;
+	public Roles getRole() {
+		return role;
 	}
 	
-	public void setRoles(Roles roles) {
-		this.roles = roles;
+	public void setRoles(Roles role) {
+		this.role = role;
 	}
 }

@@ -10,8 +10,8 @@ public class Host extends User{
 		super();
 	}
 
-	public Host(String username, String password, String name, String surname, Gender gender, Roles roles, List<Apartment> forRent) {
-		super(username, password, name, surname, gender, roles);
+	public Host(String username, String password, String name, String surname, Gender gender, Roles role, List<Apartment> forRent) {
+		super(username, password, name, surname, gender, role);
 		this.forRent = forRent;
 	}
 
@@ -19,7 +19,7 @@ public class Host extends User{
 	public String toString() {
 		return "Host [forRent=" + forRent + ", getUsername()=" + getUsername() + ", getPassword()=" + getPassword()
 				+ ", getName()=" + getName() + ", getSurname()=" + getSurname() + ", getGender()=" + getGender()
-				+ ", getRoles()=" + getRoles() + "]";
+				+ ", getRoles()=" + getRole() + "]";
 	}
 
 	public List<Apartment> getForRent() {

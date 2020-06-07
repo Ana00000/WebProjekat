@@ -1,0 +1,10 @@
+{
+	"users": {
+		"username": "Ana123",
+		"password": "aaaaaa",
+		"name": "Ana",
+		"surname": "Atanackovic",
+		"gender": "FEMALE",
+		"role": "GUEST"
+	}
+}

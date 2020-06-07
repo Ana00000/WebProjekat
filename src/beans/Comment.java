@@ -1,6 +1,7 @@
 package beans;
 
 public class Comment {
+	private int id;
 	private Guest guest;
 	private Apartment apartment;
 	private String text;
@@ -10,17 +11,27 @@ public class Comment {
 		super();
 	}
 	
-	public Comment(Guest guest, Apartment apartment, String text, double grade) {
+	public Comment(int id, Guest guest, Apartment apartment, String text, double grade) {
 		super();
+		this.id = id;
 		this.guest = guest;
 		this.apartment = apartment;
 		this.text = text;
 		this.grade = grade;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Comment [guest=" + guest + ", apartment=" + apartment + ", text=" + text + ", grade=" + grade + "]";
+		return "Comment [id=" + id + ", guest=" + guest + ", apartment=" + apartment + ", text=" + text + ", grade="
+				+ grade + "]";
+	}
+
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	public Guest getGuest() {

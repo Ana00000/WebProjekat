@@ -1,5 +1,4 @@
 package beans;
-import java.util.List;
 
 public class Location {
 	private double width;
@@ -8,7 +7,6 @@ public class Location {
 	
 	public Location() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	public Location(double width, double height, Address address) {
