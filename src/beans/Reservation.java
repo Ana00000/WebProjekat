@@ -3,6 +3,7 @@ package beans;
 import java.util.Date;
 
 public class Reservation {
+	private int id;
 	private Apartment rented;
 	private Date startReservation;
 	private int overnightStay;
@@ -15,9 +16,10 @@ public class Reservation {
 		super();
 	}
 	
-	public Reservation(Apartment rented, Date startReservation, int overnightStay, int fullPrice, String welcomeMessage,
+	public Reservation(int id, Apartment rented, Date startReservation, int overnightStay, int fullPrice, String welcomeMessage,
 			Guest guest, StatusReservation status) {
 		super();
+		this.id = id;
 		this.rented = rented;
 		this.startReservation = startReservation;
 		this.overnightStay = overnightStay;
@@ -29,9 +31,17 @@ public class Reservation {
 	
 	@Override
 	public String toString() {
-		return "Reservation [rented=" + rented + ", startReservation=" + startReservation + ", overnightStay="
-				+ overnightStay + ", fullPrice=" + fullPrice + ", welcomeMessage=" + welcomeMessage + ", guest=" + guest
-				+ ", status=" + status + "]";
+		return "Reservation [id=" + id + ", rented=" + rented + ", startReservation=" + startReservation
+				+ ", overnightStay=" + overnightStay + ", fullPrice=" + fullPrice + ", welcomeMessage=" + welcomeMessage
+				+ ", guest=" + guest + ", status=" + status + "]";
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public Apartment getRented() {

@@ -4,19 +4,22 @@ public class gla {
 
 	public static void main(String[] args) {
 		
-		String path="WebContent/";
+		String path = "WebContent/";
 		
-		//AmenityDAO a = new AmenityDAO();
-		//a.loadAmenities(path);
+		AmenityDAO amenity = new AmenityDAO();
+		//amenity.loadAmenities(path);
 		
-		//UserDAO u=new UserDAO();
-		//u.loadUsers(path);
+		UserDAO user = new UserDAO();
+		//user.loadUsers(path);
 		
-		CommentDAO c=new CommentDAO();
-		c.loadComments(path);
+		CommentDAO comment = new CommentDAO();
+		//comment.loadComments(path);
 		
-		//ApartmentDAO apar = new ApartmentDAO();
-		//apar.loadApartments(path);
+		ApartmentDAO apartment = new ApartmentDAO();
+		//apartment.loadApartments(path);
+		
+		ReservationDAO reservation = new ReservationDAO();
+		//reservation.loadReservations(path);
 	}
 
 }

@@ -31,7 +31,6 @@ public class ApartmentDAO {
 
 	private Map<Integer, Apartment> apartments = new HashMap<Integer, Apartment>();
 	
-	
 	public ApartmentDAO() {
 		
 	}
@@ -54,15 +53,14 @@ public class ApartmentDAO {
 		return apartments.values();
 	}
 
-
 	@SuppressWarnings("unchecked")
 	public void loadApartments(String contextPath) {
 			JSONParser jsonParser = new JSONParser();
 			try (FileReader reader = new FileReader(contextPath+"/apartments.json") )
 	        {
-				JSONObject obj =(JSONObject) jsonParser.parse(reader);
+				JSONObject obj = (JSONObject) jsonParser.parse(reader);
 	 
-	            JSONArray apartmentsList =(JSONArray) obj.get("apartments");
+	            JSONArray apartmentsList = (JSONArray) obj.get("apartments");
 	            Iterator<JSONObject> iterator = apartmentsList.iterator();
 	            while (iterator.hasNext()) {
 	            	parseApartmentsObject(iterator.next());
@@ -109,7 +107,6 @@ public class ApartmentDAO {
             while (it.hasNext()) {
     			pictures.add((jsonToStr(it.next(), "pic")));
             }
-			
 			
 			double pricePerNight = Double.parseDouble(jsonToStr(apartmentObject, "pricePerNight")); 
 			

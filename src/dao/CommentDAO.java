@@ -55,14 +55,12 @@ public class CommentDAO {
         {
 			JSONObject obj =(JSONObject) jsonParser.parse(reader);
  
-            JSONArray commentsList =(JSONArray) obj.get("comments");
+            JSONArray commentsList = (JSONArray) obj.get("comments");
             Iterator<JSONObject> iterator = commentsList.iterator();
             while (iterator.hasNext()) {
       
             	parseCommentsObject(iterator.next());
             }
-    		
- 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -70,12 +68,10 @@ public class CommentDAO {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-		
 	}
 
 	public Comment parseCommentsObject(JSONObject commentObject) {
 
-		
 		int id = Integer.parseInt(jsonToStr(commentObject, "id"));    
 		
 		Guest guest = parseGuestObject((JSONObject)commentObject.get("guest"));
@@ -89,18 +85,16 @@ public class CommentDAO {
 		Comment comment = new Comment(id, guest, apartment, text, grade);
 		comments.put(id, comment);
 		
-		
 		return comment;
 	}
 	
-
 	private String jsonToStr(JSONObject commentObject, String par) {
 		String conversation = commentObject.get(par).toString();
 		return conversation;
 	}
 	
 	@SuppressWarnings("unchecked")
-	private Guest parseGuestObject(JSONObject guestObject ) {
+	public Guest parseGuestObject(JSONObject guestObject ) {
 		
 		String username = jsonToStr(guestObject, "username");
 		String password = jsonToStr(guestObject, "password");

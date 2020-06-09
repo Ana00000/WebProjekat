@@ -16,6 +16,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 public class AmenityDAO {
+	
 	private Map<Integer, Amenity> amenities = new HashMap<Integer, Amenity>();
 	
 	public AmenityDAO() {
@@ -48,7 +49,7 @@ public class AmenityDAO {
 		JSONParser jsonParser = new JSONParser();
 		try (FileReader reader = new FileReader(contextPath+"/amenities.json") )
         {
-			JSONObject obj =(JSONObject) jsonParser.parse(reader);
+			JSONObject obj = (JSONObject) jsonParser.parse(reader);
             
             JSONArray amenityList = (JSONArray) obj.get("amenities");
             Iterator<JSONObject> iterator = amenityList.iterator();
@@ -66,8 +67,6 @@ public class AmenityDAO {
         }
 	}
             
-            
-	
 	public Amenity parseAmenitiesObject(JSONObject amenity) {
 		int id = Integer.parseInt(jsonToStr(amenity, "id"));    
         String name = jsonToStr(amenity, "name"); 

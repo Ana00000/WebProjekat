@@ -1,6 +1,5 @@
 package dao;
 
-
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -52,16 +51,14 @@ public class UserDAO {
 			JSONParser jsonParser = new JSONParser();
 			try (FileReader reader = new FileReader(contextPath+"/users.json") )
 	        {
-				JSONObject obj =(JSONObject) jsonParser.parse(reader);
+				JSONObject obj = (JSONObject) jsonParser.parse(reader);
 	 
-	            JSONArray usersList =(JSONArray) obj.get("user");
+	            JSONArray usersList = (JSONArray) obj.get("users");
 	            Iterator<JSONObject> iterator = usersList.iterator();
 	            while (iterator.hasNext()) {
 	      
 	            	parseUsersObject(iterator.next());
 	            }
-	            
-	 
 	        } catch (FileNotFoundException e) {
 	            e.printStackTrace();
 	        } catch (IOException e) {
@@ -81,7 +78,6 @@ public class UserDAO {
 			Roles role = Roles.valueOf(jsonToStr(userObject, "role"));
 			
 			User user = new User(username, password, name, surname, gender, role);
-			
 			users.put(username, user);
 			return user;
 		}
