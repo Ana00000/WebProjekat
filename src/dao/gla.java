@@ -6,11 +6,17 @@ public class gla {
 		
 		String path="WebContent/";
 		
-		AmenityDAO a = new AmenityDAO();
-		a.loadAmenities(path);
+		//AmenityDAO a = new AmenityDAO();
+		//a.loadAmenities(path);
 		
-		UserDAO u=new UserDAO();
-		u.loadUsers(path);
+		//UserDAO u=new UserDAO();
+		//u.loadUsers(path);
+		
+		//CommentDAO c=new CommentDAO();
+		//c.loadComments(path);
+		
+		ApartmentDAO apar = new ApartmentDAO();
+		apar.loadApartments(path);
 	}
 
 }

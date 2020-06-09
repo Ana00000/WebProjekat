@@ -2,34 +2,35 @@ package beans;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import org.apache.tomcat.jni.Time;
 
 public class Apartment {
+	private int id;
 	private  Type type; 
 	private int nbrRooms;
 	private int nbrGuests;
 	private Location location;
-	private List<Date> forRent = new ArrayList<Date>();;
-	private List<Date> availability= new ArrayList<Date>();;
+	private List<Date> forRent = new ArrayList<Date>();
+	private List<Date> availability = new ArrayList<Date>();
 	private Host host;
 	private Comment comment;
-	private List<String> pictures= new ArrayList<String>();;
+	private List<String> pictures = new ArrayList<String>();
 	private double pricePerNight;
-	private Time forLogIn;
-	private Time forLogOff;
+	private Date forLogIn;
+	private Date forLogOff;
 	private StatusApartment status;
-	private List<Amenity> amenities= new ArrayList<Amenity>();;
-	private List<Reservation> reservations= new ArrayList<Reservation>();;
+	private List<Amenity> amenities = new ArrayList<Amenity>();
+	private List<Reservation> reservations = new ArrayList<Reservation>();
 	
 	public Apartment() {
 		super();
 	}
 	
-	public Apartment(Type type, int nbrRooms, int nbrGuests, Location location, List<Date> forRent,
+	public Apartment(int id, Type type, int nbrRooms, int nbrGuests, Location location, List<Date> forRent,
 			List<Date> availability, Host host, Comment comment, List<String> pictures, double pricePerNight,
-			Time forLogIn, Time forLogOff, StatusApartment status, List<Amenity> amenities,
+			Date forLogIn, Date forLogOff, StatusApartment status, List<Amenity> amenities,
 			List<Reservation> reservations) {
 		super();
+		this.id = id;
 		this.type = type;
 		this.nbrRooms = nbrRooms;
 		this.nbrGuests = nbrGuests;
@@ -49,11 +50,19 @@ public class Apartment {
 	
 	@Override
 	public String toString() {
-		return "Apartment [type=" + type + ", nbrRooms=" + nbrRooms + ", nbrGuests=" + nbrGuests + ", location="
-				+ location + ", forRent=" + forRent + ", availability=" + availability + ", host=" + host + ", comment="
-				+ comment + ", pictures=" + pictures + ", pricePerNight=" + pricePerNight + ", forLogIn=" + forLogIn
-				+ ", forLogOff=" + forLogOff + ", status=" + status + ", amenities=" + amenities + ", reservations="
-				+ reservations + "]";
+		return "Apartment [id=" + id + ", type=" + type + ", nbrRooms=" + nbrRooms + ", nbrGuests=" + nbrGuests
+				+ ", location=" + location + ", forRent=" + forRent + ", availability=" + availability + ", host="
+				+ host + ", comment=" + comment + ", pictures=" + pictures + ", pricePerNight=" + pricePerNight
+				+ ", forLogIn=" + forLogIn + ", forLogOff=" + forLogOff + ", status=" + status + ", amenities="
+				+ amenities + ", reservations=" + reservations + "]";
+	}
+
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public Type getType() {
@@ -136,19 +145,19 @@ public class Apartment {
 		this.pricePerNight = pricePerNight;
 	}
 	
-	public Time getForLogIn() {
+	public Date getForLogIn() {
 		return forLogIn;
 	}
 	
-	public void setForLogIn(Time forLogIn) {
+	public void setForLogIn(Date forLogIn) {
 		this.forLogIn = forLogIn;
 	}
 	
-	public Time getForLogOff() {
+	public Date getForLogOff() {
 		return forLogOff;
 	}
 	
-	public void setForLogOff(Time forLogOff) {
+	public void setForLogOff(Date forLogOff) {
 		this.forLogOff = forLogOff;
 	}
 	

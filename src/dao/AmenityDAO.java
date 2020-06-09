@@ -69,10 +69,13 @@ public class AmenityDAO {
             
 	
 	private void parseAmenitiesObject(JSONObject amenity) {
-		String idStr = amenity.get("id").toString();
-		int id = Integer.parseInt(idStr);    
-        String name = (String) amenity.get("name");
+		int id = Integer.parseInt(jsonToStr(amenity, "id"));    
+        String name = jsonToStr(amenity, "name"); 
         amenities.put(id, new Amenity(id, name));
 	}
 	
+	private String jsonToStr(JSONObject apartmentObject, String par) {
+		String conversation = apartmentObject.get(par).toString();
+		return conversation;
+	}
 }

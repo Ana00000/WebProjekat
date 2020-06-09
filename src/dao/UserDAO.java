@@ -73,17 +73,18 @@ public class UserDAO {
 		
 		private void parseUsersObject(JSONObject userObject) {
 			
-	        String username = userObject.get("username").toString();
-			String password = userObject.get("password").toString();
-			String name = userObject.get("name").toString();
-			String surname = userObject.get("surname").toString();
-			String genderStr = userObject.get("gender").toString();
-			Gender gender = Gender.valueOf(genderStr);
-			String roleStr = userObject.get("role").toString();
-			Roles role = Roles.valueOf(roleStr);
+	        String username = jsonToStr(userObject, "username");
+			String password = jsonToStr(userObject, "password");
+			String name = jsonToStr(userObject, "name");
+			String surname = jsonToStr(userObject, "surname");
+			Gender gender = Gender.valueOf(jsonToStr(userObject, "gender"));
+			Roles role = Roles.valueOf(jsonToStr(userObject, "role"));
 			
 			users.put(username, new User(username, password, name, surname, gender, role));
-
 		}
-
+		
+		private String jsonToStr(JSONObject userObject, String par) {
+			String conversation = userObject.get(par).toString();
+			return conversation;
+		}
 }

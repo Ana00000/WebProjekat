@@ -1,0 +1,21 @@
+{
+    "comments": [
+      {
+        "id": 1056,
+        "guest": {
+			"username": "Ana123",
+			"password": "aaaaaa",
+			"name": "Ana",
+			"surname": "Atanackovic",
+			"gender": "FEMALE",
+			"role": "GUEST",
+			"rented": null,
+			"reservations": null
+		},
+        "apartment": null,
+        "text": "good stuff",
+        "grade": 5.0
+      }
+    ]
+ } 
+ 
