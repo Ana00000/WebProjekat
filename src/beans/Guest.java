@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Guest extends User{
 	private List<Apartment> rented = new ArrayList<Apartment>();
-	private List<Reservation> reservations= new ArrayList<Reservation>();;
+	private List<Reservation> reservations= new ArrayList<Reservation>();
 	
 	public Guest() {
 		super();

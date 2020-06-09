@@ -71,7 +71,7 @@ public class UserDAO {
 	        }
 		}
 		
-		private void parseUsersObject(JSONObject userObject) {
+		public User parseUsersObject(JSONObject userObject) {
 			
 	        String username = jsonToStr(userObject, "username");
 			String password = jsonToStr(userObject, "password");
@@ -80,7 +80,10 @@ public class UserDAO {
 			Gender gender = Gender.valueOf(jsonToStr(userObject, "gender"));
 			Roles role = Roles.valueOf(jsonToStr(userObject, "role"));
 			
-			users.put(username, new User(username, password, name, surname, gender, role));
+			User user = new User(username, password, name, surname, gender, role);
+			
+			users.put(username, user);
+			return user;
 		}
 		
 		private String jsonToStr(JSONObject userObject, String par) {

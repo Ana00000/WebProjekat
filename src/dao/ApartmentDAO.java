@@ -77,7 +77,7 @@ public class ApartmentDAO {
 		}
 		
 		@SuppressWarnings("unchecked")
-		private void parseApartmentsObject(JSONObject apartmentObject) {
+		public Apartment parseApartmentsObject(JSONObject apartmentObject) {
 			
 			DateFormat format = new SimpleDateFormat("dd-MM-yyyy");
 			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
@@ -132,9 +132,11 @@ public class ApartmentDAO {
 			List<Amenity> amenities = null; 		//SRECNO
 			List<Reservation> reservations = null;		//SRECNO
 			
-			apartments.put(id, new Apartment(id, type, nbrRooms, nbrGuests, location , forRent, availability, host, comment,
-					pictures, pricePerNight, forLogIn, forLogOff, status, amenities, reservations));
-
+			Apartment a=new Apartment(id, type, nbrRooms, nbrGuests, location , forRent, availability, host, comment,
+					pictures, pricePerNight, forLogIn, forLogOff, status, amenities, reservations);
+			
+			apartments.put(id, a);
+			return a;
 		}
 
 		private String jsonToStr(JSONObject apartmentObject, String par) {

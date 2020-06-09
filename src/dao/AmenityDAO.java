@@ -68,10 +68,12 @@ public class AmenityDAO {
             
             
 	
-	private void parseAmenitiesObject(JSONObject amenity) {
+	public Amenity parseAmenitiesObject(JSONObject amenity) {
 		int id = Integer.parseInt(jsonToStr(amenity, "id"));    
         String name = jsonToStr(amenity, "name"); 
-        amenities.put(id, new Amenity(id, name));
+        Amenity a = new Amenity(id, name);
+        amenities.put(id, a);
+        return a;
 	}
 	
 	private String jsonToStr(JSONObject apartmentObject, String par) {

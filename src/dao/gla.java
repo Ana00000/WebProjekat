@@ -12,11 +12,11 @@ public class gla {
 		//UserDAO u=new UserDAO();
 		//u.loadUsers(path);
 		
-		//CommentDAO c=new CommentDAO();
-		//c.loadComments(path);
+		CommentDAO c=new CommentDAO();
+		c.loadComments(path);
 		
-		ApartmentDAO apar = new ApartmentDAO();
-		apar.loadApartments(path);
+		//ApartmentDAO apar = new ApartmentDAO();
+		//apar.loadApartments(path);
 	}
 
 }
