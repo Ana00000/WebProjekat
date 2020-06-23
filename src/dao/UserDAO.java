@@ -49,7 +49,7 @@ public class UserDAO {
 	@SuppressWarnings("unchecked")
 	public void loadUsers(String contextPath) {
 			JSONParser jsonParser = new JSONParser();
-			try (FileReader reader = new FileReader(contextPath+"/users.json") )
+			try (FileReader reader = new FileReader(contextPath+"/json/users.json") )
 	        {
 				JSONObject obj = (JSONObject) jsonParser.parse(reader);
 	 

@@ -56,7 +56,7 @@ public class ApartmentDAO {
 	@SuppressWarnings("unchecked")
 	public void loadApartments(String contextPath) {
 			JSONParser jsonParser = new JSONParser();
-			try (FileReader reader = new FileReader(contextPath+"/apartments.json") )
+			try (FileReader reader = new FileReader(contextPath+"/json/apartments.json") )
 	        {
 				JSONObject obj = (JSONObject) jsonParser.parse(reader);
 	 

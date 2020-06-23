@@ -51,7 +51,7 @@ public class CommentDAO {
 	@SuppressWarnings("unchecked")
 	public void loadComments(String contextPath) {
 		JSONParser jsonParser = new JSONParser();
-		try (FileReader reader = new FileReader(contextPath+"/comments.json") )
+		try (FileReader reader = new FileReader(contextPath+"/json/comments.json") )
         {
 			JSONObject obj =(JSONObject) jsonParser.parse(reader);
  

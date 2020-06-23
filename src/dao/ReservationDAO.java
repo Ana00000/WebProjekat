@@ -53,7 +53,7 @@ public class ReservationDAO {
 	@SuppressWarnings("unchecked")
 	public void loadReservations(String contextPath) {
 			JSONParser jsonParser = new JSONParser();
-			try (FileReader reader = new FileReader(contextPath+"/reservations.json") )
+			try (FileReader reader = new FileReader(contextPath+"/json/reservations.json") )
 	        {
 				JSONObject obj = (JSONObject) jsonParser.parse(reader);
 	 

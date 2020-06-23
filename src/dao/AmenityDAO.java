@@ -47,7 +47,7 @@ public class AmenityDAO {
 	@SuppressWarnings("unchecked")
 	public void loadAmenities(String contextPath) {
 		JSONParser jsonParser = new JSONParser();
-		try (FileReader reader = new FileReader(contextPath+"/amenities.json") )
+		try (FileReader reader = new FileReader(contextPath+"/json/amenities.json") )
         {
 			JSONObject obj = (JSONObject) jsonParser.parse(reader);
             

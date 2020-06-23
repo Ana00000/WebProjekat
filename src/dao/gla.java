@@ -16,7 +16,7 @@ public class gla {
 		//comment.loadComments(path);
 		
 		ApartmentDAO apartment = new ApartmentDAO();
-		//apartment.loadApartments(path);
+		//8apartment.loadApartments(path);
 		
 		ReservationDAO reservation = new ReservationDAO();
 		//reservation.loadReservations(path);
