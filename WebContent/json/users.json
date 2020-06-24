@@ -1,6 +1,6 @@
 {
 	"users":[ {
-		"username": "Ana123",
+		"username": "Ana",
 		"password": "aaaaaa",
 		"name": "Ana",
 		"surname": "Atanackovic",
@@ -8,7 +8,7 @@
 		"role": "GUEST"
 	},
 	{
-		"username": "Sladja123",
+		"username": "Sladja",
 		"password": "ssssss",
 		"name": "Sladja",
 		"surname": "Atanackovic",

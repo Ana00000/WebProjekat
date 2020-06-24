@@ -6,13 +6,12 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
-/*
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-*/
 import beans.Gender;
 import beans.Roles;
 import beans.User;
@@ -23,6 +22,7 @@ public class UserDAO {
 	
 	
 	public UserDAO() {
+		
 		users.put("Ana123", new User("Ana123", "aaaaaa", "Ana", "Atanackovic", Gender.FEMALE, Roles.GUEST));
 	}
 	
@@ -70,28 +70,29 @@ public class UserDAO {
 
 
 	@SuppressWarnings("unchecked")
-	public void loadUsers(String contextPath) {
-		/*
+	public void loadUsers(String contextPath)  {
 		JSONParser jsonParser = new JSONParser();
 		try (FileReader reader = new FileReader(contextPath+"/json/users.json") )
         {
 			JSONObject obj = (JSONObject) jsonParser.parse(reader);
- 
+			
             JSONArray usersList = (JSONArray) obj.get("users");
             Iterator<JSONObject> iterator = usersList.iterator();
             while (iterator.hasNext()) {
       
             	parseUsersObject(iterator.next());
             }
-        } catch (FileNotFoundException e) {
+            
+            
+		} catch (FileNotFoundException e) {
             e.printStackTrace();
+        }  catch (ParseException e) {
+			e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }*/
+        } 
 	}
-		/*
+		
 	public User parseUsersObject(JSONObject userObject) {
 		
         String username = jsonToStr(userObject, "username");
@@ -103,11 +104,12 @@ public class UserDAO {
 		
 		User user = new User(username, password, name, surname, gender, role);
 		users.put(username, user);
+		System.out.println(users);
 		return user;
 	}
 	
 	private String jsonToStr(JSONObject userObject, String par) {
 		String conversation = userObject.get(par).toString();
 		return conversation;
-	}*/
+	}
 }
