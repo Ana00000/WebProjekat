@@ -9,12 +9,12 @@ import java.util.Iterator;
 import java.util.Map;
 
 import beans.Amenity;
-
+/*
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-
+*/
 public class AmenityDAO {
 	
 	private Map<Integer, Amenity> amenities = new HashMap<Integer, Amenity>();
@@ -46,6 +46,7 @@ public class AmenityDAO {
 
 	@SuppressWarnings("unchecked")
 	public void loadAmenities(String contextPath) {
+		/*
 		JSONParser jsonParser = new JSONParser();
 		try (FileReader reader = new FileReader(contextPath+"/json/amenities.json") )
         {
@@ -64,9 +65,9 @@ public class AmenityDAO {
             e.printStackTrace();
         } catch (ParseException e) {
             e.printStackTrace();
-        }
+        }*/
 	}
-            
+     /*       
 	public Amenity parseAmenitiesObject(JSONObject amenity) {
 		int id = Integer.parseInt(jsonToStr(amenity, "id"));    
         String name = jsonToStr(amenity, "name"); 
@@ -78,5 +79,5 @@ public class AmenityDAO {
 	private String jsonToStr(JSONObject apartmentObject, String par) {
 		String conversation = apartmentObject.get(par).toString();
 		return conversation;
-	}
+	}*/
 }
