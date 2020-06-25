@@ -12,12 +12,10 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-/*
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-*/
 import beans.Amenity;
 import beans.Apartment;
 import beans.Comment;
@@ -55,7 +53,7 @@ public class ApartmentDAO {
 
 	@SuppressWarnings("unchecked")
 	public void loadApartments(String contextPath) {
-		/*
+		
 		JSONParser jsonParser = new JSONParser();
 		try (FileReader reader = new FileReader(contextPath+"/json/apartments.json") )
         {
@@ -72,10 +70,10 @@ public class ApartmentDAO {
             e.printStackTrace();
         } catch (ParseException e) {
             e.printStackTrace();
-        }*/
+        }
 	}
 	
-	/*
+	
 	@SuppressWarnings("unchecked")
 	public Apartment parseApartmentsObject(JSONObject apartmentObject) {
 		
@@ -155,5 +153,5 @@ public class ApartmentDAO {
 				e.printStackTrace();
 			}
         }
-	}*/
+	}
 }

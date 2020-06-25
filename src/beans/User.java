@@ -3,6 +3,7 @@ package beans;
 public class User {
 	private String username;
 	private String password;
+	private String passwordDouble;
 	private String name;
 	private String surname;
 	private Gender gender;
@@ -42,6 +43,14 @@ public class User {
 	
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public String getPasswordDouble() {
+		return passwordDouble;
+	}
+
+	public void setPasswordDouble(String passwordDouble) {
+		this.passwordDouble = passwordDouble;
 	}
 	
 	public String getName() {

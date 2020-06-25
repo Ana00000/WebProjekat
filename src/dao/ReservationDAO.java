@@ -10,12 +10,11 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-/*
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-*/
+
 import beans.Apartment;
 import beans.Guest;
 import beans.Reservation;
@@ -52,7 +51,7 @@ public class ReservationDAO {
 
 	@SuppressWarnings("unchecked")
 	public void loadReservations(String contextPath) {
-		/*
+		
 		JSONParser jsonParser = new JSONParser();
 		try (FileReader reader = new FileReader(contextPath+"/json/reservations.json") )
         {
@@ -69,9 +68,9 @@ public class ReservationDAO {
             e.printStackTrace();
         } catch (ParseException e) {
             e.printStackTrace();
-        }*/
+        }
 	}
-		/*
+		
 	public Reservation parseReservationsObject(JSONObject reservationObject) {
 		
 		DateFormat format = new SimpleDateFormat("dd-MM-yyyy");
@@ -101,5 +100,5 @@ public class ReservationDAO {
 	private String jsonToStr(JSONObject reservationObject, String par) {
 		String conversation = reservationObject.get(par).toString();
 		return conversation;
-	}*/
+	}
 }

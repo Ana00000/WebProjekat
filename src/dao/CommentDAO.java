@@ -9,12 +9,10 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-/*
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-*/
 import beans.Apartment;
 import beans.Comment;
 import beans.Gender;
@@ -50,7 +48,7 @@ public class CommentDAO {
 	
 	@SuppressWarnings("unchecked")
 	public void loadComments(String contextPath) {
-		/*
+		
 		JSONParser jsonParser = new JSONParser();
 		try (FileReader reader = new FileReader(contextPath+"/json/comments.json") )
         {
@@ -68,9 +66,9 @@ public class CommentDAO {
             e.printStackTrace();
         } catch (ParseException e) {
             e.printStackTrace();
-        }*/
+        }
 	}
-/*
+
 	public Comment parseCommentsObject(JSONObject commentObject) {
 
 		int id = Integer.parseInt(jsonToStr(commentObject, "id"));    
@@ -116,5 +114,5 @@ public class CommentDAO {
 		
 		return new Guest(username, password, name, surname, gender, role, rented, reservations);
 	}
-*/
+
 }

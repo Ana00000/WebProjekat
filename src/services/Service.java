@@ -27,23 +27,24 @@ public class Service {
 	@PostConstruct
 	public void init() {
 		if (ctx.getAttribute("users") == null) {
-			UserDAO users = new UserDAO();
+			UserDAO users = new UserDAO("WebContent/");
 			ctx.setAttribute("users", users);
 		}
 	}
 
 	@POST
-	@Path("/login")
+	@Path("/registration")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response login(User user, @Context HttpServletRequest request) {
+	public Response registration(User user, @Context HttpServletRequest request) {
 		//prvi login je ustvari kao registracija jer se korisnici ne cuvaju ni u fajlu ni u bazi
 		UserDAO users = (UserDAO) ctx.getAttribute("users");
 		
 		User logUser = users.find(user.getUsername());
 		if(logUser != null) {
-			return Response.status(400).entity("Korisnik je vec registrovan!").build();
+			return Response.status(400).entity("User already exist!").build();
 		}
+		
 		
 		User u = users.add(user.getUsername(), user.getPassword(), user.getName(), user.getSurname(), user.getGender(), user.getRole());
 		request.getSession().setAttribute("user", u);
