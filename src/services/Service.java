@@ -4,6 +4,7 @@ import javax.annotation.PostConstruct;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -27,7 +28,8 @@ public class Service {
 	@PostConstruct
 	public void init() {
 		if (ctx.getAttribute("users") == null) {
-			UserDAO users = new UserDAO("WebContent/");
+			String contextPath = ctx.getRealPath("");
+			UserDAO users = new UserDAO(contextPath);
 			ctx.setAttribute("users", users);
 		}
 	}
@@ -50,4 +52,45 @@ public class Service {
 		request.getSession().setAttribute("user", u);
 		return Response.status(200).build();
 	}
+	
+	@POST
+    @Path("/login")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response login(User user, @Context HttpServletRequest request) {
+        UserDAO userDao = (UserDAO) ctx.getAttribute("users");
+        User loggedUser = userDao.find(user.getUsername(), user.getPassword());
+        if (loggedUser == null) {
+            return Response.status(400).entity("Invalid username and/or password").build();
+        }
+        request.getSession().setAttribute("user", user);
+        return Response.status(200).build();
+    }
+	/*
+    @POST
+    @Path("/login")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public User login(@Context HttpServletRequest request, User user) {
+        User retVal = null;
+        retVal = (User) request.getSession().getAttribute("user");
+        if (retVal == null) {
+            request.getSession().setAttribute("user", user);
+            retVal = user;
+        }
+        return retVal;
+    }*/
+    
+    @GET
+    @Path("/logout")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public boolean logout(@Context HttpServletRequest request) {
+        User user = null;
+        user = (User) request.getSession().getAttribute("user");
+        if (user != null) {
+            request.getSession().invalidate();
+        }
+        return true;
+    }
 }

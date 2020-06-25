@@ -23,11 +23,14 @@ public class UserDAO {
 	
 	public UserDAO() {
 		
-		users.put("Ana123", new User("Ana123", "aaaaaa", "Ana", "Atanackovic", Gender.FEMALE, Roles.GUEST));
+		//users.put("Ana123", new User("Ana123", "aaaaaa", "Ana", "Atanackovic", Gender.FEMALE, Roles.GUEST));
+		
+		
 	}
 	
 	public UserDAO(String contextPath) {
 		loadUsers(contextPath);
+		
 	}
 	
 	public User find(User u) {
@@ -47,8 +50,23 @@ public class UserDAO {
 		}
 		
 		User user = users.get(username);
+		
+        
 		return user;
 	}
+	
+	public User find(String username, String password) {
+        if (!users.containsKey(username)) {
+            return null;
+        }
+        User user = users.get(username);
+        if (!user.getPassword().equals(password)) {
+            return null;
+        }
+        
+
+        return user;
+    }
 	
 	public User add(String username, String password, String name, String surname, Gender gender, Roles role) {
 		User u = users.get(username);
@@ -80,10 +98,9 @@ public class UserDAO {
             Iterator<JSONObject> iterator = usersList.iterator();
             while (iterator.hasNext()) {
       
-            	parseUsersObject(iterator.next());
-            }
-            
-            
+            	User u=parseUsersObject(iterator.next());
+
+            }            
 		} catch (FileNotFoundException e) {
             e.printStackTrace();
         }  catch (ParseException e) {
@@ -104,7 +121,6 @@ public class UserDAO {
 		
 		User user = new User(username, password, name, surname, gender, role);
 		users.put(username, user);
-		System.out.println(users);
 		return user;
 	}
 	
