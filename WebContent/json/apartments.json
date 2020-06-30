@@ -1,11 +1,18 @@
-{
-    "apartments": [
+[
       {
         "id": 1098,
         "type": "ROOM",
         "nbrRooms": 8,
 		"nbrGuests": 2,
-		"location": null,
+		"location": {
+			"width":"56.15",
+			"height":"42.30",
+			"address":{
+				"street":"Petra Njegosa 15",
+				"place":"Novi Sad",
+				"postalCode":21000
+			}
+		},
 		"forRent":  [
 			{"date": "25-11-1998"},
 			{"date":"30-11-1998"}
@@ -13,7 +20,15 @@
 		"availability": [
 			{"date": "25-11-1998"}
 		],
-		"host": null,
+		"host": {
+			"username":"Ana",
+			"password":"aaaaaa",
+			"name":"Ana",
+			"surname":"Atanackovic",
+			"gender":"FEMALE",
+			"role":"GUEST",
+			"forRent":null
+			},
 		"comment": null,
 		"pictures": [
 			{"pic": "djkjhjf"}, 
@@ -24,8 +39,109 @@
 		"forLogOff": "15:12",
 		"status": "INACTIVE",
 		"amenities": null,
-		"reservations": null
+		"reservations": [{
+				"id": 1085,
+				"rented": {
+				        "id": 1098,
+				        "type": "ROOM",
+				        "nbrRooms": 8,
+						"nbrGuests": 2,
+						"location": {
+							"width":"56.15",
+							"height":"42.30",
+							"address":{
+								"street":"Petra Njegosa 15",
+								"place":"Novi Sad",
+								"postalCode":21000
+							}
+						},
+						"forRent":  [
+							{"date": "25-11-1998"},
+							{"date":"30-11-1998"}
+						],
+						"availability": [
+							{"date": "25-11-1998"}
+						],
+						"host": {
+							"username":"Ana",
+							"password":"aaaaaa",
+							"name":"Ana",
+							"surname":"Atanackovic",
+							"gender":"FEMALE",
+							"role":"GUEST",
+							"forRent":null
+							},
+						"comment": null,
+						"pictures": [
+							{"pic": "djkjhjf"}, 
+							{"pic":"adhhfdf"}
+						],
+						"pricePerNight": 590.99,
+						"forLogIn": "10:12",
+						"forLogOff": "15:12",
+						"status": "INACTIVE",
+						"amenities": null,
+						"reservations": null
+				      	}	
+				,
+				"startReservation": "25-11-1998",
+				"overnightStay": 7,
+				"fullPrice": 400,
+				"welcomeMessage": "sup",
+		        "guest": {
+					"username": "Ana123",
+					"password": "aaaaaa",
+					"name": "Ana",
+					"surname": "Atanackovic",
+					"gender": "FEMALE",
+					"role": "GUEST",
+					"rented": [
+						{
+					        "id": 1098,
+					        "type": "ROOM",
+					        "nbrRooms": 8,
+							"nbrGuests": 2,
+							"location": {
+								"width":"56.15",
+								"height":"42.30",
+								"address":{
+									"street":"Petra Njegosa 15",
+									"place":"Novi Sad",
+									"postalCode":21000
+								}
+							},
+							"forRent":  [
+								{"date": "25-11-1998"},
+								{"date":"30-11-1998"}
+							],
+							"availability": [
+								{"date": "25-11-1998"}
+							],
+							"host": {
+								"username":"Ana",
+								"password":"aaaaaa",
+								"name":"Ana",
+								"surname":"Atanackovic",
+								"gender":"FEMALE",
+								"role":"GUEST",
+								"forRent":null
+								},
+							"comment": null,
+							"pictures": [
+								{"pic": "djkjhjf"}, 
+								{"pic":"adhhfdf"}
+							],
+							"pricePerNight": 590.99,
+							"forLogIn": "10:12",
+							"forLogOff": "15:12",
+							"status": "INACTIVE",
+							"amenities": null,
+							"reservations": null
+				      		}
+					],
+					"reservations": null
+				},
+				"status": "REJECTED"
+			}]
       }
-    ]
- } 
- 
+]

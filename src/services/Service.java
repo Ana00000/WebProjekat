@@ -3,6 +3,7 @@ package services;
 import javax.annotation.PostConstruct;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -66,16 +67,16 @@ public class Service {
         return Response.status(200).build();
     }
 	
-    @GET
-    @Path("/logout")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public boolean logout(@Context HttpServletRequest request) {
-        User user = null;
-        user = (User) request.getSession().getAttribute("user");
-        if (user != null) {
-            request.getSession().invalidate();
-        }
-        return true;
-    }
+	@GET
+	@Path("/logout")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	    public Response logout(@Context HttpServletRequest request) {
+	        HttpSession session = request.getSession(false);
+	        User user = (User) session.getAttribute("user");
+	        if(user!=null) {
+	            session.invalidate();
+	        }
+	        return Response.status(200).build();
+	    }
 }

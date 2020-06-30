@@ -1,5 +1,5 @@
-{
-	"reservations": [{
+[
+	{
 		"id": 1085,
 		"rented": {
 		        "id": 1098,
@@ -14,7 +14,15 @@
 				"availability": [
 					{"date": "25-11-1998"}
 				],
-				"host": null,
+				"host": {
+							"username":"Ana",
+							"password":"aaaaaa",
+							"name":"Ana",
+							"surname":"Atanackovic",
+							"gender":"FEMALE",
+							"role":"GUEST",
+							"forRent":null
+							},
 				"comment": null,
 				"pictures": [
 					{"pic": "djkjhjf"}, 
@@ -40,8 +48,8 @@
 			"gender": "FEMALE",
 			"role": "GUEST",
 			"rented": [
-				{
-					"apartments": {
+				
+					{
 			        "id": 1098,
 			        "type": "ROOM",
 			        "nbrRooms": 8,
@@ -54,7 +62,15 @@
 					"availability": [
 						{"date": "25-11-1998"}
 					],
-					"host": null,
+					"host": {
+							"username":"Ana",
+							"password":"aaaaaa",
+							"name":"Ana",
+							"surname":"Atanackovic",
+							"gender":"FEMALE",
+							"role":"GUEST",
+							"forRent":null
+							},
 					"comment": null,
 					"pictures": [
 						{"pic": "djkjhjf"}, 
@@ -67,10 +83,10 @@
 					"amenities": null,
 					"reservations": null
 		      		}
-		      	}	
+		      		
 			],
 			"reservations": null
 		},
 		"status": "REJECTED"
-	}]
-}
+	}
+]

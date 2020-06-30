@@ -23,8 +23,7 @@ import beans.StatusReservation;
 public class ReservationDAO {
 
 	private Map<Integer, Reservation> reservations = new HashMap<Integer, Reservation>();
-	private ApartmentDAO apartmentDAO = new ApartmentDAO();
-	private CommentDAO commentDAO = new CommentDAO();
+	private ParserToJSONObject parserJSON= new ParserToJSONObject();
 	
 	public ReservationDAO() {
 		
@@ -55,12 +54,14 @@ public class ReservationDAO {
 		JSONParser jsonParser = new JSONParser();
 		try (FileReader reader = new FileReader(contextPath+"/json/reservations.json") )
         {
-			JSONObject obj = (JSONObject) jsonParser.parse(reader);
  
-            JSONArray reservationsList = (JSONArray) obj.get("reservations");
+            JSONArray reservationsList = (JSONArray) jsonParser.parse(reader);
+            if(reservationsList==null )
+            	return;
             Iterator<JSONObject> iterator = reservationsList.iterator();
             while (iterator.hasNext()) {
-            	parseReservationsObject(iterator.next());
+            	Reservation reservation= parserJSON.parseReservationsObject(iterator.next());
+            	reservations.put(reservation.getId(), reservation);
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -71,34 +72,4 @@ public class ReservationDAO {
         }
 	}
 		
-	public Reservation parseReservationsObject(JSONObject reservationObject) {
-		
-		DateFormat format = new SimpleDateFormat("dd-MM-yyyy");
-		
-		int id = Integer.parseInt(jsonToStr(reservationObject, "id"));
-		Apartment rented = apartmentDAO.parseApartmentsObject((JSONObject)reservationObject.get("rented"));
-		
-		Date startReservation = new Date();
-		try {
-			startReservation = format.parse(jsonToStr(reservationObject, "startReservation"));
-		} catch (java.text.ParseException e) {
-			e.printStackTrace();
-		}
-		
-		int overnightStay = Integer.parseInt(jsonToStr(reservationObject, "overnightStay"));
-		int fullPrice = Integer.parseInt(jsonToStr(reservationObject, "fullPrice"));
-		String welcomeMessage = jsonToStr(reservationObject, "welcomeMessage");
-		
-		Guest guest = commentDAO.parseGuestObject((JSONObject)reservationObject.get("guest"));
-		StatusReservation status = StatusReservation.valueOf(jsonToStr(reservationObject, "status"));
-		
-		Reservation reservation = new Reservation(id, rented, startReservation, overnightStay, fullPrice, welcomeMessage, guest, status);
-		reservations.put(id, reservation);
-		return reservation;
-	}
-	
-	private String jsonToStr(JSONObject reservationObject, String par) {
-		String conversation = reservationObject.get(par).toString();
-		return conversation;
-	}
 }

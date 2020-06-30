@@ -16,6 +16,7 @@ import org.json.simple.parser.ParseException;
 public class AmenityDAO {
 	
 	private Map<Integer, Amenity> amenities = new HashMap<Integer, Amenity>();
+	private ParserToJSONObject parserJSON= new ParserToJSONObject();
 	
 	public AmenityDAO() {
 		
@@ -48,13 +49,16 @@ public class AmenityDAO {
 		JSONParser jsonParser = new JSONParser();
 		try (FileReader reader = new FileReader(contextPath+"/json/amenities.json") )
         {
-			JSONObject obj = (JSONObject) jsonParser.parse(reader);
+            JSONArray amenityList = (JSONArray) jsonParser.parse(reader);
             
-            JSONArray amenityList = (JSONArray) obj.get("amenities");
+			if(amenityList == null)
+				return;
+            
             Iterator<JSONObject> iterator = amenityList.iterator();
             while (iterator.hasNext()) {
       
-                parseAmenitiesObject(iterator.next());
+            	Amenity a=parserJSON.parseAmenitiesObject(iterator.next());
+                amenities.put(a.getId(), a);
             }
             
         } catch (FileNotFoundException e) {
@@ -66,16 +70,5 @@ public class AmenityDAO {
         }
 	}
        
-	public Amenity parseAmenitiesObject(JSONObject amenity) {
-		int id = Integer.parseInt(jsonToStr(amenity, "id"));    
-        String name = jsonToStr(amenity, "name"); 
-        Amenity a = new Amenity(id, name);
-        amenities.put(id, a);
-        return a;
-	}
-	
-	private String jsonToStr(JSONObject apartmentObject, String par) {
-		String conversation = apartmentObject.get(par).toString();
-		return conversation;
-	}
+
 }

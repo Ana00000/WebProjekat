@@ -26,6 +26,7 @@ public class UserDAO {
 
 	private HashMap<String, User> users = new HashMap<String, User>();
 	private String contPath;
+	private ParserToJSONObject parserJSON= new ParserToJSONObject();
 	
 	
 	public UserDAO() {
@@ -118,8 +119,8 @@ public class UserDAO {
 	private JSONObject userToJSONObject(User u) {
         JSONObject user = new JSONObject();
         user.put("username", u.getUsername());
-        user.put("password",u.getPassword());
-        user.put("name",u.getName());
+        user.put("password", u.getPassword());
+        user.put("name", u.getName());
         user.put("surname", u.getSurname());
         user.put("gender", u.getGender().toString());
         user.put("role", u.getRole().toString());
@@ -141,10 +142,13 @@ public class UserDAO {
 		try (FileReader reader = new FileReader(contextPath+"/json/users.json") )
         {
             JSONArray usersList = (JSONArray) jsonParser.parse(reader);
+            if(usersList==null)
+            	return;
             Iterator<JSONObject> iterator = usersList.iterator();
             while (iterator.hasNext()) {
       
-            	parseUsersObject(iterator.next());
+            	User user=parserJSON.parseUsersObject(iterator.next());
+        		users.put(user.getUsername(), user);
 
             }
 		} catch (FileNotFoundException e) {
@@ -156,22 +160,5 @@ public class UserDAO {
         } 
 	}
 		
-	public User parseUsersObject(JSONObject userObject) {
-		
-        String username = jsonToStr(userObject, "username");
-		String password = jsonToStr(userObject, "password");
-		String name = jsonToStr(userObject, "name");
-		String surname = jsonToStr(userObject, "surname");
-		Gender gender = Gender.valueOf(jsonToStr(userObject, "gender"));
-		Roles role = Roles.valueOf(jsonToStr(userObject, "role"));
-		
-		User user = new User(username, password, name, surname, gender, role);
-		users.put(username, user);
-		return user;
-	}
-	
-	private String jsonToStr(JSONObject userObject, String par) {
-		String conversation = userObject.get(par).toString();
-		return conversation;
-	}
+
 }
