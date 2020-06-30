@@ -1,7 +1,9 @@
-package dao;
+ package dao;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
@@ -12,6 +14,10 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import beans.Gender;
 import beans.Roles;
 import beans.User;
@@ -19,18 +25,15 @@ import beans.User;
 public class UserDAO {
 
 	private HashMap<String, User> users = new HashMap<String, User>();
+	private String contPath;
 	
 	
 	public UserDAO() {
-		
-		//users.put("Ana123", new User("Ana123", "aaaaaa", "Ana", "Atanackovic", Gender.FEMALE, Roles.GUEST));
-		
-		
 	}
 	
 	public UserDAO(String contextPath) {
 		loadUsers(contextPath);
-		
+		contPath = contextPath;
 	}
 	
 	public User find(User u) {
@@ -73,10 +76,55 @@ public class UserDAO {
 		if(u == null) {
 			u = new User(username, password, name, surname, gender, role);
 			users.put(username, u);
+			writeInFile(u);
 		}
 		
 		return u;
 	}
+	
+	@SuppressWarnings("unchecked")
+	private void writeInFile(User u) {
+		ObjectMapper mapper = new ObjectMapper();
+		  
+		JSONObject user = userToJSONObject(u);
+		JSONArray root = null;
+		try {
+			root = mapper.readValue(new File(contPath+"/json/users.json"), JSONArray.class);
+		} catch (JsonParseException e2) {
+			e2.printStackTrace();
+		} catch (JsonMappingException e2) {
+			e2.printStackTrace();
+		} catch (IOException e2) {
+			e2.printStackTrace();
+		}
+		
+		root.add(user);
+		
+		try (FileWriter file = new FileWriter(contPath+"/json/users.json")) 
+        {
+            try {
+				file.write(root.toString());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+            System.out.println(contPath+"/json/users.json");
+            System.out.println("Successfully updated json object to file...!!");
+        } catch (IOException e1) {
+			e1.printStackTrace();
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	private JSONObject userToJSONObject(User u) {
+        JSONObject user = new JSONObject();
+        user.put("username", u.getUsername());
+        user.put("password",u.getPassword());
+        user.put("name",u.getName());
+        user.put("surname", u.getSurname());
+        user.put("gender", u.getGender().toString());
+        user.put("role", u.getRole().toString());
+        return user;
+    }
 	
 	public HashMap<String, User> getUsers() {
 		return users;
@@ -92,15 +140,13 @@ public class UserDAO {
 		JSONParser jsonParser = new JSONParser();
 		try (FileReader reader = new FileReader(contextPath+"/json/users.json") )
         {
-			JSONObject obj = (JSONObject) jsonParser.parse(reader);
-			
-            JSONArray usersList = (JSONArray) obj.get("users");
+            JSONArray usersList = (JSONArray) jsonParser.parse(reader);
             Iterator<JSONObject> iterator = usersList.iterator();
             while (iterator.hasNext()) {
       
-            	User u=parseUsersObject(iterator.next());
+            	parseUsersObject(iterator.next());
 
-            }            
+            }
 		} catch (FileNotFoundException e) {
             e.printStackTrace();
         }  catch (ParseException e) {
