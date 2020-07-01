@@ -99,7 +99,7 @@ $(document).ready(function() {
 		
 		
 		if(flag){
-			$.post({
+			$.get({
 				url: 'rest/registration',
 				data: JSON.stringify({username: username, password: password, name: name, surname: surname, gender: gender, role: role}),
 				contentType: 'application/json',

@@ -1,7 +1,9 @@
 package dao;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -16,6 +18,10 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import beans.Address;
 import beans.Amenity;
@@ -32,7 +38,9 @@ import beans.Type;
 public class ApartmentDAO {
 
 	private Map<Integer, Apartment> apartments = new HashMap<Integer, Apartment>();
-	private ParserToJSONObject parserJSON= new ParserToJSONObject();
+	private String contPath;
+	private ParserFromJSONObject parserFromJSON= new ParserFromJSONObject();
+	private ParserToJSONObject parserToJSON= new ParserToJSONObject();
 
 	public ApartmentDAO() {
 		
@@ -40,6 +48,7 @@ public class ApartmentDAO {
 	
 	public ApartmentDAO(String contextPath) {
 		loadApartments(contextPath);
+		contPath = contextPath;
 	}
 	
 	public Apartment find(Apartment a) {
@@ -55,6 +64,38 @@ public class ApartmentDAO {
 	public Collection<Apartment> findAll() {
 		return apartments.values();
 	}
+	
+	@SuppressWarnings("unchecked")
+	private void writeInFile(Apartment a) {
+		ObjectMapper mapper = new ObjectMapper();
+		  
+		JSONObject apartment = parserToJSON.apartmentToJSONObject(a);
+		JSONArray root = null;
+		try {
+			root = mapper.readValue(new File(contPath+"/json/apartments.json"), JSONArray.class);
+		} catch (JsonParseException e2) {
+			e2.printStackTrace();
+		} catch (JsonMappingException e2) {
+			e2.printStackTrace();
+		} catch (IOException e2) {
+			e2.printStackTrace();
+		}
+		
+		root.add(apartment);
+		
+		try (FileWriter file = new FileWriter(contPath+"/json/apartments.json")) 
+        {
+            try {
+				file.write(root.toString());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+            System.out.println(contPath+"/json/apartments.json");
+            System.out.println("Successfully updated json object to file...!!");
+        } catch (IOException e1) {
+			e1.printStackTrace();
+		}
+	}
 
 	@SuppressWarnings("unchecked")
 	public void loadApartments(String contextPath) {
@@ -69,7 +110,7 @@ public class ApartmentDAO {
             
             Iterator<JSONObject> iterator = apartmentsList.iterator();
             while (iterator.hasNext()) {
-            	Apartment a=parserJSON.parseApartmentsObject(iterator.next());
+            	Apartment a=parserFromJSON.parseApartmentsObject(iterator.next());
             	apartments.put(a.getId(), a);
             }
         } catch (FileNotFoundException e) {

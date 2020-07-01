@@ -7,6 +7,9 @@ public class Location {
 	
 	public Location() {
 		super();
+		this.width =0.0;
+		this.height =0.0;
+		this.address = new Address();
 	}
 	
 	public Location(double width, double height, Address address) {

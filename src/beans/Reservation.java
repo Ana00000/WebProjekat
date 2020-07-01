@@ -1,5 +1,6 @@
 package beans;
 
+import java.time.Instant;
 import java.util.Date;
 
 public class Reservation {
@@ -14,6 +15,14 @@ public class Reservation {
 	
 	public Reservation() {
 		super();
+		this.id = 0;
+		this.rented =new Apartment();
+		this.startReservation = Date.from(Instant.now());
+		this.overnightStay = 15;
+		this.fullPrice = 150;
+		this.welcomeMessage = "";
+		this.guest = new Guest();
+		this.status = StatusReservation.CREATED;
 	}
 	
 	public Reservation(int id, Apartment rented, Date startReservation, int overnightStay, int fullPrice, String welcomeMessage,

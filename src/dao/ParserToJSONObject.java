@@ -1,289 +1,198 @@
 package dao;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-
-import beans.Address;
 import beans.Amenity;
 import beans.Apartment;
 import beans.Comment;
-import beans.Gender;
 import beans.Guest;
 import beans.Host;
-import beans.Location;
 import beans.Reservation;
-import beans.Roles;
-import beans.StatusApartment;
-import beans.StatusReservation;
-import beans.Type;
 import beans.User;
 
 public class ParserToJSONObject {
 	
-	public User parseUsersObject(JSONObject userObject) {
-		
-        String username = jsonToStr(userObject, "username");
-		String password = jsonToStr(userObject, "password");
-		String name = jsonToStr(userObject, "name");
-		String surname = jsonToStr(userObject, "surname");
-		Gender gender = Gender.valueOf(jsonToStr(userObject, "gender"));
-		Roles role = Roles.valueOf(jsonToStr(userObject, "role"));
-		
-		User user = new User(username, password, name, surname, gender, role);
-		return user;
+	@SuppressWarnings("unchecked")
+	public JSONObject userToJSONObject(User u) {
+		if(u==null)
+			return new JSONObject();
+        JSONObject user = new JSONObject();
+        user.put("username", u.getUsername());
+        user.put("password", u.getPassword());
+        user.put("name", u.getName());
+        user.put("surname", u.getSurname());
+        user.put("gender", u.getGender().toString());
+        user.put("role", u.getRole().toString());
+        return user;
+    }
+
+	@SuppressWarnings("unchecked")
+	public JSONObject amenityToJSONObject(Amenity a) {
+		if(a==null)
+			return new JSONObject();
+        JSONObject amenity = new JSONObject();
+        amenity.put("username", a.getId());
+        amenity.put("password", a.getName());
+		return amenity;
 	}
 	
-	public Reservation parseReservationsObject(JSONObject reservationObject) {
+	@SuppressWarnings("unchecked")
+	public JSONObject apartmentToJSONObject(Apartment a) {
+		if(a==null)
+			return new JSONObject();
+		JSONObject apartment = new JSONObject();
+		apartment.put("id", a.getId());
+		apartment.put("type", a.getType().toString() );
+		apartment.put("nbrRooms", a.getNbrRooms() );
+		apartment.put("nbrGuests", a.getNbrGuests());
 		
-		DateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+		JSONObject location =new JSONObject();
+		JSONObject address =new JSONObject();
+		location.put("width", a.getLocation().getWidth());
+		location.put("height",a.getLocation().getHeight());
+		address.put("street", a.getLocation().getAddress().getStreet());
+		address.put("place", a.getLocation().getAddress().getPlace());
+		address.put("postalCode", a.getLocation().getAddress().getPostalCode());
+		location.put("address", address);
+			
+		apartment.put("location", location);
 		
-		int id = Integer.parseInt(jsonToStr(reservationObject, "id"));
+		JSONArray forRent=new JSONArray();
+		for(Date date : a.getForRent())
+			{
+				JSONObject object=new JSONObject();
+				object.put("date", date);
+				forRent.add(object);
+			}
 		
-		Apartment rented=new Apartment();
-		if(reservationObject.get("rented")!=null)
-			rented= parseApartmentsObject((JSONObject)reservationObject.get("rented"));
+		apartment.put("forRent", forRent);
+		JSONArray availability=new JSONArray();
+			for(Date date : a.getAvailability() )
+				{
+					JSONObject object=new JSONObject();
+					object.put("date", date);
+					availability.add(object);
+				}
+		apartment.put("availability", availability);
+		apartment.put("host", hostToJSONObject(a.getHost()));	
+		apartment.put("comment",commentToJSONObject(a.getComment()));
 		
-		Date startReservation = new Date();
-		try {
-			startReservation = format.parse(jsonToStr(reservationObject, "startReservation"));
-		} catch (java.text.ParseException e) {
-			e.printStackTrace();
-		}
+		JSONArray pictures=new JSONArray();
+			for(String picture : a.getPictures())
+				{
+					JSONObject object=new JSONObject();
+					object.put("pic", picture);
+					pictures.add(object);
+				}	
 		
-		int overnightStay = Integer.parseInt(jsonToStr(reservationObject, "overnightStay"));
-		int fullPrice = Integer.parseInt(jsonToStr(reservationObject, "fullPrice"));
-		String welcomeMessage = jsonToStr(reservationObject, "welcomeMessage");
+		apartment.put("pricePerNight", a.getPricePerNight());
+		apartment.put("forLogIn", a.getForLogIn());
+		apartment.put("forLogOff", a.getForLogOff());
+		apartment.put("status", a.getStatus().toString());
 		
-		Guest guest =new Guest();
-		if(reservationObject.get("guest")!=null)
-			guest = parseGuestObject((JSONObject)reservationObject.get("guest"));
+		JSONArray amenities=new JSONArray();
+		for(Amenity amenity : a.getAmenities())
+		{
+			amenities.add(amenityToJSONObject(amenity));
+		}	
 		
-		StatusReservation status = StatusReservation.valueOf(jsonToStr(reservationObject, "status"));
+		
+		apartment.put("amenities", amenities);
+		
+		
+		JSONArray reservations=new JSONArray();
+		for(Reservation reservation : a.getReservations())
+		{
+			amenities.add(reservationToJSONObject(reservation));
+		}	
+		
+		apartment.put("reservations", reservations);
+		
+		return apartment;
+	}
 
+	@SuppressWarnings("unchecked")
+	public JSONObject commentToJSONObject(Comment c) {
+		if(c==null)
+			return new JSONObject();
+		JSONObject comment = new JSONObject();
+		comment.put("id", c.getId());
+		comment.put("guest", guestToJSONObject(c.getGuest()));
+		comment.put("apartment",apartmentToJSONObject(c.getApartment()));
+		comment.put("id", c.getId());
+		comment.put("text", c.getText());
+		comment.put("grade", c.getGrade());
 		
-		Reservation reservation = new Reservation(id, rented, startReservation, overnightStay, fullPrice, welcomeMessage, guest, status);
+		return comment;
+	}
+
+	@SuppressWarnings("unchecked")
+	public JSONObject reservationToJSONObject(Reservation r) {
+		
+		if(r==null)
+			return new JSONObject();
+		JSONObject reservation = new JSONObject();
+		reservation.put("id", r.getId());
+		reservation.put("rented", apartmentToJSONObject(r.getRented()));
+		reservation.put("startReservation",r.getStartReservation().toString());
+		reservation.put("overnightStay", r.getOvernightStay());
+		reservation.put("fullPrice", r.getFullPrice());
+		reservation.put("welcomeMessage", r.getWelcomeMessage());
+		reservation.put("guest", guestToJSONObject(r.getGuest()));
+		reservation.put("status", r.getStatus().toString());
+		
 		return reservation;
 	}
 	
-	public Comment parseCommentsObject(JSONObject commentObject) {
-
-		int id = Integer.parseInt(jsonToStr(commentObject, "id"));    
-		
-		Guest guest =  new Guest();
-		if(commentObject.get("guest")!=null)
-			guest = parseGuestObject((JSONObject)commentObject.get("guest"));
-        
-		Apartment apartment = new Apartment();
-		if(commentObject.get("apartment")!=null)
-			apartment = parseApartmentsObject((JSONObject)commentObject.get("apartment"));
-        
-		String text = jsonToStr(commentObject, "text");
-		
-		double grade = Double.parseDouble(jsonToStr(commentObject, "grade")); 
-		
-		
-		
-		Comment comment = new Comment(id, guest, apartment, text, grade);
-		return comment;
-	}
-	
 	@SuppressWarnings("unchecked")
-	public Guest parseGuestObject(JSONObject guestObject ) {
-		
-		String username = jsonToStr(guestObject, "username");
-		String password = jsonToStr(guestObject, "password");
-		String name = jsonToStr(guestObject, "name");
-		String surname = jsonToStr(guestObject, "surname");
-		Gender gender = Gender.valueOf(jsonToStr(guestObject, "gender"));
-		Roles role = Roles.valueOf(jsonToStr(guestObject, "role"));
-		
-		List<Apartment> rented = new ArrayList<Apartment>();
-		
-		JSONArray apartmentsList = (JSONArray) guestObject.get("rented");
-		if(apartmentsList!=null) {
-			Iterator<JSONObject> rentedIt = apartmentsList.iterator();
-        	while (rentedIt.hasNext()) {
-        		rented.add(parseApartmentsObject((JSONObject) rentedIt.next()));
-        	}
-        }
+	public JSONObject guestToJSONObject(Guest g) {
+		if(g==null)
+			return new JSONObject();
+        JSONObject guest = new JSONObject();
+        guest.put("username", g.getUsername());
+        guest.put("password", g.getPassword());
+        guest.put("name", g.getName());
+        guest.put("surname", g.getSurname());
+        guest.put("gender", g.getGender().toString());
+        guest.put("role", g.getRole().toString());
         
-        List<Reservation> reservations=new ArrayList<Reservation>() ;	
-		JSONArray reservationsList = (JSONArray) guestObject.get("reservations");
-		if(reservationsList!=null) {
-			Iterator<JSONObject> reservationsIt = reservationsList.iterator();
-        	while (reservationsIt.hasNext()) {
-        	reservations.add(parseReservationsObject((JSONObject) reservationsIt.next()));
-        	}
-		}
-        
-		
-		return new Guest(username, password, name, surname, gender, role, rented, reservations);
-	}
-	
-	@SuppressWarnings("unchecked")
-	public Apartment parseApartmentsObject(JSONObject apartmentObject) {
-		
-		DateFormat format = new SimpleDateFormat("dd-MM-yyyy");
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
-
-		int id = Integer.parseInt(jsonToStr(apartmentObject, "id"));    
-		
-		Type type = Type.valueOf(jsonToStr(apartmentObject, "type"));
-		
-		int nbrRooms = Integer.parseInt(jsonToStr(apartmentObject, "nbrRooms"));  
-		
-		int nbrGuests = Integer.parseInt(jsonToStr(apartmentObject, "nbrGuests"));  
-		
-		Location location=new Location();
-		if(apartmentObject.get("location")!=null)
-			location = parseLocationsObject((JSONObject)apartmentObject.get("location"));
-		
-		List<Date> forRent = new ArrayList<Date>();
-		JSONArray forRentList = (JSONArray) apartmentObject.get("forRent");
-        dateIteration(format, forRent, forRentList, "date");
-        
-		List<Date> availability = new ArrayList<Date>();
-		JSONArray availabilityList = (JSONArray) apartmentObject.get("availability");
-		dateIteration(format, availability, availabilityList, "date");
-		
-		Host host = new Host();
-		if(apartmentObject.get("host")!=null)
-			host = parseHostObject((JSONObject)apartmentObject.get("host"));
-		
-		Comment comment=new Comment();
-		if(apartmentObject.get("comment")!=null)
-			comment = parseCommentsObject((JSONObject)apartmentObject.get("comment"));
-		
-		List<String> pictures = new ArrayList<String>();
-		JSONArray picturesList = (JSONArray) apartmentObject.get("pictures");
-		Iterator<JSONObject> it = picturesList.iterator();
-        while (it.hasNext()) {
-			pictures.add((jsonToStr(it.next(), "pic")));
-        }
-		
-		double pricePerNight = Double.parseDouble(jsonToStr(apartmentObject, "pricePerNight")); 
-		
-		Date forLogIn = new Date();
-		try {
-			forLogIn = simpleDateFormat.parse(jsonToStr(apartmentObject, "forLogIn"));
-		} catch (java.text.ParseException e) {
-			e.printStackTrace();
-		}
-		
-		Date forLogOff = new Date();
-		try {
-			forLogOff = simpleDateFormat.parse(jsonToStr(apartmentObject, "forLogOff"));
-		} catch (java.text.ParseException e) {
-			e.printStackTrace();
-		}
-		
-		StatusApartment status = StatusApartment.valueOf(jsonToStr(apartmentObject, "status"));
-		
-		List<Amenity> amenities=new ArrayList<Amenity>() ;	
-		JSONArray amenitiesList = (JSONArray) apartmentObject.get("amenities");
-		
-		if(amenitiesList != null)
-			{
-			
-			Iterator<JSONObject> amenitiesIt = amenitiesList.iterator();
-	        while (amenitiesIt.hasNext()) {
-	        	amenities.add(parseAmenitiesObject((JSONObject) amenitiesIt.next()));
-	        	}
-			}
-
-		
-		List<Reservation> reservations=new ArrayList<Reservation>() ;	
-		JSONArray reservationsList = (JSONArray) apartmentObject.get("reservations");
-		
-		if(reservationsList != null)
+		JSONArray apartments=new JSONArray();
+		for(Apartment	apartment: g.getRented())
 		{
-			Iterator<JSONObject> reservationsIt = reservationsList.iterator();
-	        while (reservationsIt.hasNext()) {
-	        	reservations.add(parseReservationsObject((JSONObject) reservationsIt.next()));
-	        }
+			apartments.add(apartmentToJSONObject(apartment));
 		}
+		guest.put("rented", apartments);
 		
-		Apartment a=new Apartment(id, type, nbrRooms, nbrGuests, location , forRent, availability, host, comment, 
-				pictures, pricePerNight, forLogIn, forLogOff, status, amenities, reservations);
-		
-		return a;
-	}
-
-	@SuppressWarnings("unchecked")
-	private void dateIteration(DateFormat format, List<Date> date, JSONArray json, String par) {
-		Date dateRent;
-		Iterator<JSONObject> it = json.iterator();
-        while (it.hasNext()) {
-			try {
-				dateRent = format.parse(jsonToStr(it.next(), par));
-				date.add(dateRent);
-			} catch (java.text.ParseException e) {
-				e.printStackTrace();
-			}
-        }
-	}
-	
-	public Location parseLocationsObject(JSONObject locationObject) {
-		
-		double width = Double.parseDouble(jsonToStr(locationObject, "width"));
-		double height =  Double.parseDouble(jsonToStr(locationObject, "height"));
-		Address address= parseAddressesObject((JSONObject)locationObject.get("address"));;
-
-		return new Location(width, height, address);
-	}
-	
-	public Address parseAddressesObject(JSONObject addressObject) {
-		String street=jsonToStr(addressObject, "street");
-		String place=jsonToStr(addressObject, "place");
-		int postalCode=Integer.parseInt(jsonToStr(addressObject, "postalCode"));
-		
-		return new Address(street, place, postalCode);
-	}
-	
-	@SuppressWarnings("unchecked")
-	public Host parseHostObject(JSONObject hostObject ) {
-		
-		String username = jsonToStr(hostObject, "username");
-		String password = jsonToStr(hostObject, "password");
-		String name = jsonToStr(hostObject, "name");
-		String surname = jsonToStr(hostObject, "surname");
-		Gender gender = Gender.valueOf(jsonToStr(hostObject, "gender"));
-		Roles role = Roles.valueOf(jsonToStr(hostObject, "role"));
-		
-		List<Apartment> forRent = new ArrayList<Apartment>();
-		JSONArray apartmentsList = (JSONArray) hostObject.get("forRent");
-		if(apartmentsList != null)
+		JSONArray reservations=new JSONArray();
+		for(Reservation reservation : g.getReservations())
 		{
-			Iterator<JSONObject> rentedIt = apartmentsList.iterator();
-	        while (rentedIt.hasNext()) {
-	        	JSONObject o=(JSONObject) rentedIt.next();
-	        	if(o != null)
-	        		forRent.add(parseApartmentsObject(o));
-	        }
-		}
-       
-		return new Host(username, password, name, surname, gender, role, forRent);
-	}
+			reservations.add(reservationToJSONObject(reservation));
+		}	
+		
+		guest.put("reservations", reservations);
+        return guest;
+    }
 	
-	public Amenity parseAmenitiesObject(JSONObject amenity) {
-		int id = Integer.parseInt(jsonToStr(amenity, "id"));    
-        String name = jsonToStr(amenity, "name"); 
-        Amenity a = new Amenity(id, name);
+	@SuppressWarnings("unchecked")
+	public JSONObject hostToJSONObject(Host h) {
+		if(h==null)
+			return new JSONObject();
+        JSONObject host = new JSONObject();
+        host.put("username", h.getUsername());
+        host.put("password", h.getPassword());
+        host.put("name", h.getName());
+        host.put("surname", h.getSurname());
+        host.put("gender", h.getGender().toString());
+        host.put("role", h.getRole().toString());
         
-        return a;
-	}
-	
-	
-	private String jsonToStr(JSONObject userObject, String par) {
-		String conversation = userObject.get(par).toString();
-		return conversation;
-	}
-	
+		JSONArray apartments=new JSONArray();
+		for(Apartment	apartment: h.getForRent())
+		{
+			apartments.add(apartmentToJSONObject(apartment));
+		}
+		host.put("rented", apartments);
+
+        return host;
+    }
 }

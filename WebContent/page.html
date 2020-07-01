@@ -4,11 +4,52 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="page.js"></script>
-	<title>Pregled pacijenata</title>
+	<title>Main page</title>
 </head>
 <body>
-	<label>ko sta</label>
-	
+	<h2><font color="red"><b>Change of personal information</b></font></h2>
+	<table>
+		<tr>
+			<td><label><b>Username:</b></label></td>
+			<td> <input type="text" id="username" name="username" pattern=".{6,30}" size="20" disabled></td>
+		</tr>
+		<tr>
+			<td><label><b>Password:</b></label></td>
+			<td> <input type="password" id="password" name="password"   pattern=".{6,30}"  required  size="20"></td>
+		</tr>
+		<tr>
+			<td><label><b>Insert password again:</b></label></td>
+			<td> <input type="password" id="passwordDouble" name="passwordDouble" pattern=".{6,30}" required size="20"></td>
+		</tr>
+		<tr>
+			<td><label><b>Name:</b></label></td>
+			<td> <input type="text" id="name" name="name" pattern=".{2,30}" required size="20"></td>
+		</tr>
+		<tr>
+			<td><label><b>Surname:</b></label></td>
+			<td> <input type="text" id="surname" name="surname" pattern=".{2,50}" required size="20"></td>
+		</tr>
+		<tr>
+			<td><label for="gender"><b>Gender:</b></label></td>
+			<td>
+				<select name="gender" id="gender">
+					<option value="MALE">MALE</option>
+					<option value="FEMALE">FEMALE</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td align="right"><label><b> </b></label></td>
+			<td><button id="change" style="width:140px" style="text-align:right;">Change your informations</button></td>
+		</tr>
+	</table>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p id="error" hidden="true" ></p>
+	<p></p>
+	<p></p>
+	<p></p>
 	<a href="off">Log off</a>
 </body>
 </html>

@@ -9,6 +9,11 @@ public class Comment {
 	
 	public Comment() {
 		super();
+		this.id = 123;
+		this.guest = new Guest();
+		this.apartment =null;
+		this.text = "";
+		this.grade = 0.0;
 	}
 	
 	public Comment(int id, Guest guest, Apartment apartment, String text, double grade) {

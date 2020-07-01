@@ -26,7 +26,8 @@ public class UserDAO {
 
 	private HashMap<String, User> users = new HashMap<String, User>();
 	private String contPath;
-	private ParserToJSONObject parserJSON= new ParserToJSONObject();
+	private ParserFromJSONObject parserFromJSON= new ParserFromJSONObject();
+	private ParserToJSONObject parserToJSON= new ParserToJSONObject();
 	
 	
 	public UserDAO() {
@@ -83,11 +84,20 @@ public class UserDAO {
 		return u;
 	}
 	
+
+	public HashMap<String, User> getUsers() {
+		return users;
+	}
+	
+	public Collection<User> findAll() {
+		return users.values();
+	}
+
 	@SuppressWarnings("unchecked")
 	private void writeInFile(User u) {
 		ObjectMapper mapper = new ObjectMapper();
 		  
-		JSONObject user = userToJSONObject(u);
+		JSONObject user = parserToJSON.userToJSONObject(u);
 		JSONArray root = null;
 		try {
 			root = mapper.readValue(new File(contPath+"/json/users.json"), JSONArray.class);
@@ -115,26 +125,6 @@ public class UserDAO {
 		}
 	}
 	
-	@SuppressWarnings("unchecked")
-	private JSONObject userToJSONObject(User u) {
-        JSONObject user = new JSONObject();
-        user.put("username", u.getUsername());
-        user.put("password", u.getPassword());
-        user.put("name", u.getName());
-        user.put("surname", u.getSurname());
-        user.put("gender", u.getGender().toString());
-        user.put("role", u.getRole().toString());
-        return user;
-    }
-	
-	public HashMap<String, User> getUsers() {
-		return users;
-	}
-	
-	public Collection<User> findAll() {
-		return users.values();
-	}
-
 
 	@SuppressWarnings("unchecked")
 	public void loadUsers(String contextPath)  {
@@ -147,7 +137,7 @@ public class UserDAO {
             Iterator<JSONObject> iterator = usersList.iterator();
             while (iterator.hasNext()) {
       
-            	User user=parserJSON.parseUsersObject(iterator.next());
+            	User user=parserFromJSON.parseUsersObject(iterator.next());
         		users.put(user.getUsername(), user);
 
             }
@@ -158,6 +148,18 @@ public class UserDAO {
         } catch (IOException e) {
             e.printStackTrace();
         } 
+	}
+
+	public User set(String username, String password, String name, String surname, Gender gender, Roles role) {
+		User oldUser = users.get(username);
+		User newUser = users.get(username);
+		newUser = new User(username, password, name, surname, gender, role);
+
+		users.remove(oldUser);
+		users.put(newUser.getUsername(), newUser);
+		writeInFile(newUser);
+		
+		return newUser;
 	}
 		
 

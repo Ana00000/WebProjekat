@@ -1,4 +1,5 @@
 package beans;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -23,6 +24,17 @@ public class Apartment {
 	
 	public Apartment() {
 		super();
+		this.id=0;
+		this.type = Type.ROOM;
+		this.nbrRooms = 0;
+		this.nbrGuests = 0;
+		this.location = new Location();
+		this.host = new Host();
+		this.comment =null;
+		this.pricePerNight = 0;
+		this.forLogIn = Date.from(Instant.now());
+		this.forLogOff = Date.from(Instant.now());
+		this.status = StatusApartment.INACTIVE ;
 	}
 	
 	public Apartment(int id, Type type, int nbrRooms, int nbrGuests, Location location, List<Date> forRent,

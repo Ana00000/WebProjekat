@@ -8,6 +8,8 @@ public class Amenity {
 	
 	public Amenity() {
 		super();
+		id=0;
+		name="";
 	}
 	
 	public Amenity(int id, String name) {
