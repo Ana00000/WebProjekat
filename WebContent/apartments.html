@@ -3,17 +3,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="pagehost.js"></script>
+<script type="text/javascript" src="apartments.js"></script>
 <script>
-function myFunctionUsername() {
+function myFunctionNbrRooms() {
   var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInputUsername");
+  input = document.getElementById("myInputNbrRooms");
   filter = input.value.toUpperCase();
-  table = document.getElementById("UsersTable");
+  table = document.getElementById("ApartmentsTable");
   tr = table.getElementsByTagName("tr");
 
   for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
+    td = tr[i].getElementsByTagName("td")[2];
     if (td) {
       txtValue = td.textContent || td.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -26,11 +26,11 @@ function myFunctionUsername() {
 }
 </script>
 <script>
-function myFunctionRole() {
+function myFunctionNbrGuests() {
   var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInputRole");
+  input = document.getElementById("myInputNbrGuests");
   filter = input.value.toUpperCase();
-  table = document.getElementById("UsersTable");
+  table = document.getElementById("ApartmentsTable");
   tr = table.getElementsByTagName("tr");
 
   for (i = 0; i < tr.length; i++) {
@@ -47,11 +47,11 @@ function myFunctionRole() {
 }
 </script>
 <script>
-function myFunctionGender() {
+function myFunctionPrice() {
   var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInputGender");
+  input = document.getElementById("myInputPrice");
   filter = input.value.toUpperCase();
-  table = document.getElementById("UsersTable");
+  table = document.getElementById("ApartmentsTable");
   tr = table.getElementsByTagName("tr");
 
   for (i = 0; i < tr.length; i++) {
@@ -67,15 +67,29 @@ function myFunctionGender() {
   }
 }
 </script>
-	<title>Host page</title>
+<head>
+	<title>Apartments page</title>
 </head>
 <body>
-	<input type="text" id="myInputUsername" onkeyup="myFunctionUsername()" placeholder="Search for usernames..">
-	<input type="text" id="myInputRole" onkeyup="myFunctionRole()" placeholder="Search for roles..">
-	<input type="text" id="myInputGender" onkeyup="myFunctionGender()" placeholder="Search for genders..">
-	<table id="UsersTable"  border="2">
-	<tr><th>Username</th><th>Name</th><th>Surname</th><th>Role</th><th>Gender</th><th>Password</th></tr>
+	 <input id="gfg" type="text" placeholder="Universal search..." size="30">
+	 <p/>
+	<table id="ApartmentsTable"  border="2">
+	<tr><th>Id</th><th >Type</th><th>Nbr rooms</th><th>Nbr guests</th><th>Price per night</th></tr>
 	</table>
-	<a href="page.html">Go back</a>
+	<script> 
+     $(document).ready(function() { 
+         $("#gfg").on("keyup", function() { 
+             var value = $(this).val().toLowerCase(); 
+             $("#ApartmentsTable tr").filter(function() { 
+                 $(this).toggle($(this).text() 
+                 .toLowerCase().indexOf(value) > -1) 
+             }); 
+         }); 
+     }); 
+	</script> 
+	<p/>
+	<input type="text" id="myInputNbrRooms" onkeyup="myFunctionNbrRooms()" placeholder="Search for number of rooms.." size="30">
+	<input type="text" id="myInputNbrGuests" onkeyup="myFunctionNbrGuests()" placeholder="Search for number of guests.." size="30">
+	<input type="text" id="myInputPrice" onkeyup="myFunctionPrice()" placeholder="Search for price per night.." size="30">
 </body>
 </html>
