@@ -1,17 +1,3 @@
-function addAcc(account){
-    let tr = $('<tr></tr>');
-    let tdHealthInsuranceNbr = $('<td>'+account.healthInsuranceNbr+'</td>');
-    let tdName = $('<td>'+account.name+'</td>');
-    let tdLastname = $('<td>'+account.lastname+'</td>');
-    let tdDateOfBirth =  $('<td>'+account.dateOfBirth+'</td>');
-    let tdGender = $('<td>'+account.gender+'</td>');
-    let tdHealthStatus = $('<td>'+account.healthStatus+'</td>');
-    let tdTest = $('<td></td>');
-
-    tr.append(tdHealthInsuranceNbr).append(tdName).append(tdLastname).append(tdDateOfBirth).append(tdGender).append(tdHealthStatus).append(tdTest);
-    $('#tbPatients tbody').append(tr);
-}
-
 $(document).ready(function() {
     $('a[href=off]').click(function(event) {
         event.preventDefault();
@@ -29,14 +15,54 @@ $(document).ready(function() {
         	
         	console.log(user)
         	
-        	let name = $("#name").val(user.name)
-            let username = $("#username").val(user.username)
-            let password = $("#password").val(user.password)
-            let passwordDouble = $("#passwordDouble").val(user.password)
-            let surname = $("#surname").val(user.surname)
-            let gender=$("#gender").val(user.gender.toString());
+        	$("#name").val(user.name)
+            $("#username").val(user.username)
+            $("#password").val(user.password)
+            $("#passwordDouble").val(user.password)
+            $("#surname").val(user.surname)
+            $("#gender").val(user.gender.toString());
+        	$("#role").val(user.role.toString());
+        	
         }
     });
+    
+    $('button#infoHost').click(function() {
+    	
+    	let username=$('input[name=username]').val();
+		let password=$('input[name=password]').val();
+		let name=$('input[name=name]').val();
+		let surname=$('input[name=surname]').val();
+		let gender=$("select#gender option:checked" ).val();
+		let role=$("select#role option:checked" ).val();
+    	
+		$.post({
+			url: 'rest/infoHost',
+			data: JSON.stringify({username: username, password: password, name: name, surname: surname, gender: gender, role: role}),
+			contentType: 'application/json',
+			success: function() {
+				window.location.href= 'pagehost.html';
+			}
+		});
+	});
+    
+    $('button#infoAdmin').click(function() {
+    	
+    	let username=$('input[name=username]').val();
+		let password=$('input[name=password]').val();
+		let name=$('input[name=name]').val();
+		let surname=$('input[name=surname]').val();
+		let gender=$("select#gender option:checked" ).val();
+		let role=$("select#role option:checked" ).val();
+    	
+		$.post({
+			url: 'rest/infoAdmin',
+			data: JSON.stringify({username: username, password: password, name: name, surname: surname, gender: gender, role: role}),
+			contentType: 'application/json',
+			success: function() {
+				window.location.href= 'pageadmin.html';
+			}
+		});
+	});
     
 	$('button#change').click(function() {
 		
@@ -47,11 +73,11 @@ $(document).ready(function() {
 		let name=$('input[name=name]').val();
 		let surname=$('input[name=surname]').val();
 		let gender=$("select#gender option:checked" ).val();
-		let role="GUEST";
+		let role=$("select#role option:checked" ).val();
 		
 		for (i = 0; i < $('table tbody tr').length; i++) {
 			let tr = $($('table tbody tr')[i]);
-			$(tr.children()[6]).remove();
+			$(tr.children()[7]).remove();
 		}
 		
 		if (username == null || username === "") {

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="pagehost.js"></script>
+<script>
+function myFunctionUsername() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInputUsername");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("UsersTable");
+  tr = table.getElementsByTagName("tr");
+
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+<script>
+function myFunctionRole() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInputRole");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("UsersTable");
+  tr = table.getElementsByTagName("tr");
+
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[3];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+<script>
+function myFunctionGender() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInputGender");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("UsersTable");
+  tr = table.getElementsByTagName("tr");
+
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[4];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+	<title>Host page</title>
+</head>
+<body>
+	<input type="text" id="myInputUsername" onkeyup="myFunctionUsername()" placeholder="Search for usernames..">
+	<input type="text" id="myInputRole" onkeyup="myFunctionRole()" placeholder="Search for roles..">
+	<input type="text" id="myInputGender" onkeyup="myFunctionGender()" placeholder="Search for genders..">
+	<table id="UsersTable">
+	<tr><th>Username</th><th>Name</th><th>Surname</th><th>Role</th><th>Gender</th><th>Password</th></tr>
+	</table>
+	<a href="page.html">Go back</a>
+</body>
+</html>

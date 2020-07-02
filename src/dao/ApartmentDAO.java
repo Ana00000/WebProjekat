@@ -72,7 +72,7 @@ public class ApartmentDAO {
 		JSONObject apartment = parserToJSON.apartmentToJSONObject(a);
 		JSONArray root = null;
 		try {
-			root = mapper.readValue(new File(contPath+"/json/apartments.json"), JSONArray.class);
+			root = mapper.readValue(new File(contPath+"/apartments.json"), JSONArray.class);
 		} catch (JsonParseException e2) {
 			e2.printStackTrace();
 		} catch (JsonMappingException e2) {
@@ -83,14 +83,14 @@ public class ApartmentDAO {
 		
 		root.add(apartment);
 		
-		try (FileWriter file = new FileWriter(contPath+"/json/apartments.json")) 
+		try (FileWriter file = new FileWriter(contPath+"/apartments.json")) 
         {
             try {
 				file.write(root.toString());
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-            System.out.println(contPath+"/json/apartments.json");
+            System.out.println(contPath+"/apartments.json");
             System.out.println("Successfully updated json object to file...!!");
         } catch (IOException e1) {
 			e1.printStackTrace();
@@ -101,7 +101,7 @@ public class ApartmentDAO {
 	public void loadApartments(String contextPath) {
 		
 		JSONParser jsonParser = new JSONParser();
-		try (FileReader reader = new FileReader(contextPath+"/json/apartments.json") )
+		try (FileReader reader = new FileReader(contextPath+"/apartments.json") )
         {
             JSONArray apartmentsList = (JSONArray) jsonParser.parse(reader);
             

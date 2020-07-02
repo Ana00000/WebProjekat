@@ -103,4 +103,36 @@ public class Service {
 		request.getSession().setAttribute("user", u);
 		return Response.status(200).build();
 	}
+	
+	@POST
+	@Path("/infoHost")
+	@Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+	public Response infoHost(User user, @Context HttpServletRequest request) {
+		UserDAO users = (UserDAO) ctx.getAttribute("users");
+		User logUser = users.find(user.getUsername());
+		
+		if(!logUser.getRole().toString().equals("HOST"))
+		{
+			 return Response.status(403).entity("You are not a host!").build();
+		}
+		
+        return Response.status(200).build();
+	}
+	
+	@POST
+	@Path("/infoAdmin")
+	@Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+	public Response infoAdmin(User user, @Context HttpServletRequest request) {
+		UserDAO users = (UserDAO) ctx.getAttribute("users");
+		User logUser = users.find(user.getUsername());
+		
+		if(!logUser.getRole().toString().equals("ADMIN"))
+		{
+			 return Response.status(403).entity("You are not an admin!").build();
+		}
+		
+        return Response.status(200).build();
+	}
 }

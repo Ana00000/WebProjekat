@@ -100,7 +100,7 @@ public class UserDAO {
 		JSONObject user = parserToJSON.userToJSONObject(u);
 		JSONArray root = null;
 		try {
-			root = mapper.readValue(new File(contPath+"/json/users.json"), JSONArray.class);
+			root = mapper.readValue(new File(contPath+"/users.json"), JSONArray.class);
 		} catch (JsonParseException e2) {
 			e2.printStackTrace();
 		} catch (JsonMappingException e2) {
@@ -111,14 +111,14 @@ public class UserDAO {
 		
 		root.add(user);
 		
-		try (FileWriter file = new FileWriter(contPath+"/json/users.json")) 
+		try (FileWriter file = new FileWriter(contPath+"/users.json")) 
         {
             try {
 				file.write(root.toString());
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-            System.out.println(contPath+"/json/users.json");
+            System.out.println(contPath+"/users.json");
             System.out.println("Successfully updated json object to file...!!");
         } catch (IOException e1) {
 			e1.printStackTrace();
@@ -129,7 +129,7 @@ public class UserDAO {
 	@SuppressWarnings("unchecked")
 	public void loadUsers(String contextPath)  {
 		JSONParser jsonParser = new JSONParser();
-		try (FileReader reader = new FileReader(contextPath+"/json/users.json") )
+		try (FileReader reader = new FileReader(contextPath+"/users.json") )
         {
             JSONArray usersList = (JSONArray) jsonParser.parse(reader);
             if(usersList==null)
