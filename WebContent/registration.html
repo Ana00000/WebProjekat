@@ -5,9 +5,32 @@
 <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="registration.js"></script>
 	<title>Registration</title>
+	<style>
+		body {
+			font-family: Calibri;
+			 background-image: url('maldivi.jpg');
+			 background-attachment: fixed;
+ 			 background-size: cover;
+		}
+		.classy {
+			 text-align: center;
+		}
+		table {
+		  border-spacing: 0;
+		  margin-left: auto;
+		  margin-right: auto;
+		  border: 1px solid #ddd;
+		  background-color: #e6ffff;
+		}
+		th, td {
+		  text-align: left;
+		  padding: 16px;
+		}
+	</style>
 </head>
 <body>
-	<h2><font color="red"><b>Guest registration</b></font></h2>
+	<div class="classy">
+	<h2><font color="#82CAFA"><b>Guest registration</b></font></h2>
 	<table>
 	<tr>
 		<td><label><b>Username:</b></label></td>
@@ -38,12 +61,15 @@
 			</select>
 		</td>
 	</tr>
-	
 	<tr>
 		<td align="right"><label><b> </b></label></td>
 		<td><button id="regist" style="width:140px" style="text-align:right;">Register</button></td>
 	</tr>
 	</table>
 	<p id="error" hidden="true" ></p>
+	<br/>
+	<br/>
+	<br/>
+	</div>
 </body>
 </html>

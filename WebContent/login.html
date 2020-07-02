@@ -5,9 +5,32 @@
 <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="login.js"></script>
 	<title>Login</title>
+	<style>
+		body {
+			font-family: Calibri;
+			 background-image: url('maldivi.jpg');
+			 background-attachment: fixed;
+ 			 background-size: cover;
+		}
+		.classy {
+			 text-align: center;
+		}
+		table {
+		  border-spacing: 0;
+		  margin-left: auto;
+		  margin-right: auto;
+		  border: 1px solid #ddd;
+		  background-color: #e6ffff;
+		}
+		th, td {
+		  text-align: left;
+		  padding: 16px;
+		}
+	</style>
 </head>
 <body>
-	<h2><font color="red"><b>Login</b></font></h2>
+	<div class="classy">
+	<h2><font color="#82CAFA"><b>Login</b></font></h2>
 	<table>
 	<tr>
 		<td><label><b>Username:</b></label></td>
@@ -17,7 +40,6 @@
 		<td><label><b>Password:</b></label></td>
 		<td> <input type="password" name="password" required  size="20"></td>
 	</tr>
-	
 	<tr>
 		<td align="right"><label><b> </b></label></td>
 		<td><button id="log" style="width:140px" style="text-align:right;">Login</button></td>
@@ -27,9 +49,13 @@
 	</tr>
 	</table>
 	<p id="error" hidden="true" ></p>
-	<p></p>
-	<p></p>
-	<p></p>
+	<br/>
+	<br/>
+	<br/>
 	<a href="apartments.html">Check apartments</a>
+	<br/>
+	<br/>
+	<br/>
+	 </div>
 </body>
 </html>

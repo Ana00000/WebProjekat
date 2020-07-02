@@ -68,14 +68,64 @@ function myFunctionGender() {
 }
 </script>
 	<title>Administrator page</title>
+	<style>
+		body {
+			font-family: Calibri;
+			background-image: url('maldivi.jpg');
+			 background-attachment: fixed;
+ 			 background-size: cover;
+		}
+		.classy {
+			 text-align: center;
+		}
+		table {
+		  border-spacing: 0;
+		  width: 100%;
+		  border: 1px solid #ddd;
+		  background-color: #e6ffff;
+		}
+		th, td {
+		  text-align: left;
+		  padding: 16px;
+		}
+	</style>
 </head>
 <body>
+<div class="classy">
 	<input type="text" id="myInputUsername" onkeyup="myFunctionUsername()" placeholder="Search for usernames..">
 	<input type="text" id="myInputRole" onkeyup="myFunctionRole()" placeholder="Search for roles..">
 	<input type="text" id="myInputGender" onkeyup="myFunctionGender()" placeholder="Search for genders..">
+	<p/>
+	<label>Those are all users.</label>
+	<p/>
 	<table id="UsersTable"  border="2">
 	<tr><th>Username</th><th>Name</th><th>Surname</th><th>Role</th><th>Gender</th><th>Password</th></tr>
 	</table>
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	<label>Those are all apartments.</label>
+	<p/>
+	<table id="ApartmentsTable"  border="2">
+	<tr><th>Id</th><th >Type</th><th>Nbr rooms</th><th>Nbr guests</th><th>Price per night</th></tr>
+	</table>
+	<br/>
+	<br/>
+	<br/>
+	<button>Change apartment</button>
+	<p/>
+	<button>Remove apartment</button>
+	<br/>
+	<br/>
+	<br/>
 	<a href="page.html">Go back</a>
+	<br/>
+	<br/>
+	<br/>
+</div>
 </body>
 </html>

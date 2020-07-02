@@ -4,6 +4,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="apartments.js"></script>
+<script src="sort-table.js"></script>
+<link rel="stylesheet" href="sort-table.css">
 <script>
 function myFunctionNbrRooms() {
   var input, filter, table, tr, td, i, txtValue;
@@ -69,27 +71,68 @@ function myFunctionPrice() {
 </script>
 <head>
 	<title>Apartments page</title>
+<style>
+	body {
+		font-family: Calibri;
+		background-image: url('maldivi.jpg');
+		background-attachment: fixed;
+		background-size: cover;
+	}
+	.classy {
+		 text-align: center;
+	}
+	table {
+	  border-spacing: 0;
+	  width: 100%;
+	  border: 1px solid #ddd;
+	  background-color: #e6ffff;
+	}
+	
+	th {
+	  cursor: pointer;
+	}
+	
+	th, td {
+	  text-align: left;
+	  padding: 16px;
+	}
+</style>
 </head>
 <body>
+<div class="classy">
 	 <input id="gfg" type="text" placeholder="Universal search..." size="30">
 	 <p/>
-	<table id="ApartmentsTable"  border="2">
-	<tr><th>Id</th><th >Type</th><th>Nbr rooms</th><th>Nbr guests</th><th>Price per night</th></tr>
+	 <label>Those are active apartments.</label>
+	<p/>
+	<table id="ApartmentsTable" class="js-sort-table">
+	<thead>
+	<tr>
+		<th class="js-sort-number">Id</th>
+		<th class="js-sort-string">Type</th>
+		<th class="js-sort-number">Nbr rooms</th>
+		<th class="js-sort-number">Nbr guests</th>
+		<th class="js-sort-number">Price per night</th>
+	</tr>
+	</thead>
 	</table>
 	<script> 
-     $(document).ready(function() { 
-         $("#gfg").on("keyup", function() { 
-             var value = $(this).val().toLowerCase(); 
-             $("#ApartmentsTable tr").filter(function() { 
-                 $(this).toggle($(this).text() 
-                 .toLowerCase().indexOf(value) > -1) 
-             }); 
-         }); 
-     }); 
+		     $(document).ready(function() { 
+		         $("#gfg").on("keyup", function() { 
+		             var value = $(this).val().toLowerCase(); 
+		             $("#ApartmentsTable tr").filter(function() { 
+		                 $(this).toggle($(this).text() 
+		                 .toLowerCase().indexOf(value) > -1) 
+		             }); 
+		         }); 
+		     }); 
 	</script> 
 	<p/>
 	<input type="text" id="myInputNbrRooms" onkeyup="myFunctionNbrRooms()" placeholder="Search for number of rooms.." size="30">
 	<input type="text" id="myInputNbrGuests" onkeyup="myFunctionNbrGuests()" placeholder="Search for number of guests.." size="30">
 	<input type="text" id="myInputPrice" onkeyup="myFunctionPrice()" placeholder="Search for price per night.." size="30">
+	<br/>
+	<br/>
+	<br/>
+</div>
 </body>
 </html>

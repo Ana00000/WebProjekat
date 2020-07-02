@@ -5,10 +5,9 @@ function addAcc(account){
 	let nbrRooms = $('<td>'+account.nbrRooms+'</td>');
 	let nbrGuests = $('<td>'+account.nbrGuests+'</td>');
 	let pricePerNight = $('<td>'+account.pricePerNight+'</td>');
-	let tdTest = $('<td></td>');
 
 	if(!account.status.localeCompare("ACTIVE"))
-		tr.append(id).append(type).append(nbrRooms).append(nbrGuests).append(pricePerNight).append(tdTest);
+		tr.append(id).append(type).append(nbrRooms).append(nbrGuests).append(pricePerNight);
 	$('#ApartmentsTable tbody').append(tr);
 }
 
