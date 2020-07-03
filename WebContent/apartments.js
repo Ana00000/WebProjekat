@@ -6,6 +6,7 @@ function addAcc(account){
 	let nbrGuests = $('<td>'+account.nbrGuests+'</td>');
 	let pricePerNight = $('<td>'+account.pricePerNight+'</td>');
 
+
 		tr.append(id).append(type).append(nbrRooms).append(nbrGuests).append(pricePerNight);
 	$('#ApartmentsTable tbody').append(tr);
 }
@@ -24,6 +25,8 @@ $(document).ready(function() {
 		        	});
 		        
 		    });
+	    
+
 });
 
 function sortTable(n) {

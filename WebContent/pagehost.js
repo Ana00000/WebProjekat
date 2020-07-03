@@ -6,6 +6,7 @@ function addAcc(account){
 	let role = $('<td>'+account.role+'</td>');
 	let gender = $('<td>'+account.gender+'</td>');
 	let password = $('<td>'+account.password+'</td>');
+	
 
 	tr.append(username).append(name).append(surname).append(role).append(gender).append(password);
 	$('#UsersTable tbody').append(tr);
@@ -18,9 +19,9 @@ function addApInactive(inactive){
 	let nbrRooms = $('<td>'+inactive.nbrRooms+'</td>');
 	let nbrGuests = $('<td>'+inactive.nbrGuests+'</td>');
 	let pricePerNight = $('<td>'+inactive.pricePerNight+'</td>');
-
+	let btnSelect =$('<td><button class="btnSelect">Edit</button>   <button class="btnSelect">Delete</button></td>');	
 	
-	tr.append(id).append(type).append(nbrRooms).append(nbrGuests).append(pricePerNight);
+	tr.append(id).append(type).append(nbrRooms).append(nbrGuests).append(pricePerNight).append(btnSelect);
 	$('#ApartmentsInactiveTable tbody').append(tr);
 }
 
@@ -31,9 +32,9 @@ function addApActive(active){
 	let nbrRooms = $('<td>'+active.nbrRooms+'</td>');
 	let nbrGuests = $('<td>'+active.nbrGuests+'</td>');
 	let pricePerNight = $('<td>'+active.pricePerNight+'</td>');
-
+	let btnSelect =$('<td><button class="btnSelect">Edit</button>   <button class="btnSelect">Delete</button></td>');	
 	
-	tr.append(id).append(type).append(nbrRooms).append(nbrGuests).append(pricePerNight);
+	tr.append(id).append(type).append(nbrRooms).append(nbrGuests).append(pricePerNight).append(btnSelect);
 	$('#ApartmentsActiveTable tbody').append(tr);
 }
 
@@ -76,6 +77,23 @@ $(document).ready(function() {
 		        	});
 		        
 		    });
+	    
+	    $("#ApartmentsInactiveTable").on('click','.btnSelect',function(){
+	         var currentRow=$(this).closest("tr"); 
+	         
+	         var col1=currentRow.find("td:eq(0)").text();
+	         
+	         alert(col1);
+	    });
+	    
+	    $("#ApartmentsActiveTable").on('click','.btnSelect',function(){
+	         var currentRow=$(this).closest("tr"); 
+	         
+	         var col1=currentRow.find("td:eq(0)").text();
+	         
+	         alert(col1);
+	    });
+	    
 });
 
 

@@ -21,3 +21,19 @@
 		th{
 		cursor:pointer;
 		}
+		
+		a:link,a:visited{
+		   display: inline-block;
+  		   text-decoration: none;
+  		   background-color:lightBlue;
+  		   color:black;
+		  	padding:5px;
+		  	border: 1px solid darkBlue;
+		}
+		
+	   table a:link,a:visited{
+  		   display: inline;
+  		    text-decoration: underline;
+		   background-color:transparent;
+		   border: none;
+		}

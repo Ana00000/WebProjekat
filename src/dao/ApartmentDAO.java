@@ -62,6 +62,17 @@ public class ApartmentDAO {
 		return null;
 	}
 	
+	
+	public void add(int id, Type type, int nbrRooms, int nbrGuests, Location location,Host host,double pricePerNight,Date forLogIn, Date forLogOff, StatusApartment status) {
+		Apartment a = apartments.get(id);
+		if(a == null) {
+			a = new Apartment(id,type,nbrRooms,nbrGuests,location,host,pricePerNight,forLogIn,forLogOff,status);
+			apartments.put(id, a);
+			writeInFile();
+		}
+	}
+		
+	
 	public Collection<Apartment> findAll() {
 		return apartments.values();
 	}

@@ -6,8 +6,9 @@ function addAcc(account){
 	let role = $('<td>'+account.role+'</td>');
 	let gender = $('<td>'+account.gender+'</td>');
 	let password = $('<td>'+account.password+'</td>');
+	let btnSelect =$('<td><button class="btnSelect">Edit</button>   <button class="btnSelect">Delete</button></td>');
 
-	tr.append(username).append(name).append(surname).append(role).append(gender).append(password);
+	tr.append(username).append(name).append(surname).append(role).append(gender).append(password).append(btnSelect);
 	$('#UsersTable tbody').append(tr);
 }
 
@@ -18,8 +19,9 @@ function addApp(apartment){
 	let nbrRooms = $('<td>'+apartment.nbrRooms+'</td>');
 	let nbrGuests = $('<td>'+apartment.nbrGuests+'</td>');
 	let pricePerNight = $('<td>'+apartment.pricePerNight+'</td>');
+	let btnSelect =$('<td><button class="btnSelectApp">Edit</button>   <button class="btnSelectApp">Delete</button></td>');
 
-	tr.append(id).append(type).append(nbrRooms).append(nbrGuests).append(pricePerNight);
+	tr.append(id).append(type).append(nbrRooms).append(nbrGuests).append(pricePerNight).append(btnSelect);
 	$('#ApartmentsTable tbody').append(tr);
 }
 
@@ -49,6 +51,22 @@ $(document).ready(function() {
 		        	});
 		        
 		    });
+	    
+	    $("#UsersTable").on('click','.btnSelect',function(){
+	         var currentRow=$(this).closest("tr"); 
+	         
+	         var col1=currentRow.find("td:eq(0)").text();
+	         
+	         alert(col1);
+	    });
+	    
+	    $("#ApartmentsTable").on('click','.btnSelectApp',function(){
+	         var currentRow=$(this).closest("tr"); 
+	         
+	         var col1=currentRow.find("td:eq(0)").text();
+	         
+	         alert(col1);
+	    });
 });
 
 function sortTableUsers(n) {

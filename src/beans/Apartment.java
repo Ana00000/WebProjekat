@@ -13,7 +13,7 @@ public class Apartment {
 	private List<Date> forRent = new ArrayList<Date>();
 	private List<Date> availability = new ArrayList<Date>();
 	private Host host;
-	private List<Comment> comment;
+	private List<Comment> comments;
 	private List<String> pictures = new ArrayList<String>();
 	private double pricePerNight;
 	private Date forLogIn;
@@ -30,7 +30,7 @@ public class Apartment {
 		this.nbrGuests = 0;
 		this.location = new Location();
 		this.host = new Host();
-		this.comment =null;
+		this.comments =null;
 		this.pricePerNight = 0;
 		this.forLogIn = Date.from(Instant.now());
 		this.forLogOff = Date.from(Instant.now());
@@ -50,7 +50,7 @@ public class Apartment {
 		this.forRent = forRent;
 		this.availability = availability;
 		this.host = host;
-		this.comment = comment;
+		this.comments = comment;
 		this.pictures = pictures;
 		this.pricePerNight = pricePerNight;
 		this.forLogIn = forLogIn;
@@ -60,11 +60,35 @@ public class Apartment {
 		this.reservations = reservations;
 	}
 	
+	
+	public Apartment(int id, Type type, int nbrRooms, int nbrGuests, Location location,
+			 Host host,  double pricePerNight,
+			Date forLogIn, Date forLogOff, StatusApartment status
+			) {
+		super();
+		this.id = id;
+		this.type = type;
+		this.nbrRooms = nbrRooms;
+		this.nbrGuests = nbrGuests;
+		this.location = location;
+		this.forRent = new ArrayList<Date>();
+		this.availability =  new ArrayList<Date>();
+		this.host = host;
+		this.comments =  new ArrayList<Comment>();
+		this.pictures = new ArrayList<String>();
+		this.pricePerNight = pricePerNight;
+		this.forLogIn = forLogIn;
+		this.forLogOff = forLogOff;
+		this.status = status;
+		this.amenities = new ArrayList<Amenity>();
+		this.reservations =  new ArrayList<Reservation>();
+	}
+	
 	@Override
 	public String toString() {
 		return "Apartment [id=" + id + ", type=" + type + ", nbrRooms=" + nbrRooms + ", nbrGuests=" + nbrGuests
 				+ ", location=" + location + ", forRent=" + forRent + ", availability=" + availability + ", host="
-				+ host + ", comment=" + comment + ", pictures=" + pictures + ", pricePerNight=" + pricePerNight
+				+ host + ", comment=" + comments + ", pictures=" + pictures + ", pricePerNight=" + pricePerNight
 				+ ", forLogIn=" + forLogIn + ", forLogOff=" + forLogOff + ", status=" + status + ", amenities="
 				+ amenities + ", reservations=" + reservations + "]";
 	}
@@ -134,11 +158,11 @@ public class Apartment {
 	}
 	
 	public List<Comment> getComment() {
-		return comment;
+		return comments;
 	}
 	
 	public void setComment(List<Comment> comment) {
-		this.comment = comment;
+		this.comments = comment;
 	}
 	
 	public List<String> getPictures() {

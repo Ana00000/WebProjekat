@@ -14,7 +14,11 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import beans.Host;
+import beans.StatusApartment;
+import beans.Type;
 import beans.User;
+import dao.ApartmentDAO;
 import dao.UserDAO;
 
 @Path("")
@@ -34,6 +38,12 @@ public class Service {
 			UserDAO users = new UserDAO(contextPath);
 			ctx.setAttribute("users", users);
 		}
+		
+		if (ctx.getAttribute("apartments") == null) {
+			String contextPath = ctx.getRealPath("");
+			ApartmentDAO apartments = new ApartmentDAO(contextPath);
+			ctx.setAttribute("apartments", apartments);
+		}
 	}
 
 	@PUT
@@ -42,14 +52,15 @@ public class Service {
 	public Response registration(User user, @Context HttpServletRequest request) {
 		//prvi login je ustvari kao registracija jer se korisnici ne cuvaju ni u fajlu ni u bazi
 		UserDAO users = (UserDAO) ctx.getAttribute("users");
+		ApartmentDAO apartments =  (ApartmentDAO) ctx.getAttribute("apartments");
 		
 		User logUser = users.find(user.getUsername());
 		if(logUser != null) {
 			return Response.status(400).entity("User already exist!").build();
 		}
-		
 		User u = users.add(user.getUsername(), user.getPassword(), user.getName(), user.getSurname(), user.getGender(), user.getRole());
-		request.getSession().setAttribute("user", u);
+		if(!u.getRole().toString().equals("HOST"))
+			request.getSession().setAttribute("user", u);
 		return Response.status(200).build();
 	}
 	

@@ -14,7 +14,7 @@ public class Host extends User{
 		super(username, password, name, surname, gender, role);
 		this.forRent = forRent;
 	}
-
+    
 	@Override
 	public String toString() {
 		return "Host [forRent=" + forRent + ", getUsername()=" + getUsername() + ", getPassword()=" + getPassword()
