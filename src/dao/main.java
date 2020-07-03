@@ -19,7 +19,7 @@ public class main {
 
 	public static void main(String[] args) {
 		
-		Location l= new Location(10.5,15.2,new Address("Neka ulica 123","Novi Sad",21000));
+		Location l= new Location(10.5,15.2,new Address("Neka ulica 123","Novi Sad",21000, "Serbia"));
 		Amenity amenity1=new Amenity(123,"free Wifi");
 		Amenity amenity2=new Amenity(124,"free parking");
 		List<Amenity> amenityList=new ArrayList<Amenity>();

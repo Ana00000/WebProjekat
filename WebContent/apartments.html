@@ -4,16 +4,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="apartments.js"></script>
-<link rel="stylesheet" type="text/css" href="basic.css">
-<style type="text/css">
- table{
-  width: 90%;
- }
-</style>
-
-<head>
 	<title>Apartments page</title>
-
+	<link rel="stylesheet" type="text/css" href="basic.css">
 </head>
 <body>
 <div class="classy">
@@ -21,22 +13,28 @@
 	 <p/>
 	 <label>Those are active apartments.</label>
 	<p/>
-	<table id="ApartmentsTable" >
-		<tr>
-			<th onclick="sortTableNumber(0)">Id</th>
-			<th onclick="sortTable(1)" >Type</th>
-			<th onclick="sortTableNumber(2)">Nbr rooms</th>
-			<th onclick="sortTableNumber(3)">Nbr guests</th>
-			<th onclick="sortTableNumber(4)">Price per night</th>
-		</tr>
-
+	<table id="ApartmentsTable">
+	<tr>
+		<th onclick="sortTable(0)">Id</th>
+		<th onclick="sortTable(1)">Type</th>
+		<th onclick="sortTable(2)">Number rooms</th>
+		<th onclick="sortTable(3)">Number guests</th>
+		<th onclick="sortTable(4)">Price per night</th>
+		<th onclick="sortTable(5)">Location</th>
+		<th>Date for log in</th>
+		<th>Date for log off</th>
+	</tr>
 	</table>
-	
-	
 	<p/>
 	<input type="text" id="myInputNbrRooms" onkeyup="myFunctionNbrRooms()" placeholder="Search for number of rooms.." size="30">
 	<input type="text" id="myInputNbrGuests" onkeyup="myFunctionNbrGuests()" placeholder="Search for number of guests.." size="30">
 	<input type="text" id="myInputPrice" onkeyup="myFunctionPrice()" placeholder="Search for price per night.." size="30">
+	<br/>
+	<br/>
+	<br/>
+</div>
+<div class="listClassy">
+	<ul class="listComments" id="listComments"></ul>
 	<br/>
 	<br/>
 	<br/>

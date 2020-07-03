@@ -252,8 +252,9 @@ public class ParserFromJSONObject {
 		String street=jsonToStr(addressObject, "street");
 		String place=jsonToStr(addressObject, "place");
 		int postalCode=Integer.parseInt(jsonToStr(addressObject, "postalCode"));
+		String country=jsonToStr(addressObject, "country");
 		
-		return new Address(street, place, postalCode);
+		return new Address(street, place, postalCode, country);
 	}
 	
 	@SuppressWarnings("unchecked")

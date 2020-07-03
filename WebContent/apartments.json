@@ -10,7 +10,8 @@
 			"address":{
 				"street":"Petra Njegosa 15",
 				"place":"Novi Sad",
-				"postalCode":21000
+				"postalCode":21000,
+				"country": "Serbia"
 			}
 		},
 		"forRent":  [
@@ -29,7 +30,318 @@
 			"role":"GUEST",
 			"forRent":null
 			},
-		"comments": null,
+		"comments": [{					 
+										"id": 1056,
+								        "guest": {
+											"username": "Ana123",
+											"password": "aaaaaa",
+											"name": "Ana",
+											"surname": "Atanackovic",
+											"gender": "FEMALE",
+											"role": "GUEST",
+											"rented": [
+													   {
+												        "id": 1098,
+												        "type": "ROOM",
+												        "nbrRooms": 8,
+														"nbrGuests": 2,
+														"location": {
+															"width":"56.15",
+															"height":"42.30",
+															"address":{
+																"street":"Petra Njegosa 15",
+																"place":"Novi Sad",
+																"postalCode":21000,
+																"country": "Serbia"
+																}
+															},
+														"forRent":  [
+																{"date": "25-11-1998"},
+																{"date":"30-11-1998"}
+															],
+														"availability": [
+																{"date": "25-11-1998"}
+															],
+														"host": {
+															"username":"Ana",
+															"password":"aaaaaa",
+															"name":"Ana",
+															"surname":"Atanackovic",
+															"gender":"FEMALE",
+															"role":"GUEST",
+															"forRent":null
+															},
+														"comments": null,
+														"pictures": [
+																{"pic": "djkjhjf"}, 
+																{"pic":"adhhfdf"}
+															],
+														"pricePerNight": 590.99,
+														"forLogIn": "10:12",
+														"forLogOff": "15:12",
+														"status": "INACTIVE",
+														"amenities": [
+														      {
+														        "id": 1011,
+														        "name": "Chair"
+														      },
+														      {
+														        "id": 1012,
+														        "name": "Bed"
+														      }
+															],
+														"reservations": [{
+																"id": 1085,
+																		"rented":  {
+														        "id": 1098,
+														        "type": "ROOM",
+														        "nbrRooms": 8,
+																"nbrGuests": 2,
+																"location": {
+																	"width":"56.15",
+																	"height":"42.30",
+																	"address":{
+																		"street":"Petra Njegosa 15",
+																		"place":"Novi Sad",
+																		"postalCode":21000,
+																		"country": "Serbia"
+																		}
+																	},
+																"forRent":  [
+																		{"date": "25-11-1998"},
+																		{"date":"30-11-1998"}
+																	],
+																"availability": [
+																		{"date": "25-11-1998"}
+																	],
+																"host": {
+																	"username":"Ana",
+																	"password":"aaaaaa",
+																	"name":"Ana",
+																	"surname":"Atanackovic",
+																	"gender":"FEMALE",
+																	"role":"GUEST",
+																	"forRent":null
+																	},
+																"comments": null,
+																"pictures": [
+																		{"pic": "djkjhjf"}, 
+																		{"pic":"adhhfdf"}
+																	],
+																"pricePerNight": 590.99,
+																"forLogIn": "10:12",
+																"forLogOff": "15:12",
+																"status": "INACTIVE",
+																"amenities": [
+																      {
+																        "id": 1011,
+																        "name": "Chair"
+																      },
+																      {
+																        "id": 1012,
+																        "name": "Bed"
+																      }
+																			],
+																		"reservations": null
+																      	}	
+																,
+																"startReservation": "25-11-1998",
+																"overnightStay": 7,
+																"fullPrice": 400,
+																"welcomeMessage": "sup",
+														        "guest": {
+																	"username": "Ana123",
+																	"password": "aaaaaa",
+																	"name": "Ana",
+																	"surname": "Atanackovic",
+																	"gender": "FEMALE",
+																	"role": "GUEST",
+																	"rented": [
+																		{
+																	        "id": 1098,
+																	        "type": "ROOM",
+																	        "nbrRooms": 8,
+																			"nbrGuests": 2,
+																			"location": null,
+																			"forRent":  [
+																				{"date": "25-11-1998"},
+																				{"date":"30-11-1998"}
+																			],
+																			"availability": [
+																				{"date": "25-11-1998"}
+																			],
+																			"host": {
+																				"username":"Ana",
+																				"password":"aaaaaa",
+																				"name":"Ana",
+																				"surname":"Atanackovic",
+																				"gender":"FEMALE",
+																				"role":"GUEST",
+																				"forRent":null
+																				},
+																			"comments": null,
+																			"pictures": [
+																				{"pic": "djkjhjf"}, 
+																				{"pic":"adhhfdf"}
+																			],
+																			"pricePerNight": 590.99,
+																			"forLogIn": "10:12",
+																			"forLogOff": "15:12",
+																			"status": "INACTIVE",
+																			"amenities": [
+																			      {
+																			        "id": 1011,
+																			        "name": "Chair"
+																			      },
+																			      {
+																			        "id": 1012,
+																			        "name": "Bed"
+																			      }
+																			],
+																			"reservations": null
+																      		}	
+																	],
+													"reservations": null
+												},
+												"status": "REJECTED"
+											}]}],
+											"reservations":
+											[
+											{
+												"id": 1085,
+												"rented": {
+												        "id": 1098,
+												        "type": "ROOM",
+												        "nbrRooms": 8,
+														"nbrGuests": 2,
+														"location": null,
+														"forRent":  [
+															{"date": "25-11-1998"},
+															{"date":"30-11-1998"}
+														],
+														"availability": [
+															{"date": "25-11-1998"}
+														],
+														"host": {
+															"username":"Ana",
+															"password":"aaaaaa",
+															"name":"Ana",
+															"surname":"Atanackovic",
+															"gender":"FEMALE",
+															"role":"GUEST",
+															"forRent":null
+															},
+														"comments": null,
+														"pictures": [
+															{"pic": "djkjhjf"}, 
+															{"pic":"adhhfdf"}
+														],
+														"pricePerNight": 590.99,
+														"forLogIn": "10:12",
+														"forLogOff": "15:12",
+														"status": "INACTIVE",
+														"amenities": null,
+														"reservations": null
+												      	}	
+												,
+												"startReservation": "25-11-1998",
+												"overnightStay": 7,
+												"fullPrice": 400,
+												"welcomeMessage": "sup",
+										        "guest": {
+													"username": "Ana123",
+													"password": "aaaaaa",
+													"name": "Ana",
+													"surname": "Atanackovic",
+													"gender": "FEMALE",
+													"role": "GUEST",
+													"rented": [
+														{
+													        "id": 1098,
+													        "type": "ROOM",
+													        "nbrRooms": 8,
+															"nbrGuests": 2,
+															"location": null,
+															"forRent":  [
+																{"date": "25-11-1998"},
+																{"date":"30-11-1998"}
+															],
+															"availability": [
+																{"date": "25-11-1998"}
+															],
+															"host": {
+																"username":"Ana",
+																"password":"aaaaaa",
+																"name":"Ana",
+																"surname":"Atanackovic",
+																"gender":"FEMALE",
+																"role":"GUEST",
+																"forRent":null
+																},
+															"comments": null,
+															"pictures": [
+																{"pic": "djkjhjf"}, 
+																{"pic":"adhhfdf"}
+															],
+															"pricePerNight": 590.99,
+															"forLogIn": "10:12",
+															"forLogOff": "15:12",
+															"status": "INACTIVE",
+															"amenities":[
+															      {
+															        "id": 1011,
+															        "name": "Chair"
+															      },
+															      {
+															        "id": 1012,
+															        "name": "Bed"
+															      }
+															],
+															"reservations": null
+												      		}
+													],
+													"reservations": null
+												},
+												"status": "REJECTED"
+											}]
+										},
+										"apartment": {
+										        "id": 1098,
+										        "type": "ROOM",
+										        "nbrRooms": 8,
+												"nbrGuests": 2,
+												"location": null,
+												"forRent":  [
+													{"date": "25-11-1998"},
+													{"date":"30-11-1998"}
+												],
+												"availability": [
+													{"date": "25-11-1998"}
+												],
+												"host": {
+															"username":"Ana",
+															"password":"aaaaaa",
+															"name":"Ana",
+															"surname":"Atanackovic",
+															"gender":"FEMALE",
+															"role":"GUEST",
+															"forRent":null
+															},
+												"comments": null,
+												"pictures": [
+													{"pic": "djkjhjf"}, 
+													{"pic":"adhhfdf"}
+												],
+												"pricePerNight": 590.99,
+												"forLogIn": "10:12",
+												"forLogOff": "15:12",
+												"status": "INACTIVE",
+												"amenities": null,
+												"reservations": null
+										      },
+								        "text": "good stuff for real",
+								        "grade": 5.0
+								      }],
 		"pictures": [
 			{"pic": "djkjhjf"}, 
 			{"pic":"adhhfdf"}
@@ -52,7 +364,8 @@
 							"address":{
 								"street":"Petra Njegosa 15",
 								"place":"Novi Sad",
-								"postalCode":21000
+								"postalCode":21000,
+								"country": "Serbia"
 							}
 						},
 						"forRent":  [
@@ -71,7 +384,317 @@
 							"role":"GUEST",
 							"forRent":null
 							},
-						"comments": null,
+						"comments": {								        "id": 1056,
+								        "guest": {
+											"username": "Ana123",
+											"password": "aaaaaa",
+											"name": "Ana",
+											"surname": "Atanackovic",
+											"gender": "FEMALE",
+											"role": "GUEST",
+											"rented": [
+													   {
+												        "id": 1098,
+												        "type": "ROOM",
+												        "nbrRooms": 8,
+														"nbrGuests": 2,
+														"location": {
+															"width":"56.15",
+															"height":"42.30",
+															"address":{
+																"street":"Petra Njegosa 15",
+																"place":"Novi Sad",
+																"postalCode":21000,
+																"country": "Serbia"
+																}
+															},
+														"forRent":  [
+																{"date": "25-11-1998"},
+																{"date":"30-11-1998"}
+															],
+														"availability": [
+																{"date": "25-11-1998"}
+															],
+														"host": {
+															"username":"Ana",
+															"password":"aaaaaa",
+															"name":"Ana",
+															"surname":"Atanackovic",
+															"gender":"FEMALE",
+															"role":"GUEST",
+															"forRent":null
+															},
+														"comments": null,
+														"pictures": [
+																{"pic": "djkjhjf"}, 
+																{"pic":"adhhfdf"}
+															],
+														"pricePerNight": 590.99,
+														"forLogIn": "10:12",
+														"forLogOff": "15:12",
+														"status": "INACTIVE",
+														"amenities": [
+														      {
+														        "id": 1011,
+														        "name": "Chair"
+														      },
+														      {
+														        "id": 1012,
+														        "name": "Bed"
+														      }
+															],
+														"reservations": [{
+																"id": 1085,
+																		"rented":  {
+														        "id": 1098,
+														        "type": "ROOM",
+														        "nbrRooms": 8,
+																"nbrGuests": 2,
+																"location": {
+																	"width":"56.15",
+																	"height":"42.30",
+																	"address":{
+																		"street":"Petra Njegosa 15",
+																		"place":"Novi Sad",
+																		"postalCode":21000,
+																		"country": "Serbia"
+																		}
+																	},
+																"forRent":  [
+																		{"date": "25-11-1998"},
+																		{"date":"30-11-1998"}
+																	],
+																"availability": [
+																		{"date": "25-11-1998"}
+																	],
+																"host": {
+																	"username":"Ana",
+																	"password":"aaaaaa",
+																	"name":"Ana",
+																	"surname":"Atanackovic",
+																	"gender":"FEMALE",
+																	"role":"GUEST",
+																	"forRent":null
+																	},
+																"comments": null,
+																"pictures": [
+																		{"pic": "djkjhjf"}, 
+																		{"pic":"adhhfdf"}
+																	],
+																"pricePerNight": 590.99,
+																"forLogIn": "10:12",
+																"forLogOff": "15:12",
+																"status": "INACTIVE",
+																"amenities": [
+																      {
+																        "id": 1011,
+																        "name": "Chair"
+																      },
+																      {
+																        "id": 1012,
+																        "name": "Bed"
+																      }
+																			],
+																		"reservations": null
+																      	}	
+																,
+																"startReservation": "25-11-1998",
+																"overnightStay": 7,
+																"fullPrice": 400,
+																"welcomeMessage": "sup",
+														        "guest": {
+																	"username": "Ana123",
+																	"password": "aaaaaa",
+																	"name": "Ana",
+																	"surname": "Atanackovic",
+																	"gender": "FEMALE",
+																	"role": "GUEST",
+																	"rented": [
+																		{
+																	        "id": 1098,
+																	        "type": "ROOM",
+																	        "nbrRooms": 8,
+																			"nbrGuests": 2,
+																			"location": null,
+																			"forRent":  [
+																				{"date": "25-11-1998"},
+																				{"date":"30-11-1998"}
+																			],
+																			"availability": [
+																				{"date": "25-11-1998"}
+																			],
+																			"host": {
+																				"username":"Ana",
+																				"password":"aaaaaa",
+																				"name":"Ana",
+																				"surname":"Atanackovic",
+																				"gender":"FEMALE",
+																				"role":"GUEST",
+																				"forRent":null
+																				},
+																			"comments": null,
+																			"pictures": [
+																				{"pic": "djkjhjf"}, 
+																				{"pic":"adhhfdf"}
+																			],
+																			"pricePerNight": 590.99,
+																			"forLogIn": "10:12",
+																			"forLogOff": "15:12",
+																			"status": "INACTIVE",
+																			"amenities": [
+																			      {
+																			        "id": 1011,
+																			        "name": "Chair"
+																			      },
+																			      {
+																			        "id": 1012,
+																			        "name": "Bed"
+																			      }
+																			],
+																			"reservations": null
+																      		}	
+																	],
+													"reservations": null
+												},
+												"status": "REJECTED"
+											}]}],
+											"reservations":
+											[
+											{
+												"id": 1085,
+												"rented": {
+												        "id": 1098,
+												        "type": "ROOM",
+												        "nbrRooms": 8,
+														"nbrGuests": 2,
+														"location": null,
+														"forRent":  [
+															{"date": "25-11-1998"},
+															{"date":"30-11-1998"}
+														],
+														"availability": [
+															{"date": "25-11-1998"}
+														],
+														"host": {
+															"username":"Ana",
+															"password":"aaaaaa",
+															"name":"Ana",
+															"surname":"Atanackovic",
+															"gender":"FEMALE",
+															"role":"GUEST",
+															"forRent":null
+															},
+														"comments": null,
+														"pictures": [
+															{"pic": "djkjhjf"}, 
+															{"pic":"adhhfdf"}
+														],
+														"pricePerNight": 590.99,
+														"forLogIn": "10:12",
+														"forLogOff": "15:12",
+														"status": "INACTIVE",
+														"amenities": null,
+														"reservations": null
+												      	}	
+												,
+												"startReservation": "25-11-1998",
+												"overnightStay": 7,
+												"fullPrice": 400,
+												"welcomeMessage": "sup",
+										        "guest": {
+													"username": "Ana123",
+													"password": "aaaaaa",
+													"name": "Ana",
+													"surname": "Atanackovic",
+													"gender": "FEMALE",
+													"role": "GUEST",
+													"rented": [
+														{
+													        "id": 1098,
+													        "type": "ROOM",
+													        "nbrRooms": 8,
+															"nbrGuests": 2,
+															"location": null,
+															"forRent":  [
+																{"date": "25-11-1998"},
+																{"date":"30-11-1998"}
+															],
+															"availability": [
+																{"date": "25-11-1998"}
+															],
+															"host": {
+																"username":"Ana",
+																"password":"aaaaaa",
+																"name":"Ana",
+																"surname":"Atanackovic",
+																"gender":"FEMALE",
+																"role":"GUEST",
+																"forRent":null
+																},
+															"comments": null,
+															"pictures": [
+																{"pic": "djkjhjf"}, 
+																{"pic":"adhhfdf"}
+															],
+															"pricePerNight": 590.99,
+															"forLogIn": "10:12",
+															"forLogOff": "15:12",
+															"status": "INACTIVE",
+															"amenities":[
+															      {
+															        "id": 1011,
+															        "name": "Chair"
+															      },
+															      {
+															        "id": 1012,
+															        "name": "Bed"
+															      }
+															],
+															"reservations": null
+												      		}
+													],
+													"reservations": null
+												},
+												"status": "REJECTED"
+											}]
+										},
+										"apartment": {
+										        "id": 1098,
+										        "type": "ROOM",
+										        "nbrRooms": 8,
+												"nbrGuests": 2,
+												"location": null,
+												"forRent":  [
+													{"date": "25-11-1998"},
+													{"date":"30-11-1998"}
+												],
+												"availability": [
+													{"date": "25-11-1998"}
+												],
+												"host": {
+															"username":"Ana",
+															"password":"aaaaaa",
+															"name":"Ana",
+															"surname":"Atanackovic",
+															"gender":"FEMALE",
+															"role":"GUEST",
+															"forRent":null
+															},
+												"comments": null,
+												"pictures": [
+													{"pic": "djkjhjf"}, 
+													{"pic":"adhhfdf"}
+												],
+												"pricePerNight": 590.99,
+												"forLogIn": "10:12",
+												"forLogOff": "15:12",
+												"status": "INACTIVE",
+												"amenities": null,
+												"reservations": null
+										      },
+								        "text": "not good stuff",
+								        "grade": 5.0
+								      },
 						"pictures": [
 							{"pic": "djkjhjf"}, 
 							{"pic":"adhhfdf"}
@@ -106,8 +729,9 @@
 								"height":"42.30",
 								"address":{
 									"street":"Petra Njegosa 15",
-									"place":"Novi Sad",
-									"postalCode":21000
+									"place":"Beograd",
+									"postalCode": 11000,
+									"country": "Serbia"
 								}
 							},
 							"forRent":  [
@@ -126,7 +750,317 @@
 								"role":"GUEST",
 								"forRent":null
 								},
-							"comments": null,
+							"comments": {								        "id": 1056,
+								        "guest": {
+											"username": "Ana123",
+											"password": "aaaaaa",
+											"name": "Ana",
+											"surname": "Atanackovic",
+											"gender": "FEMALE",
+											"role": "GUEST",
+											"rented": [
+													   {
+												        "id": 1098,
+												        "type": "ROOM",
+												        "nbrRooms": 8,
+														"nbrGuests": 2,
+														"location": {
+															"width":"56.15",
+															"height":"42.30",
+															"address":{
+																"street":"Petra Njegosa 15",
+																"place":"Novi Sad",
+																"postalCode":21000,
+																"country": "Serbia"
+																}
+															},
+														"forRent":  [
+																{"date": "25-11-1998"},
+																{"date":"30-11-1998"}
+															],
+														"availability": [
+																{"date": "25-11-1998"}
+															],
+														"host": {
+															"username":"Ana",
+															"password":"aaaaaa",
+															"name":"Ana",
+															"surname":"Atanackovic",
+															"gender":"FEMALE",
+															"role":"GUEST",
+															"forRent":null
+															},
+														"comments": null,
+														"pictures": [
+																{"pic": "djkjhjf"}, 
+																{"pic":"adhhfdf"}
+															],
+														"pricePerNight": 590.99,
+														"forLogIn": "10:12",
+														"forLogOff": "15:12",
+														"status": "INACTIVE",
+														"amenities": [
+														      {
+														        "id": 1011,
+														        "name": "Chair"
+														      },
+														      {
+														        "id": 1012,
+														        "name": "Bed"
+														      }
+															],
+														"reservations": [{
+																"id": 1085,
+																		"rented":  {
+														        "id": 1098,
+														        "type": "ROOM",
+														        "nbrRooms": 8,
+																"nbrGuests": 2,
+																"location": {
+																	"width":"56.15",
+																	"height":"42.30",
+																	"address":{
+																		"street":"Petra Njegosa 15",
+																		"place":"Novi Sad",
+																		"postalCode":21000,
+																		"country": "Serbia"
+																		}
+																	},
+																"forRent":  [
+																		{"date": "25-11-1998"},
+																		{"date":"30-11-1998"}
+																	],
+																"availability": [
+																		{"date": "25-11-1998"}
+																	],
+																"host": {
+																	"username":"Ana",
+																	"password":"aaaaaa",
+																	"name":"Ana",
+																	"surname":"Atanackovic",
+																	"gender":"FEMALE",
+																	"role":"GUEST",
+																	"forRent":null
+																	},
+																"comments": null,
+																"pictures": [
+																		{"pic": "djkjhjf"}, 
+																		{"pic":"adhhfdf"}
+																	],
+																"pricePerNight": 590.99,
+																"forLogIn": "10:12",
+																"forLogOff": "15:12",
+																"status": "INACTIVE",
+																"amenities": [
+																      {
+																        "id": 1011,
+																        "name": "Chair"
+																      },
+																      {
+																        "id": 1012,
+																        "name": "Bed"
+																      }
+																			],
+																		"reservations": null
+																      	}	
+																,
+																"startReservation": "25-11-1998",
+																"overnightStay": 7,
+																"fullPrice": 400,
+																"welcomeMessage": "sup",
+														        "guest": {
+																	"username": "Ana123",
+																	"password": "aaaaaa",
+																	"name": "Ana",
+																	"surname": "Atanackovic",
+																	"gender": "FEMALE",
+																	"role": "GUEST",
+																	"rented": [
+																		{
+																	        "id": 1098,
+																	        "type": "ROOM",
+																	        "nbrRooms": 8,
+																			"nbrGuests": 2,
+																			"location": null,
+																			"forRent":  [
+																				{"date": "25-11-1998"},
+																				{"date":"30-11-1998"}
+																			],
+																			"availability": [
+																				{"date": "25-11-1998"}
+																			],
+																			"host": {
+																				"username":"Ana",
+																				"password":"aaaaaa",
+																				"name":"Ana",
+																				"surname":"Atanackovic",
+																				"gender":"FEMALE",
+																				"role":"GUEST",
+																				"forRent":null
+																				},
+																			"comments": null,
+																			"pictures": [
+																				{"pic": "djkjhjf"}, 
+																				{"pic":"adhhfdf"}
+																			],
+																			"pricePerNight": 590.99,
+																			"forLogIn": "10:12",
+																			"forLogOff": "15:12",
+																			"status": "INACTIVE",
+																			"amenities": [
+																			      {
+																			        "id": 1011,
+																			        "name": "Chair"
+																			      },
+																			      {
+																			        "id": 1012,
+																			        "name": "Bed"
+																			      }
+																			],
+																			"reservations": null
+																      		}	
+																	],
+													"reservations": null
+												},
+												"status": "REJECTED"
+											}]}],
+											"reservations":
+											[
+											{
+												"id": 1085,
+												"rented": {
+												        "id": 1098,
+												        "type": "ROOM",
+												        "nbrRooms": 8,
+														"nbrGuests": 2,
+														"location": null,
+														"forRent":  [
+															{"date": "25-11-1998"},
+															{"date":"30-11-1998"}
+														],
+														"availability": [
+															{"date": "25-11-1998"}
+														],
+														"host": {
+															"username":"Ana",
+															"password":"aaaaaa",
+															"name":"Ana",
+															"surname":"Atanackovic",
+															"gender":"FEMALE",
+															"role":"GUEST",
+															"forRent":null
+															},
+														"comments": null,
+														"pictures": [
+															{"pic": "djkjhjf"}, 
+															{"pic":"adhhfdf"}
+														],
+														"pricePerNight": 590.99,
+														"forLogIn": "10:12",
+														"forLogOff": "15:12",
+														"status": "INACTIVE",
+														"amenities": null,
+														"reservations": null
+												      	}	
+												,
+												"startReservation": "25-11-1998",
+												"overnightStay": 7,
+												"fullPrice": 400,
+												"welcomeMessage": "sup",
+										        "guest": {
+													"username": "Ana123",
+													"password": "aaaaaa",
+													"name": "Ana",
+													"surname": "Atanackovic",
+													"gender": "FEMALE",
+													"role": "GUEST",
+													"rented": [
+														{
+													        "id": 1098,
+													        "type": "ROOM",
+													        "nbrRooms": 8,
+															"nbrGuests": 2,
+															"location": null,
+															"forRent":  [
+																{"date": "25-11-1998"},
+																{"date":"30-11-1998"}
+															],
+															"availability": [
+																{"date": "25-11-1998"}
+															],
+															"host": {
+																"username":"Ana",
+																"password":"aaaaaa",
+																"name":"Ana",
+																"surname":"Atanackovic",
+																"gender":"FEMALE",
+																"role":"GUEST",
+																"forRent":null
+																},
+															"comments": null,
+															"pictures": [
+																{"pic": "djkjhjf"}, 
+																{"pic":"adhhfdf"}
+															],
+															"pricePerNight": 590.99,
+															"forLogIn": "10:12",
+															"forLogOff": "15:12",
+															"status": "INACTIVE",
+															"amenities":[
+															      {
+															        "id": 1011,
+															        "name": "Chair"
+															      },
+															      {
+															        "id": 1012,
+															        "name": "Bed"
+															      }
+															],
+															"reservations": null
+												      		}
+													],
+													"reservations": null
+												},
+												"status": "REJECTED"
+											}]
+										},
+										"apartment": {
+										        "id": 1098,
+										        "type": "ROOM",
+										        "nbrRooms": 8,
+												"nbrGuests": 2,
+												"location": null,
+												"forRent":  [
+													{"date": "25-11-1998"},
+													{"date":"30-11-1998"}
+												],
+												"availability": [
+													{"date": "25-11-1998"}
+												],
+												"host": {
+															"username":"Ana",
+															"password":"aaaaaa",
+															"name":"Ana",
+															"surname":"Atanackovic",
+															"gender":"FEMALE",
+															"role":"GUEST",
+															"forRent":null
+															},
+												"comments": null,
+												"pictures": [
+													{"pic": "djkjhjf"}, 
+													{"pic":"adhhfdf"}
+												],
+												"pricePerNight": 590.99,
+												"forLogIn": "10:12",
+												"forLogOff": "15:12",
+												"status": "INACTIVE",
+												"amenities": null,
+												"reservations": null
+										      },
+								        "text": "great stuff",
+								        "grade": 5.0
+								      },
 							"pictures": [
 								{"pic": "djkjhjf"}, 
 								{"pic":"adhhfdf"}
@@ -153,9 +1087,10 @@
 			"width":"56.15",
 			"height":"42.30",
 			"address":{
-				"street":"Petra Njegosa 15",
+				"street":"Bulevar Cara lazara 59",
 				"place":"Novi Sad",
-				"postalCode":21000
+				"postalCode":21000,
+				"country": "Serbia"
 			}
 		},
 		"forRent":  [
@@ -174,7 +1109,318 @@
 			"role":"GUEST",
 			"forRent":null
 			},
-		"comments": null,
+		"comments": [{								       
+										 "id": 1056,
+								        "guest": {
+											"username": "Ana123",
+											"password": "aaaaaa",
+											"name": "Ana",
+											"surname": "Atanackovic",
+											"gender": "FEMALE",
+											"role": "GUEST",
+											"rented": [
+													   {
+												        "id": 1098,
+												        "type": "ROOM",
+												        "nbrRooms": 8,
+														"nbrGuests": 2,
+														"location": {
+															"width":"56.15",
+															"height":"42.30",
+															"address":{
+																"street":"Petra Njegosa 15",
+																"place":"Novi Sad",
+																"postalCode":21000,
+																"country": "Serbia"
+																}
+															},
+														"forRent":  [
+																{"date": "25-11-1998"},
+																{"date":"30-11-1998"}
+															],
+														"availability": [
+																{"date": "25-11-1998"}
+															],
+														"host": {
+															"username":"Ana",
+															"password":"aaaaaa",
+															"name":"Ana",
+															"surname":"Atanackovic",
+															"gender":"FEMALE",
+															"role":"GUEST",
+															"forRent":null
+															},
+														"comments": null,
+														"pictures": [
+																{"pic": "djkjhjf"}, 
+																{"pic":"adhhfdf"}
+															],
+														"pricePerNight": 590.99,
+														"forLogIn": "10:12",
+														"forLogOff": "15:12",
+														"status": "INACTIVE",
+														"amenities": [
+														      {
+														        "id": 1011,
+														        "name": "Chair"
+														      },
+														      {
+														        "id": 1012,
+														        "name": "Bed"
+														      }
+															],
+														"reservations": [{
+																"id": 1085,
+																		"rented":  {
+														        "id": 1098,
+														        "type": "ROOM",
+														        "nbrRooms": 8,
+																"nbrGuests": 2,
+																"location": {
+																	"width":"56.15",
+																	"height":"42.30",
+																	"address":{
+																		"street":"Petra Njegosa 15",
+																		"place":"Novi Sad",
+																		"postalCode":21000,
+																		"country": "Serbia"
+																		}
+																	},
+																"forRent":  [
+																		{"date": "25-11-1998"},
+																		{"date":"30-11-1998"}
+																	],
+																"availability": [
+																		{"date": "25-11-1998"}
+																	],
+																"host": {
+																	"username":"Ana",
+																	"password":"aaaaaa",
+																	"name":"Ana",
+																	"surname":"Atanackovic",
+																	"gender":"FEMALE",
+																	"role":"GUEST",
+																	"forRent":null
+																	},
+																"comments": null,
+																"pictures": [
+																		{"pic": "djkjhjf"}, 
+																		{"pic":"adhhfdf"}
+																	],
+																"pricePerNight": 590.99,
+																"forLogIn": "10:12",
+																"forLogOff": "15:12",
+																"status": "INACTIVE",
+																"amenities": [
+																      {
+																        "id": 1011,
+																        "name": "Chair"
+																      },
+																      {
+																        "id": 1012,
+																        "name": "Bed"
+																      }
+																			],
+																		"reservations": null
+																      	}	
+																,
+																"startReservation": "25-11-1998",
+																"overnightStay": 7,
+																"fullPrice": 400,
+																"welcomeMessage": "sup",
+														        "guest": {
+																	"username": "Ana123",
+																	"password": "aaaaaa",
+																	"name": "Ana",
+																	"surname": "Atanackovic",
+																	"gender": "FEMALE",
+																	"role": "GUEST",
+																	"rented": [
+																		{
+																	        "id": 1098,
+																	        "type": "ROOM",
+																	        "nbrRooms": 8,
+																			"nbrGuests": 2,
+																			"location": null,
+																			"forRent":  [
+																				{"date": "25-11-1998"},
+																				{"date":"30-11-1998"}
+																			],
+																			"availability": [
+																				{"date": "25-11-1998"}
+																			],
+																			"host": {
+																				"username":"Ana",
+																				"password":"aaaaaa",
+																				"name":"Ana",
+																				"surname":"Atanackovic",
+																				"gender":"FEMALE",
+																				"role":"GUEST",
+																				"forRent":null
+																				},
+																			"comments": null,
+																			"pictures": [
+																				{"pic": "djkjhjf"}, 
+																				{"pic":"adhhfdf"}
+																			],
+																			"pricePerNight": 590.99,
+																			"forLogIn": "10:12",
+																			"forLogOff": "15:12",
+																			"status": "INACTIVE",
+																			"amenities": [
+																			      {
+																			        "id": 1011,
+																			        "name": "Chair"
+																			      },
+																			      {
+																			        "id": 1012,
+																			        "name": "Bed"
+																			      }
+																			],
+																			"reservations": null
+																      		}	
+																	],
+													"reservations": null
+												},
+												"status": "REJECTED"
+											}]}],
+											"reservations":
+											[
+											{
+												"id": 1085,
+												"rented": {
+												        "id": 1098,
+												        "type": "ROOM",
+												        "nbrRooms": 8,
+														"nbrGuests": 2,
+														"location": null,
+														"forRent":  [
+															{"date": "25-11-1998"},
+															{"date":"30-11-1998"}
+														],
+														"availability": [
+															{"date": "25-11-1998"}
+														],
+														"host": {
+															"username":"Ana",
+															"password":"aaaaaa",
+															"name":"Ana",
+															"surname":"Atanackovic",
+															"gender":"FEMALE",
+															"role":"GUEST",
+															"forRent":null
+															},
+														"comments": null,
+														"pictures": [
+															{"pic": "djkjhjf"}, 
+															{"pic":"adhhfdf"}
+														],
+														"pricePerNight": 590.99,
+														"forLogIn": "10:12",
+														"forLogOff": "15:12",
+														"status": "INACTIVE",
+														"amenities": null,
+														"reservations": null
+												      	}	
+												,
+												"startReservation": "25-11-1998",
+												"overnightStay": 7,
+												"fullPrice": 400,
+												"welcomeMessage": "sup",
+										        "guest": {
+													"username": "Ana123",
+													"password": "aaaaaa",
+													"name": "Ana",
+													"surname": "Atanackovic",
+													"gender": "FEMALE",
+													"role": "GUEST",
+													"rented": [
+														{
+													        "id": 1098,
+													        "type": "ROOM",
+													        "nbrRooms": 8,
+															"nbrGuests": 2,
+															"location": null,
+															"forRent":  [
+																{"date": "25-11-1998"},
+																{"date":"30-11-1998"}
+															],
+															"availability": [
+																{"date": "25-11-1998"}
+															],
+															"host": {
+																"username":"Ana",
+																"password":"aaaaaa",
+																"name":"Ana",
+																"surname":"Atanackovic",
+																"gender":"FEMALE",
+																"role":"GUEST",
+																"forRent":null
+																},
+															"comments": null,
+															"pictures": [
+																{"pic": "djkjhjf"}, 
+																{"pic":"adhhfdf"}
+															],
+															"pricePerNight": 590.99,
+															"forLogIn": "10:12",
+															"forLogOff": "15:12",
+															"status": "INACTIVE",
+															"amenities":[
+															      {
+															        "id": 1011,
+															        "name": "Chair"
+															      },
+															      {
+															        "id": 1012,
+															        "name": "Bed"
+															      }
+															],
+															"reservations": null
+												      		}
+													],
+													"reservations": null
+												},
+												"status": "REJECTED"
+											}]
+										},
+										"apartment": {
+										        "id": 1098,
+										        "type": "ROOM",
+										        "nbrRooms": 8,
+												"nbrGuests": 2,
+												"location": null,
+												"forRent":  [
+													{"date": "25-11-1998"},
+													{"date":"30-11-1998"}
+												],
+												"availability": [
+													{"date": "25-11-1998"}
+												],
+												"host": {
+															"username":"Ana",
+															"password":"aaaaaa",
+															"name":"Ana",
+															"surname":"Atanackovic",
+															"gender":"FEMALE",
+															"role":"GUEST",
+															"forRent":null
+															},
+												"comments": null,
+												"pictures": [
+													{"pic": "djkjhjf"}, 
+													{"pic":"adhhfdf"}
+												],
+												"pricePerNight": 590.99,
+												"forLogIn": "10:12",
+												"forLogOff": "15:12",
+												"status": "INACTIVE",
+												"amenities": null,
+												"reservations": null
+										      },
+								        "text": "awesome stuff",
+								        "grade": 5.0
+								      }],
 		"pictures": [
 			{"pic": "djkjhjf"}, 
 			{"pic":"adhhfdf"}
@@ -197,7 +1443,8 @@
 							"address":{
 								"street":"Petra Njegosa 15",
 								"place":"Novi Sad",
-								"postalCode":21000
+								"postalCode":21000,
+								"country": "Serbia"
 							}
 						},
 						"forRent":  [
@@ -252,7 +1499,8 @@
 								"address":{
 									"street":"Petra Njegosa 15",
 									"place":"Novi Sad",
-									"postalCode":21000
+									"postalCode":21000,
+									"country": "Serbia"
 								}
 							},
 							"forRent":  [
@@ -300,7 +1548,8 @@
 			"address":{
 				"street":"Petra Njegosa 15",
 				"place":"Novi Sad",
-				"postalCode":21000
+				"postalCode":21000,
+				"country": "Serbia"
 			}
 		},
 		"forRent":  [
@@ -319,7 +1568,318 @@
 			"role":"GUEST",
 			"forRent":null
 			},
-		"comments": null,
+		"comments": [{								        
+										"id": 1056,
+								        "guest": {
+											"username": "Ana123",
+											"password": "aaaaaa",
+											"name": "Ana",
+											"surname": "Atanackovic",
+											"gender": "FEMALE",
+											"role": "GUEST",
+											"rented": [
+													   {
+												        "id": 1098,
+												        "type": "ROOM",
+												        "nbrRooms": 8,
+														"nbrGuests": 2,
+														"location": {
+															"width":"56.15",
+															"height":"42.30",
+															"address":{
+																"street":"Petra Njegosa 15",
+																"place":"Novi Sad",
+																"postalCode":21000,
+																"country": "Serbia"
+																}
+															},
+														"forRent":  [
+																{"date": "25-11-1998"},
+																{"date":"30-11-1998"}
+															],
+														"availability": [
+																{"date": "25-11-1998"}
+															],
+														"host": {
+															"username":"Ana",
+															"password":"aaaaaa",
+															"name":"Ana",
+															"surname":"Atanackovic",
+															"gender":"FEMALE",
+															"role":"GUEST",
+															"forRent":null
+															},
+														"comments": null,
+														"pictures": [
+																{"pic": "djkjhjf"}, 
+																{"pic":"adhhfdf"}
+															],
+														"pricePerNight": 590.99,
+														"forLogIn": "10:12",
+														"forLogOff": "15:12",
+														"status": "INACTIVE",
+														"amenities": [
+														      {
+														        "id": 1011,
+														        "name": "Chair"
+														      },
+														      {
+														        "id": 1012,
+														        "name": "Bed"
+														      }
+															],
+														"reservations": [{
+																"id": 1085,
+																		"rented":  {
+														        "id": 1098,
+														        "type": "ROOM",
+														        "nbrRooms": 8,
+																"nbrGuests": 2,
+																"location": {
+																	"width":"56.15",
+																	"height":"42.30",
+																	"address":{
+																		"street":"Petra Njegosa 15",
+																		"place":"Novi Sad",
+																		"postalCode":21000,
+																		"country": "Serbia"
+																		}
+																	},
+																"forRent":  [
+																		{"date": "25-11-1998"},
+																		{"date":"30-11-1998"}
+																	],
+																"availability": [
+																		{"date": "25-11-1998"}
+																	],
+																"host": {
+																	"username":"Ana",
+																	"password":"aaaaaa",
+																	"name":"Ana",
+																	"surname":"Atanackovic",
+																	"gender":"FEMALE",
+																	"role":"GUEST",
+																	"forRent":null
+																	},
+																"comments": null,
+																"pictures": [
+																		{"pic": "djkjhjf"}, 
+																		{"pic":"adhhfdf"}
+																	],
+																"pricePerNight": 590.99,
+																"forLogIn": "10:12",
+																"forLogOff": "15:12",
+																"status": "INACTIVE",
+																"amenities": [
+																      {
+																        "id": 1011,
+																        "name": "Chair"
+																      },
+																      {
+																        "id": 1012,
+																        "name": "Bed"
+																      }
+																			],
+																		"reservations": null
+																      	}	
+																,
+																"startReservation": "25-11-1998",
+																"overnightStay": 7,
+																"fullPrice": 400,
+																"welcomeMessage": "sup",
+														        "guest": {
+																	"username": "Ana123",
+																	"password": "aaaaaa",
+																	"name": "Ana",
+																	"surname": "Atanackovic",
+																	"gender": "FEMALE",
+																	"role": "GUEST",
+																	"rented": [
+																		{
+																	        "id": 1098,
+																	        "type": "ROOM",
+																	        "nbrRooms": 8,
+																			"nbrGuests": 2,
+																			"location": null,
+																			"forRent":  [
+																				{"date": "25-11-1998"},
+																				{"date":"30-11-1998"}
+																			],
+																			"availability": [
+																				{"date": "25-11-1998"}
+																			],
+																			"host": {
+																				"username":"Ana",
+																				"password":"aaaaaa",
+																				"name":"Ana",
+																				"surname":"Atanackovic",
+																				"gender":"FEMALE",
+																				"role":"GUEST",
+																				"forRent":null
+																				},
+																			"comments": null,
+																			"pictures": [
+																				{"pic": "djkjhjf"}, 
+																				{"pic":"adhhfdf"}
+																			],
+																			"pricePerNight": 590.99,
+																			"forLogIn": "10:12",
+																			"forLogOff": "15:12",
+																			"status": "INACTIVE",
+																			"amenities": [
+																			      {
+																			        "id": 1011,
+																			        "name": "Chair"
+																			      },
+																			      {
+																			        "id": 1012,
+																			        "name": "Bed"
+																			      }
+																			],
+																			"reservations": null
+																      		}	
+																	],
+													"reservations": null
+												},
+												"status": "REJECTED"
+											}]}],
+											"reservations":
+											[
+											{
+												"id": 1085,
+												"rented": {
+												        "id": 1098,
+												        "type": "ROOM",
+												        "nbrRooms": 8,
+														"nbrGuests": 2,
+														"location": null,
+														"forRent":  [
+															{"date": "25-11-1998"},
+															{"date":"30-11-1998"}
+														],
+														"availability": [
+															{"date": "25-11-1998"}
+														],
+														"host": {
+															"username":"Ana",
+															"password":"aaaaaa",
+															"name":"Ana",
+															"surname":"Atanackovic",
+															"gender":"FEMALE",
+															"role":"GUEST",
+															"forRent":null
+															},
+														"comments": null,
+														"pictures": [
+															{"pic": "djkjhjf"}, 
+															{"pic":"adhhfdf"}
+														],
+														"pricePerNight": 590.99,
+														"forLogIn": "10:12",
+														"forLogOff": "15:12",
+														"status": "INACTIVE",
+														"amenities": null,
+														"reservations": null
+												      	}	
+												,
+												"startReservation": "25-11-1998",
+												"overnightStay": 7,
+												"fullPrice": 400,
+												"welcomeMessage": "sup",
+										        "guest": {
+													"username": "Ana123",
+													"password": "aaaaaa",
+													"name": "Ana",
+													"surname": "Atanackovic",
+													"gender": "FEMALE",
+													"role": "GUEST",
+													"rented": [
+														{
+													        "id": 1098,
+													        "type": "ROOM",
+													        "nbrRooms": 8,
+															"nbrGuests": 2,
+															"location": null,
+															"forRent":  [
+																{"date": "25-11-1998"},
+																{"date":"30-11-1998"}
+															],
+															"availability": [
+																{"date": "25-11-1998"}
+															],
+															"host": {
+																"username":"Ana",
+																"password":"aaaaaa",
+																"name":"Ana",
+																"surname":"Atanackovic",
+																"gender":"FEMALE",
+																"role":"GUEST",
+																"forRent":null
+																},
+															"comments": null,
+															"pictures": [
+																{"pic": "djkjhjf"}, 
+																{"pic":"adhhfdf"}
+															],
+															"pricePerNight": 590.99,
+															"forLogIn": "10:12",
+															"forLogOff": "15:12",
+															"status": "INACTIVE",
+															"amenities":[
+															      {
+															        "id": 1011,
+															        "name": "Chair"
+															      },
+															      {
+															        "id": 1012,
+															        "name": "Bed"
+															      }
+															],
+															"reservations": null
+												      		}
+													],
+													"reservations": null
+												},
+												"status": "REJECTED"
+											}]
+										},
+										"apartment": {
+										        "id": 1098,
+										        "type": "ROOM",
+										        "nbrRooms": 8,
+												"nbrGuests": 2,
+												"location": null,
+												"forRent":  [
+													{"date": "25-11-1998"},
+													{"date":"30-11-1998"}
+												],
+												"availability": [
+													{"date": "25-11-1998"}
+												],
+												"host": {
+															"username":"Ana",
+															"password":"aaaaaa",
+															"name":"Ana",
+															"surname":"Atanackovic",
+															"gender":"FEMALE",
+															"role":"GUEST",
+															"forRent":null
+															},
+												"comments": null,
+												"pictures": [
+													{"pic": "djkjhjf"}, 
+													{"pic":"adhhfdf"}
+												],
+												"pricePerNight": 590.99,
+												"forLogIn": "10:12",
+												"forLogOff": "15:12",
+												"status": "INACTIVE",
+												"amenities": null,
+												"reservations": null
+										      },
+								        "text": "terrible stuff",
+								        "grade": 5.0
+								      }],
 		"pictures": [
 			{"pic": "djkjhjf"}, 
 			{"pic":"adhhfdf"}
@@ -342,7 +1902,8 @@
 							"address":{
 								"street":"Petra Njegosa 15",
 								"place":"Novi Sad",
-								"postalCode":21000
+								"postalCode":21000,
+								"country": "Serbia"
 							}
 						},
 						"forRent":  [
@@ -397,7 +1958,8 @@
 								"address":{
 									"street":"Petra Njegosa 15",
 									"place":"Novi Sad",
-									"postalCode":21000
+									"postalCode":21000,
+									"country": "Serbia"
 								}
 							},
 							"forRent":  [
@@ -416,7 +1978,318 @@
 								"role":"GUEST",
 								"forRent":null
 								},
-							"comments": null,
+							"comments": {
+								        "id": 1056,
+								        "guest": {
+											"username": "Ana123",
+											"password": "aaaaaa",
+											"name": "Ana",
+											"surname": "Atanackovic",
+											"gender": "FEMALE",
+											"role": "GUEST",
+											"rented": [
+													   {
+												        "id": 1098,
+												        "type": "ROOM",
+												        "nbrRooms": 8,
+														"nbrGuests": 2,
+														"location": {
+															"width":"56.15",
+															"height":"42.30",
+															"address":{
+																"street":"Petra Njegosa 15",
+																"place":"Novi Sad",
+																"postalCode":21000,
+																"country": "Serbia"
+																}
+															},
+														"forRent":  [
+																{"date": "25-11-1998"},
+																{"date":"30-11-1998"}
+															],
+														"availability": [
+																{"date": "25-11-1998"}
+															],
+														"host": {
+															"username":"Ana",
+															"password":"aaaaaa",
+															"name":"Ana",
+															"surname":"Atanackovic",
+															"gender":"FEMALE",
+															"role":"GUEST",
+															"forRent":null
+															},
+														"comments": null,
+														"pictures": [
+																{"pic": "djkjhjf"}, 
+																{"pic":"adhhfdf"}
+															],
+														"pricePerNight": 590.99,
+														"forLogIn": "10:12",
+														"forLogOff": "15:12",
+														"status": "INACTIVE",
+														"amenities": [
+														      {
+														        "id": 1011,
+														        "name": "Chair"
+														      },
+														      {
+														        "id": 1012,
+														        "name": "Bed"
+														      }
+															],
+														"reservations": [{
+																"id": 1085,
+																		"rented":  {
+														        "id": 1098,
+														        "type": "ROOM",
+														        "nbrRooms": 8,
+																"nbrGuests": 2,
+																"location": {
+																	"width":"56.15",
+																	"height":"42.30",
+																	"address":{
+																		"street":"Petra Njegosa 15",
+																		"place":"Novi Sad",
+																		"postalCode":21000,
+																		"country": "Serbia"
+																		}
+																	},
+																"forRent":  [
+																		{"date": "25-11-1998"},
+																		{"date":"30-11-1998"}
+																	],
+																"availability": [
+																		{"date": "25-11-1998"}
+																	],
+																"host": {
+																	"username":"Ana",
+																	"password":"aaaaaa",
+																	"name":"Ana",
+																	"surname":"Atanackovic",
+																	"gender":"FEMALE",
+																	"role":"GUEST",
+																	"forRent":null
+																	},
+																"comments": null,
+																"pictures": [
+																		{"pic": "djkjhjf"}, 
+																		{"pic":"adhhfdf"}
+																	],
+																"pricePerNight": 590.99,
+																"forLogIn": "10:12",
+																"forLogOff": "15:12",
+																"status": "INACTIVE",
+																"amenities": [
+																      {
+																        "id": 1011,
+																        "name": "Chair"
+																      },
+																      {
+																        "id": 1012,
+																        "name": "Bed"
+																      }
+																			],
+																		"reservations": null
+																      	}	
+																,
+																"startReservation": "25-11-1998",
+																"overnightStay": 7,
+																"fullPrice": 400,
+																"welcomeMessage": "sup",
+														        "guest": {
+																	"username": "Ana123",
+																	"password": "aaaaaa",
+																	"name": "Ana",
+																	"surname": "Atanackovic",
+																	"gender": "FEMALE",
+																	"role": "GUEST",
+																	"rented": [
+																		{
+																	        "id": 1098,
+																	        "type": "ROOM",
+																	        "nbrRooms": 8,
+																			"nbrGuests": 2,
+																			"location": null,
+																			"forRent":  [
+																				{"date": "25-11-1998"},
+																				{"date":"30-11-1998"}
+																			],
+																			"availability": [
+																				{"date": "25-11-1998"}
+																			],
+																			"host": {
+																				"username":"Ana",
+																				"password":"aaaaaa",
+																				"name":"Ana",
+																				"surname":"Atanackovic",
+																				"gender":"FEMALE",
+																				"role":"GUEST",
+																				"forRent":null
+																				},
+																			"comments": null,
+																			"pictures": [
+																				{"pic": "djkjhjf"}, 
+																				{"pic":"adhhfdf"}
+																			],
+																			"pricePerNight": 590.99,
+																			"forLogIn": "10:12",
+																			"forLogOff": "15:12",
+																			"status": "INACTIVE",
+																			"amenities": [
+																			      {
+																			        "id": 1011,
+																			        "name": "Chair"
+																			      },
+																			      {
+																			        "id": 1012,
+																			        "name": "Bed"
+																			      }
+																			],
+																			"reservations": null
+																      		}	
+																	],
+													"reservations": null
+												},
+												"status": "REJECTED"
+											}]}],
+											"reservations":
+											[
+											{
+												"id": 1085,
+												"rented": {
+												        "id": 1098,
+												        "type": "ROOM",
+												        "nbrRooms": 8,
+														"nbrGuests": 2,
+														"location": null,
+														"forRent":  [
+															{"date": "25-11-1998"},
+															{"date":"30-11-1998"}
+														],
+														"availability": [
+															{"date": "25-11-1998"}
+														],
+														"host": {
+															"username":"Ana",
+															"password":"aaaaaa",
+															"name":"Ana",
+															"surname":"Atanackovic",
+															"gender":"FEMALE",
+															"role":"GUEST",
+															"forRent":null
+															},
+														"comments": null,
+														"pictures": [
+															{"pic": "djkjhjf"}, 
+															{"pic":"adhhfdf"}
+														],
+														"pricePerNight": 590.99,
+														"forLogIn": "10:12",
+														"forLogOff": "15:12",
+														"status": "INACTIVE",
+														"amenities": null,
+														"reservations": null
+												      	}	
+												,
+												"startReservation": "25-11-1998",
+												"overnightStay": 7,
+												"fullPrice": 400,
+												"welcomeMessage": "sup",
+										        "guest": {
+													"username": "Ana123",
+													"password": "aaaaaa",
+													"name": "Ana",
+													"surname": "Atanackovic",
+													"gender": "FEMALE",
+													"role": "GUEST",
+													"rented": [
+														{
+													        "id": 1098,
+													        "type": "ROOM",
+													        "nbrRooms": 8,
+															"nbrGuests": 2,
+															"location": null,
+															"forRent":  [
+																{"date": "25-11-1998"},
+																{"date":"30-11-1998"}
+															],
+															"availability": [
+																{"date": "25-11-1998"}
+															],
+															"host": {
+																"username":"Ana",
+																"password":"aaaaaa",
+																"name":"Ana",
+																"surname":"Atanackovic",
+																"gender":"FEMALE",
+																"role":"GUEST",
+																"forRent":null
+																},
+															"comments": null,
+															"pictures": [
+																{"pic": "djkjhjf"}, 
+																{"pic":"adhhfdf"}
+															],
+															"pricePerNight": 590.99,
+															"forLogIn": "10:12",
+															"forLogOff": "15:12",
+															"status": "INACTIVE",
+															"amenities":[
+															      {
+															        "id": 1011,
+															        "name": "Chair"
+															      },
+															      {
+															        "id": 1012,
+															        "name": "Bed"
+															      }
+															],
+															"reservations": null
+												      		}
+													],
+													"reservations": null
+												},
+												"status": "REJECTED"
+											}]
+										},
+										"apartment": {
+										        "id": 1098,
+										        "type": "ROOM",
+										        "nbrRooms": 8,
+												"nbrGuests": 2,
+												"location": null,
+												"forRent":  [
+													{"date": "25-11-1998"},
+													{"date":"30-11-1998"}
+												],
+												"availability": [
+													{"date": "25-11-1998"}
+												],
+												"host": {
+															"username":"Ana",
+															"password":"aaaaaa",
+															"name":"Ana",
+															"surname":"Atanackovic",
+															"gender":"FEMALE",
+															"role":"GUEST",
+															"forRent":null
+															},
+												"comments": null,
+												"pictures": [
+													{"pic": "djkjhjf"}, 
+													{"pic":"adhhfdf"}
+												],
+												"pricePerNight": 590.99,
+												"forLogIn": "10:12",
+												"forLogOff": "15:12",
+												"status": "INACTIVE",
+												"amenities": null,
+												"reservations": null
+										      },
+								        "text": "good stuff",
+								        "grade": 5.0
+								      },
 							"pictures": [
 								{"pic": "djkjhjf"}, 
 								{"pic":"adhhfdf"}
