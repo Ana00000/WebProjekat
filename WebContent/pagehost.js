@@ -1,11 +1,11 @@
 function addAcc(account){
 	let tr = $('<tr></tr>');
-	let username = $('<td>'+account.username+'</td>');
-	let name = $('<td>'+account.name+'</td>');
-	let surname = $('<td>'+account.surname+'</td>');
-	let role = $('<td>'+account.role+'</td>');
-	let gender = $('<td>'+account.gender+'</td>');
-	let password = $('<td>'+account.password+'</td>');
+	let username = $('<td>'+account.guest.username+'</td>');
+	let name = $('<td>'+account.guest.name+'</td>');
+	let surname = $('<td>'+account.guest.surname+'</td>');
+	let role = $('<td>'+account.guest.role+'</td>');
+	let gender = $('<td>'+account.guest.gender+'</td>');
+	let password = $('<td>'+account.guest.password+'</td>');
 	
 
 	tr.append(username).append(name).append(surname).append(role).append(gender).append(password);
@@ -41,15 +41,25 @@ function addApActive(active){
 var allQuestions = new Array();
 var allInactive = new Array();
 var allActive = new Array();
+var host;
 
 $(document).ready(function() {
-	    $.getJSON("users.json", function (data) {
+			
+		$.get({
+		    url: 'rest/loggedUser',
+		    success: function(user) {
+		    	host = user;
+		    }
+		});
+	
+	    $.getJSON("reservations.json", function (data) {
 	        allQuestions = data;
 		    })
 		    .done(function() {
 		        console.log( "JSON loaded!" );
-		        $.each( allQuestions, function(i,user){
-			        addAcc(user);
+		        $.each( allQuestions, function(i,account){
+		        	if(!account.rented.host.username.localeCompare(host.username))
+		        		addAcc(account);
 		        	});
 		        
 		    });

@@ -1,6 +1,5 @@
  package dao;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -13,10 +12,6 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import beans.Gender;
 import beans.Roles;
@@ -95,9 +90,6 @@ public class UserDAO {
 
 	@SuppressWarnings("unchecked")
 	private void writeInFile() {
-		ObjectMapper mapper = new ObjectMapper();
-		  
-		
 		JSONArray root = new JSONArray();
 		for(User a : findAll())
 		{

@@ -1,6 +1,5 @@
 package dao;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -10,16 +9,10 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import beans.Amenity;
-import beans.User;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class AmenityDAO {
 	
@@ -50,15 +43,21 @@ public class AmenityDAO {
 		return null;
 	}
 	
+	public void add(int id, String name) {
+		Amenity a = amenities.get(id);
+		if(a == null) {
+			a = new Amenity(id, name);
+			amenities.put(id, a);
+			writeInFile();
+		}
+	}
+	
 	public Collection<Amenity> findAll() {
 		return amenities.values();
 	}
 
 	@SuppressWarnings("unchecked")
 	private void writeInFile() {
-		ObjectMapper mapper = new ObjectMapper();
-		  
-		
 		JSONArray root = new JSONArray();
 		for(Amenity a : findAll())
 		{

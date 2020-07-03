@@ -1,11 +1,11 @@
 package dao;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -14,13 +14,10 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
+import beans.Apartment;
+import beans.Guest;
 import beans.Reservation;
-import beans.User;
-
+import beans.StatusReservation;
 
 public class ReservationDAO {
 
@@ -49,15 +46,22 @@ public class ReservationDAO {
 		return null;
 	}
 	
+	public void add(int id, Apartment rented, Date startReservation, int overnightStay, int fullPrice, String welcomeMessage,
+			Guest guest, StatusReservation status) {
+		Reservation r = reservations.get(id);
+		if(r == null) {
+			r = new Reservation(id, rented, startReservation, overnightStay, fullPrice, welcomeMessage, guest, status);
+			reservations.put(id, r);
+			writeInFile();
+		}
+	}
+	
 	public Collection<Reservation> findAll() {
 		return reservations.values();
 	}
 
 	@SuppressWarnings("unchecked")
 	public void writeInFile() {
-		ObjectMapper mapper = new ObjectMapper();
-		  
-		
 		JSONArray root = new JSONArray();
 		for(Reservation r: findAll())
 		{

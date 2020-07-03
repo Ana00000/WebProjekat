@@ -8,16 +8,12 @@ import java.util.List;
 import beans.Address;
 import beans.Amenity;
 import beans.Apartment;
-import beans.Comment;
 import beans.Gender;
 import beans.Guest;
 import beans.Host;
 import beans.Location;
 import beans.Reservation;
 import beans.Roles;
-import beans.StatusApartment;
-import beans.StatusReservation;
-import beans.Type;
 
 public class main {
 

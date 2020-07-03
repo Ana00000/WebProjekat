@@ -1,6 +1,5 @@
 package dao;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -14,14 +13,9 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import beans.Amenity;
+import beans.Apartment;
 import beans.Comment;
-import beans.User;
-
+import beans.Guest;
 
 public class CommentDAO {
 	private Map<Integer, Comment> comments = new HashMap<Integer, Comment>();
@@ -48,14 +42,21 @@ public class CommentDAO {
 		return null;
 	}
 	
+	public void add(int id, Guest guest, Apartment apartment, String text, double grade) {
+		Comment c = comments.get(id);
+		if(c == null) {
+			c = new Comment(id, guest, apartment, text, grade);
+			comments.put(id, c);
+			writeInFile();
+		}
+	}
+	
 	public Collection<Comment> findAll() {
 		return comments.values();
 	}
 	
 	@SuppressWarnings("unchecked")
 	private void writeInFile() {
-		ObjectMapper mapper = new ObjectMapper();
-		  
 		JSONArray root = new JSONArray();
 		for(Comment c : findAll())
 		{

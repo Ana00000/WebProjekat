@@ -1,40 +1,24 @@
 package dao;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import beans.Address;
-import beans.Amenity;
 import beans.Apartment;
-import beans.Comment;
-import beans.Gender;
 import beans.Host;
 import beans.Location;
-import beans.Reservation;
-import beans.Roles;
 import beans.StatusApartment;
 import beans.Type;
-import beans.User;
 
 public class ApartmentDAO {
 
@@ -79,9 +63,6 @@ public class ApartmentDAO {
 	
 	@SuppressWarnings("unchecked")
 	private void writeInFile() {
-		ObjectMapper mapper = new ObjectMapper();
-		  
-		
 		JSONArray root = new JSONArray();
 		for(Apartment a : findAll())
 		{
