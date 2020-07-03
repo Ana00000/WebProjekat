@@ -4,99 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="apartments.js"></script>
-<script src="sort-table.js"></script>
-<link rel="stylesheet" href="sort-table.css">
-<script>
-function myFunctionNbrRooms() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInputNbrRooms");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("ApartmentsTable");
-  tr = table.getElementsByTagName("tr");
+<link rel="stylesheet" type="text/css" href="basic.css">
+<style type="text/css">
+ table{
+  width: 100%;
+ }
+</style>
 
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[2];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }
-  }
-}
-</script>
-<script>
-function myFunctionNbrGuests() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInputNbrGuests");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("ApartmentsTable");
-  tr = table.getElementsByTagName("tr");
-
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[3];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }
-  }
-}
-</script>
-<script>
-function myFunctionPrice() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInputPrice");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("ApartmentsTable");
-  tr = table.getElementsByTagName("tr");
-
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[4];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }
-  }
-}
-</script>
 <head>
 	<title>Apartments page</title>
-<style>
-	body {
-		font-family: Calibri;
-		background-image: url('maldivi.jpg');
-		background-attachment: fixed;
-		background-size: cover;
-	}
-	.classy {
-		 text-align: center;
-	}
-	table {
-	  border-spacing: 0;
-	  width: 100%;
-	  border: 1px solid #ddd;
-	  background-color: #e6ffff;
-	}
-	
-	th {
-	  cursor: pointer;
-	}
-	
-	th, td {
-	  text-align: left;
-	  padding: 16px;
-	}
-</style>
+
 </head>
 <body>
 <div class="classy">
@@ -104,28 +21,18 @@ function myFunctionPrice() {
 	 <p/>
 	 <label>Those are active apartments.</label>
 	<p/>
-	<table id="ApartmentsTable" class="js-sort-table">
-	<thead>
-	<tr>
-		<th class="js-sort-number">Id</th>
-		<th class="js-sort-string">Type</th>
-		<th class="js-sort-number">Nbr rooms</th>
-		<th class="js-sort-number">Nbr guests</th>
-		<th class="js-sort-number">Price per night</th>
-	</tr>
-	</thead>
+	<table id="ApartmentsTable" >
+		<tr>
+			<th onclick="sortTableNumber(0)">Id</th>
+			<th onclick="sortTable(1)" >Type</th>
+			<th onclick="sortTableNumber(2)">Nbr rooms</th>
+			<th onclick="sortTableNumber(3)">Nbr guests</th>
+			<th onclick="sortTableNumber(4)">Price per night</th>
+		</tr>
+
 	</table>
-	<script> 
-		     $(document).ready(function() { 
-		         $("#gfg").on("keyup", function() { 
-		             var value = $(this).val().toLowerCase(); 
-		             $("#ApartmentsTable tr").filter(function() { 
-		                 $(this).toggle($(this).text() 
-		                 .toLowerCase().indexOf(value) > -1) 
-		             }); 
-		         }); 
-		     }); 
-	</script> 
+	
+	
 	<p/>
 	<input type="text" id="myInputNbrRooms" onkeyup="myFunctionNbrRooms()" placeholder="Search for number of rooms.." size="30">
 	<input type="text" id="myInputNbrGuests" onkeyup="myFunctionNbrGuests()" placeholder="Search for number of guests.." size="30">

@@ -4,91 +4,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="pageadmin.js"></script>
-<script>
-function myFunctionUsername() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInputUsername");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("UsersTable");
-  tr = table.getElementsByTagName("tr");
-
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }
-  }
-}
-</script>
-<script>
-function myFunctionRole() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInputRole");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("UsersTable");
-  tr = table.getElementsByTagName("tr");
-
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[3];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }
-  }
-}
-</script>
-<script>
-function myFunctionGender() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInputGender");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("UsersTable");
-  tr = table.getElementsByTagName("tr");
-
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[4];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }
-  }
-}
-</script>
+<style type="text/css">
+ table{
+  width: 100%;
+ }
+</style>
 	<title>Administrator page</title>
-	<style>
-		body {
-			font-family: Calibri;
-			background-image: url('maldivi.jpg');
-			 background-attachment: fixed;
- 			 background-size: cover;
-		}
-		.classy {
-			 text-align: center;
-		}
-		table {
-		  border-spacing: 0;
-		  width: 100%;
-		  border: 1px solid #ddd;
-		  background-color: #e6ffff;
-		}
-		th, td {
-		  text-align: left;
-		  padding: 16px;
-		}
-	</style>
+	<link rel="stylesheet" type="text/css" href="basic.css">
 </head>
 <body>
 <div class="classy">
@@ -99,7 +21,14 @@ function myFunctionGender() {
 	<label>Those are all users.</label>
 	<p/>
 	<table id="UsersTable"  border="2">
-	<tr><th>Username</th><th>Name</th><th>Surname</th><th>Role</th><th>Gender</th><th>Password</th></tr>
+	<tr>
+			<th onclick="sortTableUsers(0)">Username</th>
+			<th onclick="sortTableUsers(1)">Name</th>
+			<th onclick="sortTableUsers(2)">Surname</th>
+			<th onclick="sortTableUsers(3)">Role</th>
+			<th onclick="sortTableUsers(4)">Gender</th>
+			<th onclick="sortTableUsers(5)">Password</th>
+	</tr>
 	</table>
 	<br/>
 	<br/>
@@ -111,7 +40,13 @@ function myFunctionGender() {
 	<label>Those are all apartments.</label>
 	<p/>
 	<table id="ApartmentsTable"  border="2">
-	<tr><th>Id</th><th >Type</th><th>Nbr rooms</th><th>Nbr guests</th><th>Price per night</th></tr>
+		<tr>
+			<th onclick="sortTableNumber(0)">Id</th>
+			<th onclick="sortTable(1)" >Type</th>
+			<th onclick="sortTableNumber(2)">Nbr rooms</th>
+			<th onclick="sortTableNumber(3)">Nbr guests</th>
+			<th onclick="sortTableNumber(4)">Price per night</th>
+		</tr>
 	</table>
 	<br/>
 	<br/>

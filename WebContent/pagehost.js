@@ -19,8 +19,8 @@ function addApInactive(inactive){
 	let nbrGuests = $('<td>'+inactive.nbrGuests+'</td>');
 	let pricePerNight = $('<td>'+inactive.pricePerNight+'</td>');
 
-	if(!inactive.status.localeCompare("INACTIVE"))
-		tr.append(id).append(type).append(nbrRooms).append(nbrGuests).append(pricePerNight);
+	
+	tr.append(id).append(type).append(nbrRooms).append(nbrGuests).append(pricePerNight);
 	$('#ApartmentsInactiveTable tbody').append(tr);
 }
 
@@ -32,8 +32,8 @@ function addApActive(active){
 	let nbrGuests = $('<td>'+active.nbrGuests+'</td>');
 	let pricePerNight = $('<td>'+active.pricePerNight+'</td>');
 
-	if(!active.status.localeCompare("ACTIVE"))
-		tr.append(id).append(type).append(nbrRooms).append(nbrGuests).append(pricePerNight);
+	
+	tr.append(id).append(type).append(nbrRooms).append(nbrGuests).append(pricePerNight);
 	$('#ApartmentsActiveTable tbody').append(tr);
 }
 
@@ -59,7 +59,8 @@ $(document).ready(function() {
 		    .done(function() {
 		        console.log( "JSON loaded!" );
 		        $.each( allInactive, function(i,inactive){
-		        	addApInactive(inactive);
+		        	if(!inactive.status.localeCompare("INACTIVE"))
+		        		addApInactive(inactive);
 		        	});
 		        
 		    });
@@ -70,13 +71,190 @@ $(document).ready(function() {
 		    .done(function() {
 		        console.log( "JSON loaded!" );
 		        $.each( allActive, function(i,active){
-		        	addApActive(active);
+		        	if(!active.status.localeCompare("ACTIVE"))
+		        		addApActive(active);
 		        	});
 		        
 		    });
 });
 
 
+function sortTableUsers(n) {
+	  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+	  table = document.getElementById("UsersTable");
+	  switching = true;
+	  dir = "asc"; 
+	  while (switching) {
+	    switching = false;
+	    rows = table.rows;
+	    for (i = 1; i < (rows.length - 1); i++) {
+	      shouldSwitch = false;
+	      x = rows[i].getElementsByTagName("TD")[n];
+	      y = rows[i + 1].getElementsByTagName("TD")[n];
+	      if (dir == "asc") {
+	        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+	          shouldSwitch= true;
+	          break;
+	        }
+	      } else if (dir == "desc") {
+	        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+	          shouldSwitch = true;
+	          break;
+	        }
+	      }
+	    }
+	    if (shouldSwitch) {
+	    	rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+	      switching = true;
+	      switchcount ++;      
+	    } else {
+	      if (switchcount == 0 && dir == "asc") {
+	        dir = "desc";
+	        switching = true;
+	      }
+	    }
+	  }
+	}
+
+
+function sortTable(n) {
+	  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+	  table = document.getElementById("ApartmentsActiveTable");
+	  switching = true;
+	  dir = "asc"; 
+	  while (switching) {
+	    switching = false;
+	    rows = table.rows;
+	    for (i = 1; i < (rows.length - 1); i++) {
+	      shouldSwitch = false;
+	      x = rows[i].getElementsByTagName("TD")[n];
+	      y = rows[i + 1].getElementsByTagName("TD")[n];
+	      if (dir == "asc") {
+	        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+	          shouldSwitch= true;
+	          break;
+	        }
+	      } else if (dir == "desc") {
+	        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+	          shouldSwitch = true;
+	          break;
+	        }
+	      }
+	    }
+	    if (shouldSwitch) {
+	    	rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+	      switching = true;
+	      switchcount ++;      
+	    } else {
+	      if (switchcount == 0 && dir == "asc") {
+	        dir = "desc";
+	        switching = true;
+	      }
+	    }
+	  }
+	}
+
+	function sortTableNumber(n) {
+		 var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+		  table = document.getElementById("ApartmentsActiveTable");
+		  switching = true;
+		  dir = "asc"; 
+		  while (switching) {
+		    switching = false;
+		    rows = table.rows;
+		    for (i = 1; i < (rows.length - 1); i++) {
+		      shouldSwitch = false;
+		      x = rows[i].getElementsByTagName("TD")[n];
+		      y = rows[i + 1].getElementsByTagName("TD")[n];
+		      if (dir == "asc") {
+		    	  if (Number(x.innerHTML) > Number(y.innerHTML)) {
+		          shouldSwitch= true;
+		          break;
+		        }
+		      } else if (dir == "desc") {
+		    	  if (Number(x.innerHTML) < Number(y.innerHTML)) {
+		          shouldSwitch = true;
+		          break;
+		        }
+		      }
+		    }
+		    if (shouldSwitch) {
+		    	rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+		      switching = true;
+		      switchcount ++;      
+		    } else {
+		      if (switchcount == 0 && dir == "asc") {
+		        dir = "desc";
+		        switching = true;
+		      }
+		    }
+		  }
+	}
+
+
+	function myFunctionUsername() {
+	  var input, filter, table, tr, td, i, txtValue;
+	  input = document.getElementById("myInputUsername");
+	  filter = input.value.toUpperCase();
+	  table = document.getElementById("UsersTable");
+	  tr = table.getElementsByTagName("tr");
+
+	  for (i = 0; i < tr.length; i++) {
+	    td = tr[i].getElementsByTagName("td")[0];
+	    if (td) {
+	      txtValue = td.textContent || td.innerText;
+	      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+	        tr[i].style.display = "";
+	      } else {
+	        tr[i].style.display = "none";
+	      }
+	    }
+	  }
+	}
+
+
+	
+	function myFunctionRole() {
+	  var input, filter, table, tr, td, i, txtValue;
+	  input = document.getElementById("myInputRole");
+	  filter = input.value.toUpperCase();
+	  table = document.getElementById("UsersTable");
+	  tr = table.getElementsByTagName("tr");
+
+	  for (i = 0; i < tr.length; i++) {
+	    td = tr[i].getElementsByTagName("td")[3];
+	    if (td) {
+	      txtValue = td.textContent || td.innerText;
+	      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+	        tr[i].style.display = "";
+	      } else {
+	        tr[i].style.display = "none";
+	      }
+	    }
+	  }
+	}
+
+
+	
+	function myFunctionGender() {
+	  var input, filter, table, tr, td, i, txtValue;
+	  input = document.getElementById("myInputGender");
+	  filter = input.value.toUpperCase();
+	  table = document.getElementById("UsersTable");
+	  tr = table.getElementsByTagName("tr");
+
+	  for (i = 0; i < tr.length; i++) {
+	    td = tr[i].getElementsByTagName("td")[4];
+	    if (td) {
+	      txtValue = td.textContent || td.innerText;
+	      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+	        tr[i].style.display = "";
+	      } else {
+	        tr[i].style.display = "none";
+	      }
+	    }
+	  }
+	}
 
 
 

@@ -1,0 +1,23 @@
+		body {
+			font-family: Calibri;
+			background-image: url('maldivi.jpg');
+			 background-attachment: fixed;
+ 			 background-size: cover;
+		}
+		.classy {
+			 text-align: center;
+		}
+		table {
+		 margin-left: auto;
+		  margin-right: auto;
+		  border-spacing: 0;
+		  border: 1px solid #ddd;
+		  background-color: #e6ffff;
+		}
+		th, td {
+		  text-align: left;
+		  padding: 16px;
+		}
+		th{
+		cursor:pointer;
+		}
