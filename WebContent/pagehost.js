@@ -7,7 +7,6 @@ function addAcc(account){
 	let gender = $('<td>'+account.guest.gender+'</td>');
 	let password = $('<td>'+account.guest.password+'</td>');
 	
-
 	tr.append(username).append(name).append(surname).append(role).append(gender).append(password);
 	$('#UsersTable tbody').append(tr);
 }

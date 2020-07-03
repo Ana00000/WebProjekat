@@ -36,7 +36,7 @@ $(document).ready(function() {
 				},
 				error: function(message){
 					if(message.status==400)
-						alert("Invalid username and/or password");
+						alert("Invalid username and/or password.");
 					let name = message.responseText;
 					$('p#error').text(name);
 					$('p#error').css('color','red');

@@ -32,8 +32,8 @@ public class ParserToJSONObject {
 		if(a==null)
 			return new JSONObject();
         JSONObject amenity = new JSONObject();
-        amenity.put("username", a.getId());
-        amenity.put("password", a.getName());
+        amenity.put("id", a.getId());
+        amenity.put("name", a.getName());
 		return amenity;
 	}
 	

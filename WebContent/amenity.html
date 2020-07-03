@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="amenity.js"></script>
+	<title>Amenities</title>
+	<link rel="stylesheet" type="text/css" href="basic.css">
+</head>
+<body>
+<div class="classy">
+	<label>Those are all amenities.</label>
+	<p/>
+	<table id="AmenitiesTable">
+	<tr>
+		<th onclick="sortTableNumber(0)">Id</th>
+		<th onclick="sortTable(1)">Name</th>
+	</tr>
+	</table>
+	<br/>
+	<input type="text" id="myInputId" onkeyup="myFunctionId()" placeholder="Search for the id of the amenity.." size="30">
+	<input type="text" id="myInputName" onkeyup="myFunctionName()" placeholder="Search for the name of the amenity.." size="30">
+	<br/>
+	<br/>
+	<br/>
+	<table id="changeTable">
+	<tr>
+		<td><label><b>Id:</b></label></td>
+		<td> <input type="text" id="id" name="id" size="20" required></td>
+	</tr>
+	<tr>
+		<td><label><b>Name:</b></label></td>
+		<td> <input type="text" id="name" name="name" required size="20"></td>
+	</tr>
+	<tr>
+		<td><button id="addAmenity" style="width:140px" style="text-align:right;">Add</button></td>
+		<td><button id="setAmenity" style="width:140px" style="text-align:right;">Set</button></td>
+	</tr>
+	</table>
+	<br/>
+	<br/>
+	<br/>
+	<a href="pageadmin.html">Go back</a>
+</div>
+</body>
+</html>

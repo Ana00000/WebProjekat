@@ -141,12 +141,9 @@ public class UserDAO {
 		User newUser = users.get(username);
 		newUser = new User(username, password, name, surname, gender, role);
 
-//		users.remove(oldUser);
 		users.put(username, newUser);
 		writeInFile();
 		
 		return newUser;
 	}
-		
-
 }

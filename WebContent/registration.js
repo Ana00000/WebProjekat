@@ -109,6 +109,8 @@ $(document).ready(function() {
 					window.location.href= 'page.html';
 				},
 				error: function(message){
+					if(message.status==400)
+						alert("User already exists!");
 					let name = message.responseText;
 					$('p#error').text(name);
 					$('p#error').css('color','red');

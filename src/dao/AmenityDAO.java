@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import beans.Amenity;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -30,6 +31,18 @@ public class AmenityDAO {
 		contPath = contextPath;
 	}
 
+	public Amenity find(int id) {
+		
+		if (!amenities.containsKey(id)) {
+			return null;
+		}
+		
+		Amenity a = amenities.get(id);
+		
+        
+		return a;
+	}
+	
 	public Amenity find(Amenity a) {
 		for(Amenity amenity: amenities.values())
 		{
@@ -106,5 +119,14 @@ public class AmenityDAO {
         }
 	}
        
+	public void set(int id, String name) {
+		Amenity newAmenity = new Amenity(id, name);
+		amenities.put(id, newAmenity);
+		writeInFile();
+	}
 
+	public void remove(Amenity amenity) {
+		amenities.remove(amenity.getId());
+		writeInFile();
+	}
 }
