@@ -34,6 +34,7 @@ import beans.Reservation;
 import beans.Roles;
 import beans.StatusApartment;
 import beans.Type;
+import beans.User;
 
 public class ApartmentDAO {
 
@@ -66,24 +67,19 @@ public class ApartmentDAO {
 	}
 	
 	@SuppressWarnings("unchecked")
-	private void writeInFile(Apartment a) {
+	private void writeInFile() {
 		ObjectMapper mapper = new ObjectMapper();
 		  
-		JSONObject apartment = parserToJSON.apartmentToJSONObject(a);
-		JSONArray root = null;
-		try {
-			root = mapper.readValue(new File(contPath+"/apartments.json"), JSONArray.class);
-		} catch (JsonParseException e2) {
-			e2.printStackTrace();
-		} catch (JsonMappingException e2) {
-			e2.printStackTrace();
-		} catch (IOException e2) {
-			e2.printStackTrace();
+		
+		JSONArray root = new JSONArray();
+		for(Apartment a : findAll())
+		{
+			JSONObject user = parserToJSON.apartmentToJSONObject(a);
+			root.add(user);
+			
 		}
 		
-		root.add(apartment);
-		
-		try (FileWriter file = new FileWriter(contPath+"/apartments.json")) 
+		try (FileWriter file = new FileWriter(contPath+"/apartments.json",false)) 
         {
             try {
 				file.write(root.toString());

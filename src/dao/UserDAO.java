@@ -78,7 +78,7 @@ public class UserDAO {
 		if(u == null) {
 			u = new User(username, password, name, surname, gender, role);
 			users.put(username, u);
-			writeInFile(u);
+			writeInFile();
 		}
 		
 		return u;
@@ -94,24 +94,19 @@ public class UserDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	private void writeInFile(User u) {
+	private void writeInFile() {
 		ObjectMapper mapper = new ObjectMapper();
 		  
-		JSONObject user = parserToJSON.userToJSONObject(u);
-		JSONArray root = null;
-		try {
-			root = mapper.readValue(new File(contPath+"/users.json"), JSONArray.class);
-		} catch (JsonParseException e2) {
-			e2.printStackTrace();
-		} catch (JsonMappingException e2) {
-			e2.printStackTrace();
-		} catch (IOException e2) {
-			e2.printStackTrace();
+		
+		JSONArray root = new JSONArray();
+		for(User a : findAll())
+		{
+			JSONObject user = parserToJSON.userToJSONObject(a);
+			root.add(user);
+			
 		}
 		
-		root.add(user);
-		
-		try (FileWriter file = new FileWriter(contPath+"/users.json")) 
+		try (FileWriter file = new FileWriter(contPath+"/users.json",false)) 
         {
             try {
 				file.write(root.toString());
@@ -151,13 +146,12 @@ public class UserDAO {
 	}
 
 	public User set(String username, String password, String name, String surname, Gender gender, Roles role) {
-		User oldUser = users.get(username);
 		User newUser = users.get(username);
 		newUser = new User(username, password, name, surname, gender, role);
 
-		users.remove(oldUser);
-		users.put(newUser.getUsername(), newUser);
-		writeInFile(newUser);
+//		users.remove(oldUser);
+		users.put(username, newUser);
+		writeInFile();
 		
 		return newUser;
 	}

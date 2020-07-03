@@ -157,9 +157,18 @@ public class ParserFromJSONObject {
 		if(apartmentObject.get("host")!=null)
 			host = parseHostObject((JSONObject)apartmentObject.get("host"));
 		
-		Comment comment=new Comment();
-		if(apartmentObject.get("comment")!=null)
-			comment = parseCommentsObject((JSONObject)apartmentObject.get("comment"));
+		List<Comment> comments=new ArrayList<Comment>() ;	
+		JSONArray commentsList = (JSONArray) apartmentObject.get("comments");
+		
+		if(commentsList != null)
+			{
+			
+			Iterator<JSONObject> commentsIt = commentsList.iterator();
+	        while (commentsIt.hasNext()) {
+	        	comments.add(parseCommentsObject((JSONObject) commentsIt.next()));
+	        	}
+			}
+
 		
 		List<String> pictures = new ArrayList<String>();
 		JSONArray picturesList = (JSONArray) apartmentObject.get("pictures");
@@ -210,7 +219,7 @@ public class ParserFromJSONObject {
 	        }
 		}
 		
-		Apartment a=new Apartment(id, type, nbrRooms, nbrGuests, location , forRent, availability, host, comment, 
+		Apartment a=new Apartment(id, type, nbrRooms, nbrGuests, location , forRent, availability, host, commentsList, 
 				pictures, pricePerNight, forLogIn, forLogOff, status, amenities, reservations);
 		
 		return a;

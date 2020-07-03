@@ -31,7 +31,7 @@ $(document).ready(function() {
 			tr.append(td);
 			flag = false;
 		}
-			
+			console.log(username);
 		
 		if (password == null || password === "") {
 			let tr = $($('table tbody tr')[1]);
@@ -50,6 +50,7 @@ $(document).ready(function() {
 			flag = false;
 		}
 		
+		console.log(password);
 		if (passwordDouble == null || passwordDouble === "") {
 			let tr = $($('table tbody tr')[2]);
 			let td = $('<td>Password check shouldn\'t be empty. </td>');
@@ -99,10 +100,11 @@ $(document).ready(function() {
 		
 		
 		if(flag){
-			$.get({
+			$.ajax({
 				url: 'rest/registration',
 				data: JSON.stringify({username: username, password: password, name: name, surname: surname, gender: gender, role: role}),
 				contentType: 'application/json',
+				type:'PUT',
 				success: function() {
 					window.location.href= 'page.html';
 				},

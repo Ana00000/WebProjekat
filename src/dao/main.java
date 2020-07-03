@@ -44,7 +44,7 @@ public class main {
 		
 		Host h= new Host("host","1234567","Marko","Markovic",Gender.MALE,Roles.HOST,apartmentList);
 		Guest g= new Guest("guest","123567","Milos","Markovic",Gender.MALE,Roles.GUEST,apartmentList,reserlist);
-		Comment com=new Comment(123456,g,new Apartment(1234,Type.WHOLE_APARTMENT,2,3,l,dates,dates,h,new Comment(),pictures,235.15,date,date,StatusApartment.ACTIVE,amenityList,reserlist),"Good time.Had fun",7.53);
+	/*	Comment com=new Comment(123456,g,new Apartment(1234,Type.WHOLE_APARTMENT,2,3,l,dates,dates,h,new Comment(),pictures,235.15,date,date,StatusApartment.ACTIVE,amenityList,reserlist),"Good time.Had fun",7.53);
 		
 		Apartment apartmrnt1=new Apartment(1234,Type.WHOLE_APARTMENT,2,3,l,dates,dates,h,com,pictures,235.15,date,date,StatusApartment.ACTIVE,amenityList,reserlist);
 		Apartment apartmrnt2=new Apartment(1234,Type.WHOLE_APARTMENT,2,3,l,dates,dates,h,com,pictures,235.15,date,date,StatusApartment.ACTIVE,amenityList,reserlist);
@@ -54,7 +54,7 @@ public class main {
 		apartmentList.add(apartmrnt2);
 		
 		Reservation r=new Reservation(1234567,new Apartment(1234,Type.WHOLE_APARTMENT,2,3,l,dates,dates,h,com,pictures,235.15,date,date,StatusApartment.ACTIVE,amenityList,reserlist),date,12,1500,"Dobrodosli",g,StatusReservation.CREATED);
-		
+		*/
 		
 		
 		String contextPath="WebContent";
@@ -64,7 +64,7 @@ public class main {
 		
 		ReservationDAO reservation= new ReservationDAO();
 		reservation.loadReservations(contextPath);
-		reservation.writeInFile(r);
+		
 		
 		CommentDAO comment= new CommentDAO();
 		comment.loadComments(contextPath);

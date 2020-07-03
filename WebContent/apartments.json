@@ -29,7 +29,7 @@
 			"role":"GUEST",
 			"forRent":null
 			},
-		"comment": null,
+		"comments": null,
 		"pictures": [
 			{"pic": "djkjhjf"}, 
 			{"pic":"adhhfdf"}
@@ -71,7 +71,7 @@
 							"role":"GUEST",
 							"forRent":null
 							},
-						"comment": null,
+						"comments": null,
 						"pictures": [
 							{"pic": "djkjhjf"}, 
 							{"pic":"adhhfdf"}
@@ -126,7 +126,7 @@
 								"role":"GUEST",
 								"forRent":null
 								},
-							"comment": null,
+							"comments": null,
 							"pictures": [
 								{"pic": "djkjhjf"}, 
 								{"pic":"adhhfdf"}
@@ -174,7 +174,7 @@
 			"role":"GUEST",
 			"forRent":null
 			},
-		"comment": null,
+		"comments": null,
 		"pictures": [
 			{"pic": "djkjhjf"}, 
 			{"pic":"adhhfdf"}
@@ -216,7 +216,7 @@
 							"role":"GUEST",
 							"forRent":null
 							},
-						"comment": null,
+						"comments": null,
 						"pictures": [
 							{"pic": "djkjhjf"}, 
 							{"pic":"adhhfdf"}
@@ -271,7 +271,7 @@
 								"role":"GUEST",
 								"forRent":null
 								},
-							"comment": null,
+							"comments": null,
 							"pictures": [
 								{"pic": "djkjhjf"}, 
 								{"pic":"adhhfdf"}
@@ -319,7 +319,7 @@
 			"role":"GUEST",
 			"forRent":null
 			},
-		"comment": null,
+		"comments": null,
 		"pictures": [
 			{"pic": "djkjhjf"}, 
 			{"pic":"adhhfdf"}
@@ -361,7 +361,7 @@
 							"role":"GUEST",
 							"forRent":null
 							},
-						"comment": null,
+						"comments": null,
 						"pictures": [
 							{"pic": "djkjhjf"}, 
 							{"pic":"adhhfdf"}
@@ -416,7 +416,7 @@
 								"role":"GUEST",
 								"forRent":null
 								},
-							"comment": null,
+							"comments": null,
 							"pictures": [
 								{"pic": "djkjhjf"}, 
 								{"pic":"adhhfdf"}

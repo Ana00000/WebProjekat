@@ -20,6 +20,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import beans.Amenity;
 import beans.Comment;
+import beans.User;
 
 
 public class CommentDAO {
@@ -52,24 +53,17 @@ public class CommentDAO {
 	}
 	
 	@SuppressWarnings("unchecked")
-	private void writeInFile(Comment c) {
+	private void writeInFile() {
 		ObjectMapper mapper = new ObjectMapper();
 		  
-		JSONObject comment = parserToJSON.commentToJSONObject(c);
-		JSONArray root = null;
-		try {
-			root = mapper.readValue(new File(contPath+"/comments.json"), JSONArray.class);
-		} catch (JsonParseException e2) {
-			e2.printStackTrace();
-		} catch (JsonMappingException e2) {
-			e2.printStackTrace();
-		} catch (IOException e2) {
-			e2.printStackTrace();
+		JSONArray root = new JSONArray();
+		for(Comment c : findAll())
+		{
+			JSONObject user = parserToJSON.commentToJSONObject(c);
+			root.add(user);
+			
 		}
-		
-		root.add(comment);
-		
-		try (FileWriter file = new FileWriter(contPath+"/comments.json")) 
+		try (FileWriter file = new FileWriter(contPath+"/comments.json",false)) 
         {
             try {
 				file.write(root.toString());

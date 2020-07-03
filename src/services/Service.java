@@ -36,9 +36,8 @@ public class Service {
 		}
 	}
 
-	@POST
+	@PUT
 	@Path("/registration")
-	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response registration(User user, @Context HttpServletRequest request) {
 		//prvi login je ustvari kao registracija jer se korisnici ne cuvaju ni u fajlu ni u bazi

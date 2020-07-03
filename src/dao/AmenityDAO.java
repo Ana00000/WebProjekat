@@ -55,23 +55,17 @@ public class AmenityDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	private void writeInFile(Amenity a) {
+	private void writeInFile() {
 		ObjectMapper mapper = new ObjectMapper();
 		  
-		JSONObject amenity = parserToJSON.amenityToJSONObject(a);
-		JSONArray root = null;
-		try {
-			root = mapper.readValue(new File(contPath+"/amenities.json"), JSONArray.class);
-		} catch (JsonParseException e2) {
-			e2.printStackTrace();
-		} catch (JsonMappingException e2) {
-			e2.printStackTrace();
-		} catch (IOException e2) {
-			e2.printStackTrace();
+		
+		JSONArray root = new JSONArray();
+		for(Amenity a : findAll())
+		{
+			JSONObject amenity = parserToJSON.amenityToJSONObject(a);
+			root.add(amenity);
+			
 		}
-		
-		root.add(amenity);
-		
 		try (FileWriter file = new FileWriter(contPath+"/amenities.json")) 
         {
             try {

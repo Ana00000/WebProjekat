@@ -19,6 +19,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import beans.Reservation;
+import beans.User;
 
 
 public class ReservationDAO {
@@ -53,24 +54,19 @@ public class ReservationDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public void writeInFile(Reservation r) {
+	public void writeInFile() {
 		ObjectMapper mapper = new ObjectMapper();
 		  
-		JSONObject reservation = parserToJSON.reservationToJSONObject(r);
-		JSONArray root = null;
-		try {
-			root = mapper.readValue(new File(contPath+"/reservations.json"), JSONArray.class);
-		} catch (JsonParseException e2) {
-			e2.printStackTrace();
-		} catch (JsonMappingException e2) {
-			e2.printStackTrace();
-		} catch (IOException e2) {
-			e2.printStackTrace();
+		
+		JSONArray root = new JSONArray();
+		for(Reservation r: findAll())
+		{
+			JSONObject reservation = parserToJSON.reservationToJSONObject(r);
+			root.add(reservation);
+			
 		}
 		
-		root.add(reservation);
-		
-		try (FileWriter file = new FileWriter(contPath+"/reservations.json")) 
+		try (FileWriter file = new FileWriter(contPath+"/reservations.json",false)) 
         {
             try {
 				file.write(root.toString());

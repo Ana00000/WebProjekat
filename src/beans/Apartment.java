@@ -13,7 +13,7 @@ public class Apartment {
 	private List<Date> forRent = new ArrayList<Date>();
 	private List<Date> availability = new ArrayList<Date>();
 	private Host host;
-	private Comment comment;
+	private List<Comment> comment;
 	private List<String> pictures = new ArrayList<String>();
 	private double pricePerNight;
 	private Date forLogIn;
@@ -38,7 +38,7 @@ public class Apartment {
 	}
 	
 	public Apartment(int id, Type type, int nbrRooms, int nbrGuests, Location location, List<Date> forRent,
-			List<Date> availability, Host host, Comment comment, List<String> pictures, double pricePerNight,
+			List<Date> availability, Host host, List<Comment> comment, List<String> pictures, double pricePerNight,
 			Date forLogIn, Date forLogOff, StatusApartment status, List<Amenity> amenities,
 			List<Reservation> reservations) {
 		super();
@@ -133,11 +133,11 @@ public class Apartment {
 		this.host = host;
 	}
 	
-	public Comment getComment() {
+	public List<Comment> getComment() {
 		return comment;
 	}
 	
-	public void setComment(Comment comment) {
+	public void setComment(List<Comment> comment) {
 		this.comment = comment;
 	}
 	

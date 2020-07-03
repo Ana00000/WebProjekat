@@ -76,7 +76,14 @@ public class ParserToJSONObject {
 				}
 		apartment.put("availability", availability);
 		apartment.put("host", hostToJSONObject(a.getHost()));	
-		apartment.put("comment",commentToJSONObject(a.getComment()));
+		
+		JSONArray comments=new JSONArray();
+		for(Comment comment : a.getComment())
+		{
+			comments.add(commentToJSONObject(comment));
+		}	
+		apartment.put("comment", comments);
+		
 		
 		JSONArray pictures=new JSONArray();
 			for(String picture : a.getPictures())
