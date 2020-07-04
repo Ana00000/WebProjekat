@@ -10,21 +10,32 @@ function addAcc(account){
 	let forLogOff = $('<td>'+account.forLogOff+'</td>');
 	let btnSelect =$('<td><button class="btnSelect">Make a reservation</button></td>');
 	
-		tr.append(id).append(type).append(nbrRooms).append(nbrGuests).append(pricePerNight).append(location).append(forLogIn).append(forLogOff).append(btnSelect);
+	tr.append(id).append(type).append(nbrRooms).append(nbrGuests).append(pricePerNight).append(location).append(forLogIn).append(forLogOff).append(btnSelect);
 	$('#ApartmentsTable tbody').append(tr);
 }
 
 function addComment(com, id){
-	let c = $('<li> Apartment with id ' + id + ' has comment: ' + com.text + '</li>');
+	let c = $('<li> Apartment with id ' + id + ' has comment: ' + com + '</li>');
 	$('#listComments').append(c);
 }
 
 var allQuestions = new Array();
 var allComments = new Array();
+var oneComment;
+var comments = new Array();
+
+function getComments(id) {
+	oneComment = "no comment";
+	$.each(comments, function(i,comment){
+	   	if(comment.id == id)
+	   		oneComment = comment.text;
+   	});
+}
 
 $(document).ready(function() {
 	    $.getJSON("apartments.json", function (data) {
 	        allQuestions = data;
+	  
 		    })
 		    .done(function() {
 		        console.log( "JSON loaded!" );
@@ -33,20 +44,25 @@ $(document).ready(function() {
 		        		addAcc(user);
 		        	});
 		        
-		    });
+		 });
+	   
+	    $.getJSON("comments.json", function (data) {
+	    	comments = data;
+		});
 	    
 	    $.getJSON("apartments.json", function (data) {
 	    	allComments  = data;
 		    })
 		    .done(function() {
 		        console.log( "Another JSON loaded!" );
-		        $.each( allComments, function(i,apartment){
+		        $.each(allComments, function(i,apartment){
 		        	if(!apartment.status.localeCompare("ACTIVE")) {
 			        	 $.each(apartment.comments, function(i, comment){
-			        			if (!(comment.text == null && comment.text === "")) 
-			        				addComment(comment, apartment.id);
+			        		 	getComments(comment.id);
+			        			if (oneComment.localeCompare("no comment")) 
+			        				addComment(oneComment, apartment.id);
 					        });
-		        	}});
+		        }});
 		    });
 });
 
@@ -134,8 +150,27 @@ $(document).ready(function() {
         }); 
     }); 
 }); 
-    
-    
+
+function myFunctionType() {
+	  var input, filter, table, tr, td, i, txtValue;
+	  input = document.getElementById("myInputType");
+	  filter = input.value.toUpperCase();
+	  table = document.getElementById("ApartmentsTable");
+	  tr = table.getElementsByTagName("tr");
+
+	  for (i = 0; i < tr.length; i++) {
+	    td = tr[i].getElementsByTagName("td")[1];
+	    if (td) {
+	      txtValue = td.textContent || td.innerText;
+	      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+	        tr[i].style.display = "";
+	      } else {
+	        tr[i].style.display = "none";
+	      }
+	    }
+	  }
+}
+
 function myFunctionNbrRooms() {
 	  var input, filter, table, tr, td, i, txtValue;
 	  input = document.getElementById("myInputNbrRooms");
@@ -195,5 +230,46 @@ function myFunctionPrice() {
       }
     }
   }
+}
+
+function myFunctionDateIn() {
+	  var input, filter, table, tr, td, i, txtValue;
+	  input = document.getElementById("myInputDateIn");
+	  filter = input.value.toUpperCase();
+	  table = document.getElementById("ApartmentsTable");
+	  tr = table.getElementsByTagName("tr");
+
+	  for (i = 0; i < tr.length; i++) {
+	    td = tr[i].getElementsByTagName("td")[6];
+	    if (td) {
+	      txtValue = td.textContent || td.innerText;
+	      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+	        tr[i].style.display = "";
+	      } else {
+	        tr[i].style.display = "none";
+	      }
+	    }
+	  }
+}
+
+
+function myFunctionDateOff() {
+	  var input, filter, table, tr, td, i, txtValue;
+	  input = document.getElementById("myInputDateOff");
+	  filter = input.value.toUpperCase();
+	  table = document.getElementById("ApartmentsTable");
+	  tr = table.getElementsByTagName("tr");
+
+	  for (i = 0; i < tr.length; i++) {
+	    td = tr[i].getElementsByTagName("td")[7];
+	    if (td) {
+	      txtValue = td.textContent || td.innerText;
+	      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+	        tr[i].style.display = "";
+	      } else {
+	        tr[i].style.display = "none";
+	      }
+	    }
+	  }
 }
 

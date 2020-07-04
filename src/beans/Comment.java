@@ -3,7 +3,7 @@ package beans;
 public class Comment {
 	private int id;
 	private Guest guest;
-	private Apartment apartment;
+	private int apartment;
 	private String text;
 	private double grade;
 	
@@ -11,12 +11,12 @@ public class Comment {
 		super();
 		this.id = 123;
 		this.guest = new Guest();
-		this.apartment =null;
+		this.apartment = 0;
 		this.text = "";
 		this.grade = 0.0;
 	}
 	
-	public Comment(int id, Guest guest, Apartment apartment, String text, double grade) {
+	public Comment(int id, Guest guest, int apartment, String text, double grade) {
 		super();
 		this.id = id;
 		this.guest = guest;
@@ -47,11 +47,11 @@ public class Comment {
 		this.guest = guest;
 	}
 	
-	public Apartment getApartment() {
+	public int getApartment() {
 		return apartment;
 	}
 	
-	public void setApartment(Apartment apartment) {
+	public void setApartment(int apartment) {
 		this.apartment = apartment;
 	}
 	

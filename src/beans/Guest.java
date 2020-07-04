@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Guest extends User{
-	private List<Apartment> rented = new ArrayList<Apartment>();
-	private List<Reservation> reservations= new ArrayList<Reservation>();
+	private List<Integer> rented = new ArrayList<Integer>();
+	private List<Integer> reservations= new ArrayList<Integer>();
 	
 	public Guest() {
 		super();
 	}
 	
-	public Guest(String username, String password, String name, String surname, Gender gender, Roles role, List<Apartment> rented, List<Reservation> reservations) {
+	public Guest(String username, String password, String name, String surname, Gender gender, Roles role, List<Integer> rented, List<Integer> reservations) {
 		super(username, password, name, surname, gender, role);
 		this.rented = rented;
 		this.reservations = reservations;
@@ -24,19 +24,19 @@ public class Guest extends User{
 				+ ", getGender()=" + getGender() + ", getRoles()=" + getRole() + "]";
 	}
 
-	public List<Apartment> getRented() {
+	public List<Integer> getRented() {
 		return rented;
 	}
 
-	public void setRented(List<Apartment> rented) {
+	public void setRented(List<Integer> rented) {
 		this.rented = rented;
 	}
 
-	public List<Reservation> getReservations() {
+	public List<Integer> getReservations() {
 		return reservations;
 	}
 
-	public void setReservations(List<Reservation> reservations) {
+	public void setReservations(List<Integer> reservations) {
 		this.reservations = reservations;
 	}
 }

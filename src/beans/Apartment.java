@@ -13,14 +13,14 @@ public class Apartment {
 	private List<Date> forRent = new ArrayList<Date>();
 	private List<Date> availability = new ArrayList<Date>();
 	private Host host;
-	private List<Comment> comments;
+	private List<Integer> comments;
 	private List<String> pictures = new ArrayList<String>();
 	private double pricePerNight;
 	private Date forLogIn;
 	private Date forLogOff;
 	private StatusApartment status;
 	private List<Amenity> amenities = new ArrayList<Amenity>();
-	private List<Reservation> reservations = new ArrayList<Reservation>();
+	private List<Integer> reservations = new ArrayList<Integer>();
 	
 	public Apartment() {
 		super();
@@ -30,7 +30,7 @@ public class Apartment {
 		this.nbrGuests = 0;
 		this.location = new Location();
 		this.host = new Host();
-		this.comments =null;
+		this.comments = new ArrayList<Integer>();
 		this.pricePerNight = 0;
 		this.forLogIn = Date.from(Instant.now());
 		this.forLogOff = Date.from(Instant.now());
@@ -38,9 +38,9 @@ public class Apartment {
 	}
 	
 	public Apartment(int id, Type type, int nbrRooms, int nbrGuests, Location location, List<Date> forRent,
-			List<Date> availability, Host host, List<Comment> comment, List<String> pictures, double pricePerNight,
+			List<Date> availability, Host host, List<Integer> comment, List<String> pictures, double pricePerNight,
 			Date forLogIn, Date forLogOff, StatusApartment status, List<Amenity> amenities,
-			List<Reservation> reservations) {
+			List<Integer> reservations) {
 		super();
 		this.id = id;
 		this.type = type;
@@ -74,14 +74,14 @@ public class Apartment {
 		this.forRent = new ArrayList<Date>();
 		this.availability =  new ArrayList<Date>();
 		this.host = host;
-		this.comments =  new ArrayList<Comment>();
+		this.comments =  new ArrayList<Integer>();
 		this.pictures = new ArrayList<String>();
 		this.pricePerNight = pricePerNight;
 		this.forLogIn = forLogIn;
 		this.forLogOff = forLogOff;
 		this.status = status;
 		this.amenities = new ArrayList<Amenity>();
-		this.reservations =  new ArrayList<Reservation>();
+		this.reservations =  new ArrayList<Integer>();
 	}
 	
 	@Override
@@ -157,11 +157,11 @@ public class Apartment {
 		this.host = host;
 	}
 	
-	public List<Comment> getComment() {
+	public List<Integer> getComment() {
 		return comments;
 	}
 	
-	public void setComment(List<Comment> comment) {
+	public void setComment(List<Integer> comment) {
 		this.comments = comment;
 	}
 	
@@ -213,11 +213,11 @@ public class Apartment {
 		this.amenities = amenities;
 	}
 	
-	public List<Reservation> getReservations() {
+	public List<Integer> getReservations() {
 		return reservations;
 	}
 	
-	public void setReservations(List<Reservation> reservations) {
+	public void setReservations(List<Integer> reservations) {
 		this.reservations = reservations;
 	}
 }

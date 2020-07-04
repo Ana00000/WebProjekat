@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Host extends User{
-	private List<Apartment> forRent = new ArrayList<Apartment>();
+	private List<Integer> forRent = new ArrayList<Integer>();
 
 	public Host() {
 		super();
 	}
 
-	public Host(String username, String password, String name, String surname, Gender gender, Roles role, List<Apartment> forRent) {
+	public Host(String username, String password, String name, String surname, Gender gender, Roles role, List<Integer> forRent) {
 		super(username, password, name, surname, gender, role);
 		this.forRent = forRent;
 	}
@@ -22,11 +22,11 @@ public class Host extends User{
 				+ ", getRoles()=" + getRole() + "]";
 	}
 
-	public List<Apartment> getForRent() {
+	public List<Integer> getForRent() {
 		return forRent;
 	}
 
-	public void setForRent(List<Apartment> forRent) {
+	public void setForRent(List<Integer> forRent) {
 		this.forRent = forRent;
 	}
 }

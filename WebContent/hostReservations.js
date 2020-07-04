@@ -1,7 +1,7 @@
 function addRes(reservation){
 	let tr = $('<tr></tr>');
 	let id = $('<td>'+reservation.id+'</td>');
-	let rented = $('<td>'+reservation.rented.id+'</td>');
+	let rented = $('<td>'+reservation.rented+'</td>');
 	let startReservation = $('<td>'+reservation.startReservation+'</td>');
 	let overnightStay = $('<td>'+reservation.overnightStay+'</td>');
 	let fullPrice = $('<td>'+reservation.fullPrice+'</td>');
@@ -14,9 +14,18 @@ function addRes(reservation){
 	$('#ReservationsTable tbody').append(tr);
 }
 
-
 var allReservation = new Array();
+var allApartments = new Array();
 var host;
+var oneApartment;
+
+function getApartments(id) {
+	oneApartment = "";
+	$.each( allApartments, function(i,apartment){
+	   	if(apartment.id == id)
+	   		oneApartment = apartment.host.username;
+   	});
+}
 
 $(document).ready(function() {
 		
@@ -27,7 +36,9 @@ $(document).ready(function() {
 		    }
 		});
 	
-	
+	    $.getJSON("apartments.json", function (data) {
+	    	allApartments = data;
+		});
 	
 	    $.getJSON("reservations.json", function (data) {
 	    	allReservation = data;
@@ -35,11 +46,11 @@ $(document).ready(function() {
 		    .done(function() {
 		        console.log( "JSON loaded!" );
 		        $.each( allReservation, function(i,reservation){
-			       if(!reservation.rented.host.username.localeCompare(host.username))
-			    	   addRes(reservation);
+		        	getApartments(reservation.rented);
+		        	if(!oneApartment.localeCompare(host.username))
+		        		addRes(reservation);
 		        	});
 		    });
-	    
 	    
 	    $("#ReservationsTable").on('click','.btnSelect',function(){
 	         var currentRow=$(this).closest("tr"); 

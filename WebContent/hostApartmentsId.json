@@ -1,0 +1,10 @@
+[
+	{
+		"hostApUsername": "Ana",
+		"forRent": [{"id": 1098}]
+	},
+	{
+		"hostApUsername": "Ana123",
+		"forRent": [{"id": 1099}]
+	}
+]

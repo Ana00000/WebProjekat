@@ -14,7 +14,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import beans.Apartment;
 import beans.Guest;
 import beans.Reservation;
 import beans.StatusReservation;
@@ -46,7 +45,7 @@ public class ReservationDAO {
 		return null;
 	}
 	
-	public void add(int id, Apartment rented, Date startReservation, int overnightStay, int fullPrice, String welcomeMessage,
+	public void add(int id, int rented, Date startReservation, int overnightStay, int fullPrice, String welcomeMessage,
 			Guest guest, StatusReservation status) {
 		Reservation r = reservations.get(id);
 		if(r == null) {

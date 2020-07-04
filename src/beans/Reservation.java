@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class Reservation {
 	private int id;
-	private Apartment rented;
+	private int rented;
 	private Date startReservation;
 	private int overnightStay;
 	private int fullPrice;
@@ -16,7 +16,7 @@ public class Reservation {
 	public Reservation() {
 		super();
 		this.id = 0;
-		this.rented =new Apartment();
+		this.rented = 0;
 		this.startReservation = Date.from(Instant.now());
 		this.overnightStay = 15;
 		this.fullPrice = 150;
@@ -25,7 +25,7 @@ public class Reservation {
 		this.status = StatusReservation.CREATED;
 	}
 	
-	public Reservation(int id, Apartment rented, Date startReservation, int overnightStay, int fullPrice, String welcomeMessage,
+	public Reservation(int id, int rented, Date startReservation, int overnightStay, int fullPrice, String welcomeMessage,
 			Guest guest, StatusReservation status) {
 		super();
 		this.id = id;
@@ -53,11 +53,11 @@ public class Reservation {
 		this.id = id;
 	}
 
-	public Apartment getRented() {
+	public int getRented() {
 		return rented;
 	}
 
-	public void setRented(Apartment rented) {
+	public void setRented(int rented) {
 		this.rented = rented;
 	}
 

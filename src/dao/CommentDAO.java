@@ -13,7 +13,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import beans.Apartment;
 import beans.Comment;
 import beans.Guest;
 
@@ -42,7 +41,7 @@ public class CommentDAO {
 		return null;
 	}
 	
-	public void add(int id, Guest guest, Apartment apartment, String text, double grade) {
+	public void add(int id, Guest guest, int apartment, String text, double grade) {
 		Comment c = comments.get(id);
 		if(c == null) {
 			c = new Comment(id, guest, apartment, text, grade);

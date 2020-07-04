@@ -67,6 +67,7 @@ public class ParserToJSONObject {
 			}
 		
 		apartment.put("forRent", forRent);
+		
 		JSONArray availability=new JSONArray();
 			for(Date date : a.getAvailability() )
 				{
@@ -77,10 +78,13 @@ public class ParserToJSONObject {
 		apartment.put("availability", availability);
 		apartment.put("host", hostToJSONObject(a.getHost()));	
 		
+		
 		JSONArray comments=new JSONArray();
-		for(Comment comment : a.getComment())
+		for(Integer comment : a.getComment())
 		{
-			comments.add(commentToJSONObject(comment));
+			JSONObject object=new JSONObject();
+			object.put("pic", comment);
+			comments.add(object);
 		}	
 		apartment.put("comment", comments);
 		
@@ -104,14 +108,13 @@ public class ParserToJSONObject {
 			amenities.add(amenityToJSONObject(amenity));
 		}	
 		
-		
-		apartment.put("amenities", amenities);
-		
-		
+
 		JSONArray reservations=new JSONArray();
-		for(Reservation reservation : a.getReservations())
+		for(Integer reservation : a.getReservations())
 		{
-			amenities.add(reservationToJSONObject(reservation));
+			JSONObject object=new JSONObject();
+			object.put("id", reservation);
+			reservations.add(object);
 		}	
 		
 		apartment.put("reservations", reservations);
@@ -126,7 +129,7 @@ public class ParserToJSONObject {
 		JSONObject comment = new JSONObject();
 		comment.put("id", c.getId());
 		comment.put("guest", guestToJSONObject(c.getGuest()));
-		comment.put("apartment",apartmentToJSONObject(c.getApartment()));
+		comment.put("apartment",c.getApartment());
 		comment.put("id", c.getId());
 		comment.put("text", c.getText());
 		comment.put("grade", c.getGrade());
@@ -141,7 +144,7 @@ public class ParserToJSONObject {
 			return new JSONObject();
 		JSONObject reservation = new JSONObject();
 		reservation.put("id", r.getId());
-		reservation.put("rented", apartmentToJSONObject(r.getRented()));
+		reservation.put("rented", r.getRented());
 		reservation.put("startReservation",r.getStartReservation().toString());
 		reservation.put("overnightStay", r.getOvernightStay());
 		reservation.put("fullPrice", r.getFullPrice());
@@ -165,17 +168,21 @@ public class ParserToJSONObject {
         guest.put("role", g.getRole().toString());
         
 		JSONArray apartments=new JSONArray();
-		for(Apartment	apartment: g.getRented())
+		for(Integer	apartment: g.getRented())
 		{
-			apartments.add(apartmentToJSONObject(apartment));
+			JSONObject object=new JSONObject();
+			object.put("id", apartment);
+			apartments.add(object);
 		}
 		guest.put("rented", apartments);
 		
 		JSONArray reservations=new JSONArray();
-		for(Reservation reservation : g.getReservations())
+		for(Integer reservation : g.getReservations())
 		{
-			reservations.add(reservationToJSONObject(reservation));
-		}	
+			JSONObject object=new JSONObject();
+			object.put("id", reservation);
+			apartments.add(object);
+		}
 		
 		guest.put("reservations", reservations);
         return guest;
@@ -194,11 +201,13 @@ public class ParserToJSONObject {
         host.put("role", h.getRole().toString());
         
 		JSONArray apartments=new JSONArray();
-		for(Apartment	apartment: h.getForRent())
+		for(Integer	apartment: h.getForRent())
 		{
-			apartments.add(apartmentToJSONObject(apartment));
+			JSONObject object=new JSONObject();
+			object.put("id", apartment);
+			apartments.add(object);
 		}
-		host.put("rented", apartments);
+		host.put("forRent", apartments);
 
         return host;
     }

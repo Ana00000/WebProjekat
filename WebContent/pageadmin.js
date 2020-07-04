@@ -19,9 +19,10 @@ function addApp(apartment){
 	let nbrRooms = $('<td>'+apartment.nbrRooms+'</td>');
 	let nbrGuests = $('<td>'+apartment.nbrGuests+'</td>');
 	let pricePerNight = $('<td>'+apartment.pricePerNight+'</td>');
+	let status = $('<td>'+apartment.status+'</td>');
 	let btnSelect =$('<td><button class="btnSelectApp">Edit</button>   <button class="btnSelectApp">Delete</button></td>');
 
-	tr.append(id).append(type).append(nbrRooms).append(nbrGuests).append(pricePerNight).append(btnSelect);
+	tr.append(id).append(type).append(nbrRooms).append(nbrGuests).append(pricePerNight).append(status).append(btnSelect);
 	$('#ApartmentsTable tbody').append(tr);
 }
 
@@ -29,7 +30,7 @@ function addApp(apartment){
 function addRes(reservation){
 	let tr = $('<tr></tr>');
 	let id = $('<td>'+reservation.id+'</td>');
-	let rented = $('<td>'+reservation.rented.id+'</td>');
+	let rented = $('<td>'+reservation.rented+'</td>');
 	let startReservation = $('<td>'+reservation.startReservation+'</td>');
 	let overnightStay = $('<td>'+reservation.overnightStay+'</td>');
 	let fullPrice = $('<td>'+reservation.fullPrice+'</td>');
@@ -43,7 +44,7 @@ function addRes(reservation){
 
 
 function addComment(com, id){
-	let c = $('<li> Apartment with id ' + id + ' has comment: ' + com.text + '</li>');
+	let c = $('<li> Apartment with id ' + id + ' has comment: ' + com + '</li>');
 	$('#listCommentsAdmin').append(c);
 }
 
@@ -51,9 +52,21 @@ var allReservation = new Array();
 
 var allApartments = new Array();
 
+var comments = new Array();
+
 var allComments = new Array();
 
 var allQuestions = new Array();
+
+var oneComment;
+
+function getComments(id) {
+	oneComment = "no comment";
+	$.each(comments, function(i,comment){
+	   	if(comment.id == id)
+	   		oneComment = comment.text;
+   	});
+}
 
 $(document).ready(function() {
 	    $.getJSON("users.json", function (data) {
@@ -66,6 +79,10 @@ $(document).ready(function() {
 		        	});
 		        
 		    });
+	    
+	    $.getJSON("comments.json", function (data) {
+	    	comments = data;
+		});
 	    
 	    $.getJSON("apartments.json", function (data) {
 	    	allApartments = data;
@@ -93,10 +110,11 @@ $(document).ready(function() {
 		    })
 		    .done(function() {
 		        console.log( "Another JSON loaded!" );
-		        $.each( allComments, function(i,apartment){
+		        $.each(allComments, function(i,apartment){
 			        	 $.each(apartment.comments, function(i, comment){
-			        			if (!(comment.text == null && comment.text === "")) 
-			        				addComment(comment, apartment.id);
+			        		 	getComments(comment.id);
+			        			if (oneComment.localeCompare("no comment")) 
+			        				addComment(oneComment, apartment.id);
 					        });
 		        	});
 		    });
@@ -153,93 +171,92 @@ function sortTableUsers(n) {
 	      }
 	    }
 	  }
-	}
+}
 
 
-	function sortTable(n) {
-		  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-		  table = document.getElementById("ApartmentsTable");
-		  switching = true;
-		  dir = "asc"; 
-		  while (switching) {
-		    switching = false;
-		    rows = table.rows;
-		    for (i = 1; i < (rows.length - 1); i++) {
-		      shouldSwitch = false;
-		      x = rows[i].getElementsByTagName("TD")[n];
-		      y = rows[i + 1].getElementsByTagName("TD")[n];
-		      if (dir == "asc") {
-		        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-		          shouldSwitch= true;
-		          break;
-		        }
-		      } else if (dir == "desc") {
-		        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-		          shouldSwitch = true;
-		          break;
-		        }
-		      }
-		    }
-		    if (shouldSwitch) {
-		    	rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-		      switching = true;
-		      switchcount ++;      
-		    } else {
-		      if (switchcount == 0 && dir == "asc") {
-		        dir = "desc";
-		        switching = true;
-		      }
-		    }
-		  }
-		}
+function sortTable(n) {
+	  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+	  table = document.getElementById("ApartmentsTable");
+	  switching = true;
+	  dir = "asc"; 
+	  while (switching) {
+	    switching = false;
+	    rows = table.rows;
+	    for (i = 1; i < (rows.length - 1); i++) {
+	      shouldSwitch = false;
+	      x = rows[i].getElementsByTagName("TD")[n];
+	      y = rows[i + 1].getElementsByTagName("TD")[n];
+	      if (dir == "asc") {
+	        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+	          shouldSwitch= true;
+	          break;
+	        }
+	      } else if (dir == "desc") {
+	        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+	          shouldSwitch = true;
+	          break;
+	        }
+	      }
+	    }
+	    if (shouldSwitch) {
+	    	rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+	      switching = true;
+	      switchcount ++;      
+	    } else {
+	      if (switchcount == 0 && dir == "asc") {
+	        dir = "desc";
+	        switching = true;
+	      }
+	    }
+	  }
+}
 
-		function sortTableNumber(n) {
-			 var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-			  table = document.getElementById("ApartmentsTable");
-			  switching = true;
-			  dir = "asc"; 
-			  while (switching) {
-			    switching = false;
-			    rows = table.rows;
-			    for (i = 1; i < (rows.length - 1); i++) {
-			      shouldSwitch = false;
-			      x = rows[i].getElementsByTagName("TD")[n];
-			      y = rows[i + 1].getElementsByTagName("TD")[n];
-			      if (dir == "asc") {
-			    	  if (Number(x.innerHTML) > Number(y.innerHTML)) {
-			          shouldSwitch= true;
-			          break;
-			        }
-			      } else if (dir == "desc") {
-			    	  if (Number(x.innerHTML) < Number(y.innerHTML)) {
-			          shouldSwitch = true;
-			          break;
-			        }
-			      }
-			    }
-			    if (shouldSwitch) {
-			    	rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-			      switching = true;
-			      switchcount ++;      
-			    } else {
-			      if (switchcount == 0 && dir == "asc") {
-			        dir = "desc";
-			        switching = true;
-			      }
-			    }
-			  }
-		}
-	
+function sortTableNumber(n) {
+	 var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+	  table = document.getElementById("ApartmentsTable");
+	  switching = true;
+	  dir = "asc"; 
+	  while (switching) {
+	    switching = false;
+	    rows = table.rows;
+	    for (i = 1; i < (rows.length - 1); i++) {
+	      shouldSwitch = false;
+	      x = rows[i].getElementsByTagName("TD")[n];
+	      y = rows[i + 1].getElementsByTagName("TD")[n];
+	      if (dir == "asc") {
+	    	  if (Number(x.innerHTML) > Number(y.innerHTML)) {
+	          shouldSwitch= true;
+	          break;
+	        }
+	      } else if (dir == "desc") {
+	    	  if (Number(x.innerHTML) < Number(y.innerHTML)) {
+	          shouldSwitch = true;
+	          break;
+	        }
+	      }
+	    }
+	    if (shouldSwitch) {
+	    	rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+	      switching = true;
+	      switchcount ++;      
+	    } else {
+	      if (switchcount == 0 && dir == "asc") {
+	        dir = "desc";
+	        switching = true;
+	      }
+	    }
+	  }
+}
 
-	function myFunctionUsername() {
+function myFunctionType() {
 	  var input, filter, table, tr, td, i, txtValue;
-	  input = document.getElementById("myInputUsername");
+	  input = document.getElementById("myInputType");
 	  filter = input.value.toUpperCase();
-	  table = document.getElementById("UsersTable");
+	  table = document.getElementById("ApartmentsTable");
 	  tr = table.getElementsByTagName("tr");
 
 	  for (i = 0; i < tr.length; i++) {
-	    td = tr[i].getElementsByTagName("td")[0];
+	    td = tr[i].getElementsByTagName("td")[1];
 	    if (td) {
 	      txtValue = td.textContent || td.innerText;
 	      if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -249,18 +266,17 @@ function sortTableUsers(n) {
 	      }
 	    }
 	  }
-	}
+}
 
-
-	function myFunctionRole() {
+function myFunctionStatus() {
 	  var input, filter, table, tr, td, i, txtValue;
-	  input = document.getElementById("myInputRole");
+	  input = document.getElementById("myInputStatus");
 	  filter = input.value.toUpperCase();
-	  table = document.getElementById("UsersTable");
+	  table = document.getElementById("ApartmentsTable");
 	  tr = table.getElementsByTagName("tr");
 
 	  for (i = 0; i < tr.length; i++) {
-	    td = tr[i].getElementsByTagName("td")[3];
+	    td = tr[i].getElementsByTagName("td")[5];
 	    if (td) {
 	      txtValue = td.textContent || td.innerText;
 	      if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -270,19 +286,81 @@ function sortTableUsers(n) {
 	      }
 	    }
 	  }
-	}
-
-
+}
 	
-	function myFunctionGender() {
+function myFunctionUsername() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInputUsername");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("UsersTable");
+  tr = table.getElementsByTagName("tr");
+
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+
+
+function myFunctionRole() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInputRole");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("UsersTable");
+  tr = table.getElementsByTagName("tr");
+
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[3];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+
+
+
+function myFunctionGender() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInputGender");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("UsersTable");
+  tr = table.getElementsByTagName("tr");
+
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[4];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+
+
+function myFunctionGuest() {
 	  var input, filter, table, tr, td, i, txtValue;
-	  input = document.getElementById("myInputGender");
+	  input = document.getElementById("myInputGuest");
 	  filter = input.value.toUpperCase();
-	  table = document.getElementById("UsersTable");
+	  table = document.getElementById("ReservationsTable");
 	  tr = table.getElementsByTagName("tr");
 
 	  for (i = 0; i < tr.length; i++) {
-	    td = tr[i].getElementsByTagName("td")[4];
+	    td = tr[i].getElementsByTagName("td")[7];
 	    if (td) {
 	      txtValue = td.textContent || td.innerText;
 	      if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -292,28 +370,7 @@ function sortTableUsers(n) {
 	      }
 	    }
 	  }
-	}
-	
-	
-	function myFunctionGuest() {
-		  var input, filter, table, tr, td, i, txtValue;
-		  input = document.getElementById("myInputGuest");
-		  filter = input.value.toUpperCase();
-		  table = document.getElementById("ReservationsTable");
-		  tr = table.getElementsByTagName("tr");
-
-		  for (i = 0; i < tr.length; i++) {
-		    td = tr[i].getElementsByTagName("td")[7];
-		    if (td) {
-		      txtValue = td.textContent || td.innerText;
-		      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-		        tr[i].style.display = "";
-		      } else {
-		        tr[i].style.display = "none";
-		      }
-		    }
-		  }
-		}
+}
 
 
 

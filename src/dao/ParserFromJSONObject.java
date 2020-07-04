@@ -41,14 +41,12 @@ public class ParserFromJSONObject {
 	}
 	
 	public Reservation parseReservationsObject(JSONObject reservationObject) {
-		
 		DateFormat format = new SimpleDateFormat("dd-MM-yyyy");
 		
 		int id = Integer.parseInt(jsonToStr(reservationObject, "id"));
 		
-		Apartment rented=new Apartment();
-		if(reservationObject.get("rented")!=null)
-			rented= parseApartmentsObject((JSONObject)reservationObject.get("rented"));
+		int rented=Integer.parseInt(jsonToStr(reservationObject, "rented"));
+		
 		
 		Date startReservation = new Date();
 		try {
@@ -65,8 +63,8 @@ public class ParserFromJSONObject {
 		if(reservationObject.get("guest")!=null)
 			guest = parseGuestObject((JSONObject)reservationObject.get("guest"));
 		
+		
 		StatusReservation status = StatusReservation.valueOf(jsonToStr(reservationObject, "status"));
-
 		
 		Reservation reservation = new Reservation(id, rented, startReservation, overnightStay, fullPrice, welcomeMessage, guest, status);
 		return reservation;
@@ -80,15 +78,11 @@ public class ParserFromJSONObject {
 		if(commentObject.get("guest")!=null)
 			guest = parseGuestObject((JSONObject)commentObject.get("guest"));
         
-		Apartment apartment = new Apartment();
-		if(commentObject.get("apartment")!=null)
-			apartment = parseApartmentsObject((JSONObject)commentObject.get("apartment"));
+		int apartment = Integer.parseInt(jsonToStr(commentObject, "apartment"));   
         
 		String text = jsonToStr(commentObject, "text");
 		
 		double grade = Double.parseDouble(jsonToStr(commentObject, "grade")); 
-		
-		
 		
 		Comment comment = new Comment(id, guest, apartment, text, grade);
 		return comment;
@@ -104,22 +98,21 @@ public class ParserFromJSONObject {
 		Gender gender = Gender.valueOf(jsonToStr(guestObject, "gender"));
 		Roles role = Roles.valueOf(jsonToStr(guestObject, "role"));
 		
-		List<Apartment> rented = new ArrayList<Apartment>();
-		
+		List<Integer> rented = new ArrayList<Integer>();
 		JSONArray apartmentsList = (JSONArray) guestObject.get("rented");
 		if(apartmentsList!=null) {
 			Iterator<JSONObject> rentedIt = apartmentsList.iterator();
         	while (rentedIt.hasNext()) {
-        		rented.add(parseApartmentsObject((JSONObject) rentedIt.next()));
+        		rented.add(Integer.parseInt(jsonToStr(rentedIt.next(), "id")));
         	}
         }
         
-        List<Reservation> reservations=new ArrayList<Reservation>() ;	
+        List<Integer> reservations=new ArrayList<Integer>() ;	
 		JSONArray reservationsList = (JSONArray) guestObject.get("reservations");
 		if(reservationsList!=null) {
 			Iterator<JSONObject> reservationsIt = reservationsList.iterator();
         	while (reservationsIt.hasNext()) {
-        	reservations.add(parseReservationsObject((JSONObject) reservationsIt.next()));
+        	reservations.add(Integer.parseInt(jsonToStr(reservationsIt.next(), "id")));
         	}
 		}
         
@@ -157,15 +150,17 @@ public class ParserFromJSONObject {
 		if(apartmentObject.get("host")!=null)
 			host = parseHostObject((JSONObject)apartmentObject.get("host"));
 		
-		List<Comment> comments=new ArrayList<Comment>() ;	
-		JSONArray commentsList = (JSONArray) apartmentObject.get("comments");
 		
+
+		
+		List<Integer> comments=new ArrayList<Integer>() ;	
+		JSONArray commentsList = (JSONArray) apartmentObject.get("comments");
 		if(commentsList != null)
 			{
 			
 			Iterator<JSONObject> commentsIt = commentsList.iterator();
 	        while (commentsIt.hasNext()) {
-	        	comments.add(parseCommentsObject((JSONObject) commentsIt.next()));
+	        	comments.add(Integer.parseInt(jsonToStr(commentsIt.next(), "id")));
 	        	}
 			}
 
@@ -206,16 +201,15 @@ public class ParserFromJSONObject {
 	        	amenities.add(parseAmenitiesObject((JSONObject) amenitiesIt.next()));
 	        	}
 			}
-
 		
-		List<Reservation> reservations=new ArrayList<Reservation>() ;	
+		List<Integer> reservations=new ArrayList<Integer>() ;	
 		JSONArray reservationsList = (JSONArray) apartmentObject.get("reservations");
 		
 		if(reservationsList != null)
 		{
 			Iterator<JSONObject> reservationsIt = reservationsList.iterator();
 	        while (reservationsIt.hasNext()) {
-	        	reservations.add(parseReservationsObject((JSONObject) reservationsIt.next()));
+	        	reservations.add(Integer.parseInt(jsonToStr(reservationsIt.next(), "id"))); 
 	        }
 		}
 		
@@ -267,7 +261,7 @@ public class ParserFromJSONObject {
 		Gender gender = Gender.valueOf(jsonToStr(hostObject, "gender"));
 		Roles role = Roles.valueOf(jsonToStr(hostObject, "role"));
 		
-		List<Apartment> forRent = new ArrayList<Apartment>();
+		List<Integer> forRent = new ArrayList<Integer>();
 		JSONArray apartmentsList = (JSONArray) hostObject.get("forRent");
 		if(apartmentsList != null)
 		{
@@ -275,7 +269,7 @@ public class ParserFromJSONObject {
 	        while (rentedIt.hasNext()) {
 	        	JSONObject o=(JSONObject) rentedIt.next();
 	        	if(o != null)
-	        		forRent.add(parseApartmentsObject(o));
+	        		forRent.add(Integer.parseInt(jsonToStr(rentedIt.next(), "id")));
 	        }
 		}
        

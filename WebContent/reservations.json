@@ -1,41 +1,7 @@
 [
 	{
 		"id": 1085,
-		"rented": {
-		        "id": 1098,
-		        "type": "ROOM",
-		        "nbrRooms": 8,
-				"nbrGuests": 2,
-				"location": null,
-				"forRent":  [
-					{"date": "25-11-1998"},
-					{"date":"30-11-1998"}
-				],
-				"availability": [
-					{"date": "25-11-1998"}
-				],
-				"host": {
-							"username":"Ana",
-							"password":"aaaaaa",
-							"name":"Ana",
-							"surname":"Atanackovic",
-							"gender":"FEMALE",
-							"role":"GUEST",
-							"forRent":null
-							},
-				"comments": null,
-				"pictures": [
-					{"pic": "djkjhjf"}, 
-					{"pic":"adhhfdf"}
-				],
-				"pricePerNight": 590.99,
-				"forLogIn": "10:12",
-				"forLogOff": "15:12",
-				"status": "INACTIVE",
-				"amenities": null,
-				"reservations": null
-		      	}	
-		,
+		"rented": 1098,
 		"startReservation": "25-11-1998",
 		"overnightStay": 7,
 		"fullPrice": 400,
@@ -48,84 +14,14 @@
 			"gender": "FEMALE",
 			"role": "GUEST",
 			"rented": [
-				
-					{
-			        "id": 1098,
-			        "type": "ROOM",
-			        "nbrRooms": 8,
-					"nbrGuests": 2,
-					"location": null,
-					"forRent":  [
-						{"date": "25-11-1998"},
-						{"date":"30-11-1998"}
-					],
-					"availability": [
-						{"date": "25-11-1998"}
-					],
-					"host": {
-							"username":"Ana",
-							"password":"aaaaaa",
-							"name":"Ana",
-							"surname":"Atanackovic",
-							"gender":"FEMALE",
-							"role":"GUEST",
-							"forRent":null
-							},
-					"comments": null,
-					"pictures": [
-						{"pic": "djkjhjf"}, 
-						{"pic":"adhhfdf"}
-					],
-					"pricePerNight": 590.99,
-					"forLogIn": "10:12",
-					"forLogOff": "15:12",
-					"status": "INACTIVE",
-					"amenities": null,
-					"reservations": null
-		      		}
-		      		
-			],
+				{"id": 1098}],
 			"reservations": null
 		},
 		"status": "REJECTED"
 	},
 	{
 		"id": 1075,
-		"rented": {
-		        "id": 1095,
-		        "type": "ROOM",
-		        "nbrRooms": 8,
-				"nbrGuests": 2,
-				"location": null,
-				"forRent":  [
-					{"date": "25-11-1998"},
-					{"date":"30-11-1998"}
-				],
-				"availability": [
-					{"date": "25-11-1998"}
-				],
-				"host": {
-							"username":"Ana123",
-							"password":"aaaaaa",
-							"name":"Ana",
-							"surname":"Atanackovic",
-							"gender":"FEMALE",
-							"role":"GUEST",
-							"forRent":null
-							},
-				"comments": null,
-				"pictures": [
-					{"pic": "djkjhjf"}, 
-					{"pic":"adhhfdf"}
-				],
-				"pricePerNight": 590.99,
-				"forLogIn": "10:12",
-				"forLogOff": "15:12",
-				"status": "INACTIVE",
-				"amenities": null,
-				"reservations": null
-		      	}	
-		,
+		"rented": 1095,
 		"startReservation": "01-01-2021",
 		"overnightStay": 3,
 		"fullPrice": 150,
@@ -138,83 +34,15 @@
 			"gender": "FEMALE",
 			"role": "GUEST",
 			"rented": [
-				
 					{
-			        "id": 1095,
-			        "type": "ROOM",
-			        "nbrRooms": 8,
-					"nbrGuests": 2,
-					"location": null,
-					"forRent":  [
-						{"date": "25-11-1998"},
-						{"date":"30-11-1998"}
-					],
-					"availability": [
-						{"date": "25-11-1998"}
-					],
-					"host": {
-							"username":"Ana",
-							"password":"aaaaaa",
-							"name":"Ana",
-							"surname":"Atanackovic",
-							"gender":"FEMALE",
-							"role":"GUEST",
-							"forRent":null
-							},
-					"comments": null,
-					"pictures": [
-						{"pic": "djkjhjf"}, 
-						{"pic":"adhhfdf"}
-					],
-					"pricePerNight": 590.99,
-					"forLogIn": "10:12",
-					"forLogOff": "15:12",
-					"status": "INACTIVE",
-					"amenities": null,
-					"reservations": null
-		      		}
-		      		
-			],
+			        "id": 1095}],
 			"reservations": null
 		},
 		"status": "ACCEPTED"
-	},{
+	},
+	{
 		"id": 1095,
-		"rented": {
-		        "id": 1111,
-		        "type": "ROOM",
-		        "nbrRooms": 8,
-				"nbrGuests": 2,
-				"location": null,
-				"forRent":  [
-					{"date": "25-11-1998"},
-					{"date":"30-11-1998"}
-				],
-				"availability": [
-					{"date": "25-11-1998"}
-				],
-				"host": {
-							"username":"Ana",
-							"password":"aaaaaa",
-							"name":"Ana",
-							"surname":"Atanackovic",
-							"gender":"FEMALE",
-							"role":"GUEST",
-							"forRent":null
-							},
-				"comments": null,
-				"pictures": [
-					{"pic": "djkjhjf"}, 
-					{"pic":"adhhfdf"}
-				],
-				"pricePerNight": 590.99,
-				"forLogIn": "10:12",
-				"forLogOff": "15:12",
-				"status": "INACTIVE",
-				"amenities": null,
-				"reservations": null
-		      	}	
-		,
+		"rented": 1111,
 		"startReservation": "15-10-2020",
 		"overnightStay": 10,
 		"fullPrice": 550,
@@ -226,85 +54,15 @@
 			"surname": "Atanackovic",
 			"gender": "FEMALE",
 			"role": "GUEST",
-			"rented": [
-				
-					{
-			        "id": 1111,
-			        "type": "ROOM",
-			        "nbrRooms": 8,
-					"nbrGuests": 2,
-					"location": null,
-					"forRent":  [
-						{"date": "25-11-1998"},
-						{"date":"30-11-1998"}
-					],
-					"availability": [
-						{"date": "25-11-1998"}
-					],
-					"host": {
-							"username":"Ana",
-							"password":"aaaaaa",
-							"name":"Ana",
-							"surname":"Atanackovic",
-							"gender":"FEMALE",
-							"role":"GUEST",
-							"forRent":null
-							},
-					"comments": null,
-					"pictures": [
-						{"pic": "djkjhjf"}, 
-						{"pic":"adhhfdf"}
-					],
-					"pricePerNight": 590.99,
-					"forLogIn": "10:12",
-					"forLogOff": "15:12",
-					"status": "INACTIVE",
-					"amenities": null,
-					"reservations": null
-		      		}
-		      		
-			],
+			"rented": [{
+			        "id": 1111}],
 			"reservations": null
 		},
 		"status": "CANCELLED"
 	},
 	{
 		"id": 1122,
-		"rented": {
-		        "id": 1010,
-		        "type": "ROOM",
-		        "nbrRooms": 8,
-				"nbrGuests": 2,
-				"location": null,
-				"forRent":  [
-					{"date": "25-11-1998"},
-					{"date":"30-11-1998"}
-				],
-				"availability": [
-					{"date": "25-11-1998"}
-				],
-				"host": {
-							"username":"Ana",
-							"password":"aaaaaa",
-							"name":"Ana",
-							"surname":"Atanackovic",
-							"gender":"FEMALE",
-							"role":"GUEST",
-							"forRent":null
-							},
-				"comments": null,
-				"pictures": [
-					{"pic": "djkjhjf"}, 
-					{"pic":"adhhfdf"}
-				],
-				"pricePerNight": 590.99,
-				"forLogIn": "10:12",
-				"forLogOff": "15:12",
-				"status": "INACTIVE",
-				"amenities": null,
-				"reservations": null
-		      	}	
-		,
+		"rented": 1203,
 		"startReservation": "30-10-2020",
 		"overnightStay": 9,
 		"fullPrice": 500,
@@ -316,85 +74,15 @@
 			"surname": "Atanackovic",
 			"gender": "FEMALE",
 			"role": "GUEST",
-			"rented": [
-				
-					{
-			        "id": 1010,
-			        "type": "ROOM",
-			        "nbrRooms": 8,
-					"nbrGuests": 2,
-					"location": null,
-					"forRent":  [
-						{"date": "25-11-1998"},
-						{"date":"30-11-1998"}
-					],
-					"availability": [
-						{"date": "25-11-1998"}
-					],
-					"host": {
-							"username":"Ana",
-							"password":"aaaaaa",
-							"name":"Ana",
-							"surname":"Atanackovic",
-							"gender":"FEMALE",
-							"role":"GUEST",
-							"forRent":null
-							},
-					"comments": null,
-					"pictures": [
-						{"pic": "djkjhjf"}, 
-						{"pic":"adhhfdf"}
-					],
-					"pricePerNight": 590.99,
-					"forLogIn": "10:12",
-					"forLogOff": "15:12",
-					"status": "INACTIVE",
-					"amenities": null,
-					"reservations": null
-		      		}
-		      		
-			],
+			"rented": [{
+			        "id": 1010}],
 			"reservations": null
 		},
 		"status": "CREATED"
 	},
 	{
 		"id": 1112,
-		"rented": {
-		        "id": 1100,
-		        "type": "ROOM",
-		        "nbrRooms": 8,
-				"nbrGuests": 2,
-				"location": null,
-				"forRent":  [
-					{"date": "25-11-1998"},
-					{"date":"30-11-1998"}
-				],
-				"availability": [
-					{"date": "25-11-1998"}
-				],
-				"host": {
-							"username":"Ana",
-							"password":"aaaaaa",
-							"name":"Ana",
-							"surname":"Atanackovic",
-							"gender":"FEMALE",
-							"role":"GUEST",
-							"forRent":null
-							},
-				"comments": null,
-				"pictures": [
-					{"pic": "djkjhjf"}, 
-					{"pic":"adhhfdf"}
-				],
-				"pricePerNight": 590.99,
-				"forLogIn": "10:12",
-				"forLogOff": "15:12",
-				"status": "INACTIVE",
-				"amenities": null,
-				"reservations": null
-		      	}	
-		,
+		"rented": 1100,
 		"startReservation": "26-11-2020",
 		"overnightStay": 5,
 		"fullPrice": 300,
@@ -406,44 +94,8 @@
 			"surname": "Atanackovic",
 			"gender": "FEMALE",
 			"role": "GUEST",
-			"rented": [
-				
-					{
-			        "id": 1098,
-			        "type": "ROOM",
-			        "nbrRooms": 8,
-					"nbrGuests": 2,
-					"location": null,
-					"forRent":  [
-						{"date": "25-11-1998"},
-						{"date":"30-11-1998"}
-					],
-					"availability": [
-						{"date": "25-11-1998"}
-					],
-					"host": {
-							"username":"Ana",
-							"password":"aaaaaa",
-							"name":"Ana",
-							"surname":"Atanackovic",
-							"gender":"FEMALE",
-							"role":"GUEST",
-							"forRent":null
-							},
-					"comments": null,
-					"pictures": [
-						{"pic": "djkjhjf"}, 
-						{"pic":"adhhfdf"}
-					],
-					"pricePerNight": 590.99,
-					"forLogIn": "10:12",
-					"forLogOff": "15:12",
-					"status": "INACTIVE",
-					"amenities": null,
-					"reservations": null
-		      		}
-		      		
-			],
+			"rented": [{
+			        "id": 1098}],
 			"reservations": null
 		},
 		"status": "FINISHED"

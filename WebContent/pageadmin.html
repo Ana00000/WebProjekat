@@ -39,6 +39,11 @@
 	<br/>
 	<h3>Those are all apartments.</h3>
 	<br/>
+	<input type="text" id="myInputType" onkeyup="myFunctionType()" placeholder="Search for the type of the room.."  size="30">
+	<input type="text" id="myInputStatus" onkeyup="myFunctionStatus()" placeholder="Search for the status of apartment.."  size="30">
+	<br/>
+	<br/>
+	<br/>
 	<table id="ApartmentsTable">
 		<tr>
 			<th onclick="sortTableNumber(0)">Id</th>
@@ -46,6 +51,7 @@
 			<th onclick="sortTableNumber(2)">Number rooms</th>
 			<th onclick="sortTableNumber(3)">Number guests</th>
 			<th onclick="sortTableNumber(4)">Price per night</th>
+			<th onclick="sortTable(5)">Status</th>
 		</tr>
 	</table>
 	<br/>
@@ -65,10 +71,11 @@
 	<input type="text" id="myInputGuest" onkeyup="myFunctionGuest()" placeholder="Search for guest username..">
 	<br/>
 	<br/>
+	<br/>
 	<table id="ReservationsTable">
 	<tr>
 			<th onclick="sortTable(0)">Id</th>
-			<th onclick="sortTable(1)">Apartment</th>
+			<th onclick="sortTableNumber(1)">Apartment</th>
 			<th >Start of reservation</th>
 			<th onclick="sortTableNumber(3)">Overnight stay</th>
 			<th onclick="sortTableNumber(4)">Full price</th>

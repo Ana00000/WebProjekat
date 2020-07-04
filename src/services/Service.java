@@ -93,6 +93,7 @@ public class Service {
 		UserDAO users = (UserDAO) ctx.getAttribute("users");
 		User foundUser = (User) request.getSession().getAttribute("user");
 		User logUser = users.find(foundUser.getUsername());
+		request.getSession().setAttribute("user", foundUser);
 		return logUser;
 	}
 	

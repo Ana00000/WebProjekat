@@ -1,7 +1,7 @@
 function addRes(reservation){
 	let tr = $('<tr></tr>');
 	let id = $('<td>'+reservation.id+'</td>');
-	let rented = $('<td>'+reservation.rented.id+'</td>');
+	let rented = $('<td>'+reservation.rented+'</td>');
 	let startReservation = $('<td>'+reservation.startReservation+'</td>');
 	let overnightStay = $('<td>'+reservation.overnightStay+'</td>');
 	let fullPrice = $('<td>'+reservation.fullPrice+'</td>');

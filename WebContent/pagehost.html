@@ -41,8 +41,13 @@
 	<br/>
 	<h3>Those are inactive apartments.</h3>
 	<br/>
+	<input type="text" id="myInputTypeIn" onkeyup="myFunctionTypeIn()" placeholder="Search for the type of the room.."  size="30">
+	<input type="text" id="myInputStatusIn" onkeyup="myFunctionStatusIn()" placeholder="Search for the status of apartment.."  size="30">
+	<br/>
+	<br/>
+	<br/>
 	<table id="ApartmentsInactiveTable">
-	<tr><th>Id</th><th >Type</th><th>Number rooms</th><th>Number guests</th><th>Price per night</th></tr>
+	<tr><th>Id</th><th >Type</th><th>Number rooms</th><th>Number guests</th><th>Price per night</th><th>Status</th></tr>
 	</table>
 	<br/>
 	<br/>
@@ -52,6 +57,11 @@
 	<br/>
 	<h3>Those are active apartments.</h3>
 	<br/>
+	<input type="text" id="myInputType" onkeyup="myFunctionType()" placeholder="Search for the type of the room.."  size="30">
+	<input type="text" id="myInputStatus" onkeyup="myFunctionStatus()" placeholder="Search for the status of apartment.."  size="30">
+	<br/>
+	<br/>
+	<br/>
 	<table id="ApartmentsActiveTable">
 		<tr>
 			<th onclick="sortTableNumber(0)">Id</th>
@@ -59,6 +69,7 @@
 			<th onclick="sortTableNumber(2)">Number rooms</th>
 			<th onclick="sortTableNumber(3)">Number guests</th>
 			<th onclick="sortTableNumber(4)">Price per night</th>
+			<th onclick="sortTable(5)">Status</th>
 		</tr>
 	</table>
 	<br/>
