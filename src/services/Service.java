@@ -117,7 +117,7 @@ public class Service {
 		
 		if(!logUser.getRole().toString().equals("HOST"))
 		{
-			 return Response.status(403).entity("You are not a host!").build();
+			 return Response.status(403).entity("Access denied, you are not a host!").build();
 		}
 		
         return Response.status(200).build();
@@ -133,11 +133,28 @@ public class Service {
 		
 		if(!logUser.getRole().toString().equals("ADMIN"))
 		{
-			 return Response.status(403).entity("You are not an admin!").build();
+			 return Response.status(403).entity("Access denied, you are not an admin!").build();
 		}
 		
         return Response.status(200).build();
 	}
+	
+	@POST
+	@Path("/guestReservations")
+	@Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+	public Response guestReservations(User user, @Context HttpServletRequest request) {
+		UserDAO users = (UserDAO) ctx.getAttribute("users");
+		User logUser = users.find(user.getUsername());
+		
+		if(!logUser.getRole().toString().equals("GUEST"))
+		{
+			 return Response.status(403).entity("Access denied,you are not a guest!").build();
+		}
+		
+        return Response.status(200).build();
+	}
+	
 	
 	@PUT
 	@Path("/addAmenity")

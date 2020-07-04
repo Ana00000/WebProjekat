@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="guestReservations.js"></script>
+<style type="text/css">
+table{
+	width:90%;
+	}
+input{
+	size:50;
+}
+</style>
+	<title>Reservation page</title>
+	<link rel="stylesheet" type="text/css" href="basic.css">
+</head>
+<body>
+<div class="classy">
+	<input type="text" id="myInputId" onkeyup="myFunctionId()" placeholder="Search for id..">
+	<input type="text" id="myInputApartment" onkeyup="myFunctionApartment()" placeholder="Search for apartment id..">
+	<input type="text" id="myInputStartDate" onkeyup="myFunctionStartDate()" placeholder="Search for start of reservation..">
+	<input type="text" id="myInputOvernightStay" onkeyup="myFunctionOvernightStay()" placeholder="Search for number of overnight stay days..">
+	<input type="text" id="myInputFullPrice" onkeyup="myFunctionFullPrice()" placeholder="Search for full price..">
+	<input type="text" id="myInputWelcomeMessage" onkeyup="myFunctionWelcomeMessage()" placeholder="Search for welcome message..">
+	<input type="text" id="myInputStatus" onkeyup="myFunctionStatus()" placeholder="Search for status of reservation..">
+	<p/>
+	<label>Those are all your reservations.</label>
+	<p/>
+	<table id="ReservationsTable">
+	<tr>
+			<th onclick="sortTable(0)">Id</th>
+			<th onclick="sortTable(1)">Apartment</th>
+			<th >Start of reservation</th>
+			<th onclick="sortTableNumber(3)">Overnight stay</th>
+			<th onclick="sortTableNumber(4)">Full price</th>
+			<th onclick="sortTable(5)">Welcome message</th>
+			<th onclick="sortTable(6)">Status</th>
+	</tr>
+	</table>
+	<br/>
+	<br/>
+	<br/>
+	<a href="page.html">Go back</a>
+	<br/>
+	<br/>
+	<br/>
+</div>
+
+</body>
+</html>

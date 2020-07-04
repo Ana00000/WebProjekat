@@ -41,9 +41,40 @@ $(document).ready(function() {
 			contentType: 'application/json',
 			success: function() {
 				window.location.href= 'pagehost.html';
+			},
+			error:function(message){
+			if(message.status==403)
+				alert("Access denied, you are not a host!!");
 			}
 		});
 	});
+    
+    
+    
+    $('button#guestReservations').click(function() {
+    	
+    	let username=$('input[name=username]').val();
+		let password=$('input[name=password]').val();
+		let name=$('input[name=name]').val();
+		let surname=$('input[name=surname]').val();
+		let gender=$("select#gender option:checked" ).val();
+		let role=$("select#role option:checked" ).val();
+    	
+		$.post({
+			url: 'rest/guestReservations',
+			data: JSON.stringify({username: username, password: password, name: name, surname: surname, gender: gender, role: role}),
+			contentType: 'application/json',
+			success: function() {
+				window.location.href= 'guestReservations.html';
+			},
+			error:function(message){
+				if(message.status==403)
+					alert("Access denied,you are not a guest!");
+				}
+		});
+	});
+    
+    
     
     $('button#infoAdmin').click(function() {
     	
@@ -60,7 +91,11 @@ $(document).ready(function() {
 			contentType: 'application/json',
 			success: function() {
 				window.location.href= 'pageadmin.html';
-			}
+			},
+			error:function(message){
+				if(message.status==403)
+					alert("Access denied, you are not an admin!");
+				}
 		});
 	});
     

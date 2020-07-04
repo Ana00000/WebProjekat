@@ -8,8 +8,9 @@ function addAcc(account){
 	let location = $('<td>' + account.location.address.street + ', ' + account.location.address.place + ', ' + account.location.address.country + '</td>');
 	let forLogIn = $('<td>'+account.forLogIn+'</td>');
 	let forLogOff = $('<td>'+account.forLogOff+'</td>');
-
-		tr.append(id).append(type).append(nbrRooms).append(nbrGuests).append(pricePerNight).append(location).append(forLogIn).append(forLogOff);
+	let btnSelect =$('<td><button class="btnSelect">Make a reservation</button></td>');
+	
+		tr.append(id).append(type).append(nbrRooms).append(nbrGuests).append(pricePerNight).append(location).append(forLogIn).append(forLogOff).append(btnSelect);
 	$('#ApartmentsTable tbody').append(tr);
 }
 

@@ -25,6 +25,24 @@ function addApp(apartment){
 	$('#ApartmentsTable tbody').append(tr);
 }
 
+
+function addRes(reservation){
+	let tr = $('<tr></tr>');
+	let id = $('<td>'+reservation.id+'</td>');
+	let rented = $('<td>'+reservation.rented.id+'</td>');
+	let startReservation = $('<td>'+reservation.startReservation+'</td>');
+	let overnightStay = $('<td>'+reservation.overnightStay+'</td>');
+	let fullPrice = $('<td>'+reservation.fullPrice+'</td>');
+	let welcomeMessage = $('<td>'+reservation.welcomeMessage+'</td>');
+	let status = $('<td>'+reservation.status+'</td>');
+
+	tr.append(id).append(rented).append(startReservation).append(overnightStay).append(fullPrice).append(welcomeMessage).append(status);
+	$('#ReservationsTable tbody').append(tr);
+}
+
+
+var allReservation = new Array();
+
 var allApartments = new Array();
 
 var allQuestions = new Array();
@@ -50,6 +68,16 @@ $(document).ready(function() {
 		        	addApp(apartment);
 		        	});
 		        
+		    });
+	    
+	    $.getJSON("reservations.json", function (data) {
+	    	allReservation = data;
+		    })
+		    .done(function() {
+		        console.log( "JSON loaded!" );
+		        $.each( allReservation, function(i,reservation){
+			    	   addRes(reservation);
+		        	});
 		    });
 	    
 	    $("#UsersTable").on('click','.btnSelect',function(){
