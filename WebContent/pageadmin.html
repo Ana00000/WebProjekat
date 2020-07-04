@@ -17,9 +17,9 @@
 	<input type="text" id="myInputUsername" onkeyup="myFunctionUsername()" placeholder="Search for usernames..">
 	<input type="text" id="myInputRole" onkeyup="myFunctionRole()" placeholder="Search for roles..">
 	<input type="text" id="myInputGender" onkeyup="myFunctionGender()" placeholder="Search for genders..">
-	<p/>
-	<label>Those are all users.</label>
-	<p/>
+	<br/>
+	<h3>Those are all users.</h3>
+    <br/>
 	<table id="UsersTable">
 	<tr>
 			<th onclick="sortTableUsers(0)">UserName</th>
@@ -37,8 +37,8 @@
 	<br/>
 	<br/>
 	<br/>
-	<label>Those are all apartments.</label>
-	<p/>
+	<h3>Those are all apartments.</h3>
+	<br/>
 	<table id="ApartmentsTable">
 		<tr>
 			<th onclick="sortTableNumber(0)">Id</th>
@@ -51,12 +51,20 @@
 	<br/>
 	<br/>
 	<br/>
+	<div class="listClassy">
+	<h3>Those are the comments for the apartments</h3>
+	<ul class="listComments" id="listCommentsAdmin"></ul>
+	<br/>
+	</div>
 	<br/>
 	<br/>
 	<br/>
+	<h3>Those are all your reservations.</h3>
 	<br/>
-	<label>Those are all your reservations.</label>
-	<p/>
+	<br/>
+	<input type="text" id="myInputGuest" onkeyup="myFunctionGuest()" placeholder="Search for guest username..">
+	<br/>
+	<br/>
 	<table id="ReservationsTable">
 	<tr>
 			<th onclick="sortTable(0)">Id</th>
@@ -66,6 +74,7 @@
 			<th onclick="sortTableNumber(4)">Full price</th>
 			<th onclick="sortTable(5)">Welcome message</th>
 			<th onclick="sortTable(6)">Status</th>
+			<th onclick="sortTable(7)">Guest</th>
 	</tr>
 	</table>
 	<br/>

@@ -34,16 +34,24 @@ function addRes(reservation){
 	let overnightStay = $('<td>'+reservation.overnightStay+'</td>');
 	let fullPrice = $('<td>'+reservation.fullPrice+'</td>');
 	let welcomeMessage = $('<td>'+reservation.welcomeMessage+'</td>');
+	let guest = $('<td>'+reservation.guest.username+'</td>');
 	let status = $('<td>'+reservation.status+'</td>');
 
-	tr.append(id).append(rented).append(startReservation).append(overnightStay).append(fullPrice).append(welcomeMessage).append(status);
+	tr.append(id).append(rented).append(startReservation).append(overnightStay).append(fullPrice).append(welcomeMessage).append(status).append(guest);
 	$('#ReservationsTable tbody').append(tr);
 }
 
 
+function addComment(com, id){
+	let c = $('<li> Apartment with id ' + id + ' has comment: ' + com.text + '</li>');
+	$('#listCommentsAdmin').append(c);
+}
+
 var allReservation = new Array();
 
 var allApartments = new Array();
+
+var allComments = new Array();
 
 var allQuestions = new Array();
 
@@ -77,6 +85,19 @@ $(document).ready(function() {
 		        console.log( "JSON loaded!" );
 		        $.each( allReservation, function(i,reservation){
 			    	   addRes(reservation);
+		        	});
+		    });
+	    
+	    $.getJSON("apartments.json", function (data) {
+	    	allComments  = data;
+		    })
+		    .done(function() {
+		        console.log( "Another JSON loaded!" );
+		        $.each( allComments, function(i,apartment){
+			        	 $.each(apartment.comments, function(i, comment){
+			        			if (!(comment.text == null && comment.text === "")) 
+			        				addComment(comment, apartment.id);
+					        });
 		        	});
 		    });
 	    
@@ -274,6 +295,26 @@ function sortTableUsers(n) {
 	}
 	
 	
+	function myFunctionGuest() {
+		  var input, filter, table, tr, td, i, txtValue;
+		  input = document.getElementById("myInputGuest");
+		  filter = input.value.toUpperCase();
+		  table = document.getElementById("ReservationsTable");
+		  tr = table.getElementsByTagName("tr");
+
+		  for (i = 0; i < tr.length; i++) {
+		    td = tr[i].getElementsByTagName("td")[7];
+		    if (td) {
+		      txtValue = td.textContent || td.innerText;
+		      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+		        tr[i].style.display = "";
+		      } else {
+		        tr[i].style.display = "none";
+		      }
+		    }
+		  }
+		}
+
 
 
 

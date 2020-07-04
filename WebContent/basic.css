@@ -3,6 +3,7 @@
 			background-image: url('maldivi.jpg');
 			 background-attachment: fixed;
  			 background-size: cover;
+ 			 text-align: center;
 		}
 		.classy {
 			 text-align: center;
@@ -12,7 +13,7 @@
 		  margin-right: auto;
 		  border-spacing: 0;
 		  border: 1px solid #ddd;
-		  background-color: #e6ffff;
+		  background-color:lightBlue;
 		}
 		th, td {
 		  text-align: left;
@@ -28,7 +29,10 @@
   		   background-color:lightBlue;
   		   color:black;
 		  	padding:5px;
-		  	border: 1px solid darkBlue;
+		  	border: 2px solid gray;
+		  	width:200px;
+			
+		  	
 		}
 		
 	   table a:link,a:visited{
@@ -39,17 +43,28 @@
 		}
 		
 		.listClassy {
+			 margin-left: auto;
+		  	 margin-right: auto;
 			 text-align: center;
+			 display: inline-block;
+		 	background-color:lightBlue;
+		 	padding:10px;
+		 	border: 1px solid darkBlue;
 		}
 		
 		ul.listComments {
 			 list-style-type: none;
-			 background-color: #e6ffff;
+			background-color:lightBlue;
 			 display: inline-block;
-			 margin-left: auto;
-		  	 margin-right: auto;
 		  	 padding:5px;
 		  	 text-align: left;
 		}
 		
+		#guestReservations,#infoHost,#infoAdmin{
+			background-color:lightBlue;
+			width:200px;
+			padding:5px;
+			border: 2px solid gray;
+		}
+
 		
