@@ -1,163 +1,246 @@
 [
-      {
-        "id": 1098,
-        "type": "ROOM",
-        "nbrRooms": 8,
-		"nbrGuests": 2,
-		"location": {
-			"width":"56.15",
-			"height":"42.30",
-			"address":{
-				"street":"Petra Njegosa 15",
-				"place":"Novi Sad",
-				"postalCode":21000,
-				"country": "Serbia"
-			}
-		},
-		"forRent":  [
-			{"date": "25-11-1998"},
-			{"date":"30-11-1998"}
-		],
-		"availability": [
-			{"date": "25-11-1998"}
-		],
-		"host": {
-			"username":"Ana",
-			"password":"aaaaaa",
-			"name":"Ana",
-			"surname":"Atanackovic",
-			"gender":"FEMALE",
-			"role":"GUEST",
-			"forRent": [{"id": 1056},{"id": 1065}]
-			},
-		"comments": [{					 
-					"id": 1056},{"id": 1065}],
-		"pictures": [
-			{"pic": "djkjhjf"}, 
-			{"pic":"adhhfdf"}
-		],
-		"pricePerNight": 590.99,
-		"forLogIn": "10:12",
-		"forLogOff": "15:12",
-		"status": "ACTIVE",
-		"amenities": 
-		      [{
-		        "id": 1011,
-		        "name": "Chair"
-		      },
-		      {
-		        "id": 1012,
-		        "name": "Bed"
-		      }],
-		"reservations": [{
-				"id": 1085},
-				{"id": 1096}]
-      },
-      {
-        "id": 1100,
-        "type": "WHOLE_APARTMENT",
-        "nbrRooms": 9,
-		"nbrGuests": 5,
-		"location": {
-			"width":"56.15",
-			"height":"42.30",
-			"address":{
-				"street":"Bulevar Cara lazara 59",
-				"place":"Novi Sad",
-				"postalCode":21000,
-				"country": "Serbia"
-			}
-		},
-		"forRent":  [
-			{"date": "25-11-1998"},
-			{"date":"30-11-1998"}
-		],
-		"availability": [
-			{"date": "25-11-1998"}
-		],
-		"host": {
-			"username":"Ana",
-			"password":"aaaaaa",
-			"name":"Ana",
-			"surname":"Atanackovic",
-			"gender":"FEMALE",
-			"role":"GUEST",
-			"forRent":[{"id": 1056},{"id": 1065}]
-			},
-		"comments":  [{					 
-					"id": 1056},{"id": 1065}],
-		"pictures": [
-			{"pic": "djkjhjf"}, 
-			{"pic":"adhhfdf"}
-		],
-		"pricePerNight": 620.33,
-		"forLogIn": "10:12",
-		"forLogOff": "15:12",
-		"status": "ACTIVE",
-		"amenities": 
-		      [{
-		        "id": 1011,
-		        "name": "Chair"
-		      },
-		      {
-		        "id": 1012,
-		        "name": "Bed"
-		      }],
-		"reservations": [{
-				"id": 1085}]
-      },
-      {
-        "id": 1203,
-        "type": "ROOM",
-        "nbrRooms": 8,
-		"nbrGuests": 2,
-		"location": {
-			"width":"56.15",
-			"height":"42.30",
-			"address":{
-				"street":"Petra Njegosa 15",
-				"place":"Novi Sad",
-				"postalCode":21000,
-				"country": "Serbia"
-			}
-		},
-		"forRent":  [
-			{"date": "25-11-1998"},
-			{"date":"30-11-1998"}
-		],
-		"availability": [
-			{"date": "25-11-1998"}
-		],
-		"host": {
-			"username":"Ana",
-			"password":"aaaaaa",
-			"name":"Ana",
-			"surname":"Atanackovic",
-			"gender":"FEMALE",
-			"role":"GUEST",
-			"forRent":[{"id": 1056},{"id": 1065}]
-			},
-		"comments": [{
-				"id": 1085},
-				{"id": 1096}],
-		"pictures": [
-			{"pic": "djkjhjf"}, 
-			{"pic":"adhhfdf"}
-		],
-		"pricePerNight": 590.99,
-		"forLogIn": "10:12",
-		"forLogOff": "15:12",
-		"status": "INACTIVE",
-		"amenities": 
-				      [{
-		        "id": 1011,
-		        "name": "Chair"
-		      },
-		      {
-		        "id": 1012,
-		        "name": "Bed"
-		      }],
-		"reservations": [{
-				"id": 1085}]
+  {
+    "id": "1098",
+    "type": "ROOM",
+    "nbrRooms": 8,
+    "nbrGuests": 2,
+    "location": {
+      "width": "56.15",
+      "height": "42.30",
+      "address": {
+        "street": "Petra Njegosa 15",
+        "place": "Novi Sad",
+        "postalCode": 21000,
+        "country": "Serbia"
       }
+    },
+    "forRent": [
+      {
+        "date": "25-11-1998"
+      },
+      {
+        "date": "30-11-1998"
+      }
+    ],
+    "availability": [
+      {
+        "date": "25-11-1998"
+      }
+    ],
+    "host": {
+      "username": "Ana",
+      "password": "aaaaaa",
+      "name": "Ana",
+      "surname": "Atanackovic",
+      "gender": "FEMALE",
+      "role": "GUEST",
+      "forRent": [
+        {
+          "id": "1056"
+        },
+        {
+          "id": "1065"
+        }
+      ]
+    },
+    "pictures": [
+      {
+        "pic": "djkjhjf"
+      },
+      {
+        "pic": "adhhfdf"
+      }
+    ],
+      "comments": [
+      {
+        "id": "1056"
+      },
+      {
+        "id": "1065"
+      }
+    ],
+    
+    "pricePerNight": 590.99,
+    "forLogIn": "10:12",
+    "forLogOff": "15:12",
+    "status": "ACTIVE",
+    "amenities": [
+      {
+        "id": 1011,
+        "name": "Chair"
+      },
+      {
+        "id": 1012,
+        "name": "Bed"
+      }
+    ],
+    "reservations": [
+      {
+        "id": "1085"
+      },
+      {
+        "id": "1096"
+      }
+    ]
+  },
+  {
+    "id": "1100",
+    "type": "WHOLE_APARTMENT",
+    "nbrRooms": 9,
+    "nbrGuests": 5,
+    "location": {
+      "width": "56.15",
+      "height": "42.30",
+      "address": {
+        "street": "Bulevar Cara lazara 59",
+        "place": "Novi Sad",
+        "postalCode": 21000,
+        "country": "Serbia"
+      }
+    },
+    "forRent": [
+      {
+        "date": "25-11-1998"
+      },
+      {
+        "date": "30-11-1998"
+      }
+    ],
+    "availability": [
+      {
+        "date": "25-11-1998"
+      }
+    ],
+    "host": {
+      "username": "Ana",
+      "password": "aaaaaa",
+      "name": "Ana",
+      "surname": "Atanackovic",
+      "gender": "FEMALE",
+      "role": "GUEST",
+      "forRent": [
+        {
+          "id": "1056"
+        },
+        {
+          "id": "1065"
+        }
+      ]
+    },
+    "pictures": [
+      {
+        "pic": "djkjhjf"
+      },
+      {
+        "pic": "adhhfdf"
+      }
+    ],
+    "comments": [
+      {
+        "id": "1056"
+      },
+      {
+        "id": "1065"
+      }
+    ],
+    "pricePerNight": 620.33,
+    "forLogIn": "10:12",
+    "forLogOff": "15:12",
+    "status": "ACTIVE",
+    "amenities": [
+      {
+        "id": 1011,
+        "name": "Chair"
+      },
+      {
+        "id": 1012,
+        "name": "Bed"
+      }
+    ],
+    "reservations": [
+      {
+        "id": "1085"
+      }
+    ]
+  },
+  {
+    "id": "1203",
+    "type": "ROOM",
+    "nbrRooms": 8,
+    "nbrGuests": 2,
+    "location": {
+      "width": "56.15",
+      "height": "42.30",
+      "address": {
+        "street": "Petra Njegosa 15",
+        "place": "Novi Sad",
+        "postalCode": 21000,
+        "country": "Serbia"
+      }
+    },
+    "forRent": [
+      {
+        "date": "25-11-1998"
+      },
+      {
+        "date": "30-11-1998"
+      }
+    ],
+    "availability": [
+      {
+        "date": "25-11-1998"
+      }
+    ],
+    "host": {
+      "username": "Ana",
+      "password": "aaaaaa",
+      "name": "Ana",
+      "surname": "Atanackovic",
+      "gender": "FEMALE",
+      "role": "GUEST",
+      "forRent": [
+        {
+          "id": "1085"
+        },
+        {
+          "id": "1065"
+        }
+      ]
+    },
+    "pictures": [
+      {
+        "pic": "djkjhjf"
+      },
+      {
+        "pic": "adhhfdf"
+      }
+    ],
+    "comments": [
+      {
+        "id": "1056"
+      },
+      {
+        "id": "1065"
+      }
+    ],
+    "pricePerNight": 590.99,
+    "forLogIn": "10:12",
+    "forLogOff": "15:12",
+    "status": "INACTIVE",
+    "amenities": [
+      {
+        "id": 1011,
+        "name": "Chair"
+      },
+      {
+        "id": 1012,
+        "name": "Bed"
+      }
+    ],
+    "reservations": [
+      {
+        "id": "1085"
+      }
+    ]
+  }
 ]

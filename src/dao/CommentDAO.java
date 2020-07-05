@@ -17,7 +17,7 @@ import beans.Comment;
 import beans.Guest;
 
 public class CommentDAO {
-	private Map<Integer, Comment> comments = new HashMap<Integer, Comment>();
+	private Map<String, Comment> comments = new HashMap<String, Comment>();
 	private String contPath;
 	private ParserFromJSONObject parserFromJSON= new ParserFromJSONObject();
 	private ParserToJSONObject parserToJSON= new ParserToJSONObject();
@@ -41,7 +41,7 @@ public class CommentDAO {
 		return null;
 	}
 	
-	public void add(int id, Guest guest, int apartment, String text, double grade) {
+	public void add(String id, Guest guest, String apartment, String text, double grade) {
 		Comment c = comments.get(id);
 		if(c == null) {
 			c = new Comment(id, guest, apartment, text, grade);

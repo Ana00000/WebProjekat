@@ -5,63 +5,84 @@ import java.util.Date;
 import java.util.List;
 
 public class Apartment {
-	private int id;
-	private  Type type; 
+	private String id;
+	private Type type; 
 	private int nbrRooms;
 	private int nbrGuests;
 	private Location location;
 	private List<Date> forRent = new ArrayList<Date>();
 	private List<Date> availability = new ArrayList<Date>();
 	private Host host;
-	private List<Integer> comments;
 	private List<String> pictures = new ArrayList<String>();
+	private List<String> comments = new ArrayList<String>();
 	private double pricePerNight;
 	private Date forLogIn;
 	private Date forLogOff;
 	private StatusApartment status;
 	private List<Amenity> amenities = new ArrayList<Amenity>();
-	private List<Integer> reservations = new ArrayList<Integer>();
+	private List<String> reservations = new ArrayList<String>();
 	
 	public Apartment() {
 		super();
-		this.id=0;
+		this.id="";
 		this.type = Type.ROOM;
 		this.nbrRooms = 0;
 		this.nbrGuests = 0;
 		this.location = new Location();
 		this.host = new Host();
-		this.comments = new ArrayList<Integer>();
+		this.pictures= new ArrayList<String>();
+		this.comments = new ArrayList<String>();
 		this.pricePerNight = 0;
 		this.forLogIn = Date.from(Instant.now());
 		this.forLogOff = Date.from(Instant.now());
 		this.status = StatusApartment.INACTIVE ;
 	}
 	
-	public Apartment(int id, Type type, int nbrRooms, int nbrGuests, Location location, List<Date> forRent,
-			List<Date> availability, Host host, List<Integer> comment, List<String> pictures, double pricePerNight,
-			Date forLogIn, Date forLogOff, StatusApartment status, List<Amenity> amenities,
-			List<Integer> reservations) {
+	
+	public Apartment(String id, Type type, int nbrRooms, int nbrGuests,double pricePerNight,StatusApartment status) {
 		super();
 		this.id = id;
 		this.type = type;
 		this.nbrRooms = nbrRooms;
 		this.nbrGuests = nbrGuests;
-		this.location = location;
-		this.forRent = forRent;
-		this.availability = availability;
-		this.host = host;
-		this.comments = comment;
-		this.pictures = pictures;
 		this.pricePerNight = pricePerNight;
-		this.forLogIn = forLogIn;
-		this.forLogOff = forLogOff;
 		this.status = status;
-		this.amenities = amenities;
-		this.reservations = reservations;
+		this.location = new Location();
+		this.host = new Host();
+		this.pictures= new ArrayList<String>();
+		this.comments = new ArrayList<String>();
+		this.pricePerNight = 0;
+		this.forLogIn = Date.from(Instant.now());
+		this.forLogOff = Date.from(Instant.now());
+
 	}
 	
 	
-	public Apartment(int id, Type type, int nbrRooms, int nbrGuests, Location location,
+	public Apartment(String id, Type type, int nbrRooms, int nbrGuests, Location location, List<Date> forRent,
+			List<Date> availability, Host host, List<String> pictures , List<String> comments, double pricePerNight,
+			Date forLogIn, Date forLogOff, StatusApartment status, List<Amenity> amenities,
+			List<String> reservations) {
+			super();
+			this.id = id;
+			this.type = type;
+			this.nbrRooms = nbrRooms;
+			this.nbrGuests = nbrGuests;
+			this.location = location;
+			this.forRent = forRent;
+			this.availability = availability;
+			this.host = host;
+			this.pictures = pictures;
+			this.comments = comments;
+			this.pricePerNight = pricePerNight;
+			this.forLogIn = forLogIn;
+			this.forLogOff = forLogOff;
+			this.status = status;
+			this.amenities = amenities;
+			this.reservations = reservations;
+	}
+	
+	
+	public Apartment(String id, Type type, int nbrRooms, int nbrGuests, Location location,
 			 Host host,  double pricePerNight,
 			Date forLogIn, Date forLogOff, StatusApartment status
 			) {
@@ -74,30 +95,30 @@ public class Apartment {
 		this.forRent = new ArrayList<Date>();
 		this.availability =  new ArrayList<Date>();
 		this.host = host;
-		this.comments =  new ArrayList<Integer>();
 		this.pictures = new ArrayList<String>();
+		this.comments =  new ArrayList<String>();
 		this.pricePerNight = pricePerNight;
 		this.forLogIn = forLogIn;
 		this.forLogOff = forLogOff;
 		this.status = status;
 		this.amenities = new ArrayList<Amenity>();
-		this.reservations =  new ArrayList<Integer>();
+		this.reservations =  new ArrayList<String>();
 	}
 	
 	@Override
 	public String toString() {
 		return "Apartment [id=" + id + ", type=" + type + ", nbrRooms=" + nbrRooms + ", nbrGuests=" + nbrGuests
 				+ ", location=" + location + ", forRent=" + forRent + ", availability=" + availability + ", host="
-				+ host + ", comment=" + comments + ", pictures=" + pictures + ", pricePerNight=" + pricePerNight
+				+ host + ", comment=" + comments+   ", pictures=" + pictures + ", pricePerNight=" + pricePerNight
 				+ ", forLogIn=" + forLogIn + ", forLogOff=" + forLogOff + ", status=" + status + ", amenities="
 				+ amenities + ", reservations=" + reservations + "]";
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 	
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -157,12 +178,12 @@ public class Apartment {
 		this.host = host;
 	}
 	
-	public List<Integer> getComment() {
+	public List<String> getComment() {
 		return comments;
 	}
 	
-	public void setComment(List<Integer> comment) {
-		this.comments = comment;
+	public void setComment(List<String> comments) {
+		this.comments = comments;
 	}
 	
 	public List<String> getPictures() {
@@ -213,11 +234,11 @@ public class Apartment {
 		this.amenities = amenities;
 	}
 	
-	public List<Integer> getReservations() {
+	public List<String> getReservations() {
 		return reservations;
 	}
 	
-	public void setReservations(List<Integer> reservations) {
+	public void setReservations(List<String> reservations) {
 		this.reservations = reservations;
 	}
 }

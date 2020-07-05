@@ -20,7 +20,7 @@ import beans.StatusReservation;
 
 public class ReservationDAO {
 
-	private Map<Integer, Reservation> reservations = new HashMap<Integer, Reservation>();
+	private Map<String, Reservation> reservations = new HashMap<String, Reservation>();
 	private String contPath;
 	private ParserFromJSONObject parserFromJSON= new ParserFromJSONObject();
 	private ParserToJSONObject parserToJSON= new ParserToJSONObject();
@@ -45,7 +45,7 @@ public class ReservationDAO {
 		return null;
 	}
 	
-	public void add(int id, int rented, Date startReservation, int overnightStay, int fullPrice, String welcomeMessage,
+	public void add(String id, String rented, Date startReservation, int overnightStay, int fullPrice, String welcomeMessage,
 			Guest guest, StatusReservation status) {
 		Reservation r = reservations.get(id);
 		if(r == null) {

@@ -27,7 +27,7 @@ var comments = new Array();
 function getComments(id) {
 	oneComment = "no comment";
 	$.each(comments, function(i,comment){
-	   	if(comment.id == id)
+	   	if(comment.id.localeCompare(id))
 	   		oneComment = comment.text;
    	});
 }

@@ -1,7 +1,7 @@
 [
 	{
-		"id": 1085,
-		"rented": 1098,
+		"id": "1085",
+		"rented": "1098",
 		"startReservation": "25-11-1998",
 		"overnightStay": 7,
 		"fullPrice": 400,
@@ -14,14 +14,15 @@
 			"gender": "FEMALE",
 			"role": "GUEST",
 			"rented": [
-				{"id": 1098}],
-			"reservations": null
+				{"id": "1098"}],
+			"reservations": [
+				{"id": "1085"}]
 		},
 		"status": "REJECTED"
 	},
 	{
-		"id": 1075,
-		"rented": 1095,
+		"id": "1075",
+		"rented":"1095",
 		"startReservation": "01-01-2021",
 		"overnightStay": 3,
 		"fullPrice": 150,
@@ -35,14 +36,16 @@
 			"role": "GUEST",
 			"rented": [
 					{
-			        "id": 1095}],
-			"reservations": null
+			        "id": "1095"}],
+			"reservations": [
+					{
+			        "id": "1075"}]
 		},
 		"status": "ACCEPTED"
 	},
 	{
-		"id": 1095,
-		"rented": 1111,
+		"id": "1095",
+		"rented": "1111",
 		"startReservation": "15-10-2020",
 		"overnightStay": 10,
 		"fullPrice": 550,
@@ -55,14 +58,14 @@
 			"gender": "FEMALE",
 			"role": "GUEST",
 			"rented": [{
-			        "id": 1111}],
-			"reservations": null
+			        "id": "1111"}],
+			"reservations":[{ "id":"1095"}]
 		},
 		"status": "CANCELLED"
 	},
 	{
-		"id": 1122,
-		"rented": 1203,
+		"id": "1122",
+		"rented": "1203",
 		"startReservation": "30-10-2020",
 		"overnightStay": 9,
 		"fullPrice": 500,
@@ -75,14 +78,14 @@
 			"gender": "FEMALE",
 			"role": "GUEST",
 			"rented": [{
-			        "id": 1010}],
-			"reservations": null
+			        "id": "1010"}],
+			"reservations": [{ "id":"1122"}]
 		},
 		"status": "CREATED"
 	},
 	{
-		"id": 1112,
-		"rented": 1100,
+		"id": "1112",
+		"rented":"1100",
 		"startReservation": "26-11-2020",
 		"overnightStay": 5,
 		"fullPrice": 300,
@@ -95,8 +98,8 @@
 			"gender": "FEMALE",
 			"role": "GUEST",
 			"rented": [{
-			        "id": 1098}],
-			"reservations": null
+			        "id": "1098"}],
+			"reservations":  [{ "id":"1112"}]
 		},
 		"status": "FINISHED"
 	}

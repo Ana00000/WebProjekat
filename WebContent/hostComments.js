@@ -13,7 +13,7 @@ function getComments(id) {
 	oneComment = "no comment";
 	oneCommentId = 0;
 	$.each(comments, function(i,comment){
-	   	if(comment.id == id){
+	   	if(comment.id.localeCompare(id)){
 	   		oneComment = comment.text;
 	   		oneCommentId = comment.id;
 	   	}

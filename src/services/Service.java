@@ -16,8 +16,10 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import beans.Amenity;
+import beans.Apartment;
 import beans.User;
 import dao.AmenityDAO;
+import dao.ApartmentDAO;
 import dao.UserDAO;
 
 @Path("")
@@ -40,6 +42,12 @@ public class Service {
 			String contextPath = ctx.getRealPath("");
 			AmenityDAO amenities = new AmenityDAO(contextPath);
 			ctx.setAttribute("amenities", amenities);
+			System.out.println(amenities);
+		}
+		else if(ctx.getAttribute("apartments") == null) {
+			String contextPath = ctx.getRealPath("");
+			ApartmentDAO apartments = new ApartmentDAO(contextPath);
+			ctx.setAttribute("apartments", apartments);
 		}
 	}
 
@@ -192,6 +200,51 @@ public class Service {
 	public Response deleteAmenity(Amenity amenity, @Context HttpServletRequest request) {
 		AmenityDAO amenities = (AmenityDAO) ctx.getAttribute("amenities");
 		amenities.remove(amenity);
+		return Response.status(200).build();
+	}
+	
+	
+
+	@PUT
+	@Path("/selectedApartment")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response selectedApartment(String id, @Context HttpServletRequest request) {
+		ApartmentDAO apartments = (ApartmentDAO) ctx.getAttribute("apartments");
+		Apartment a = apartments.find("1098");
+
+		if(a == null) 
+			return Response.status(400).entity("Apartment with this id doesn't exists!").build();
+		
+		request.getSession().setAttribute("apartment", a);
+		return Response.status(200).build();
+	}
+	
+	
+	
+	@GET
+	@Path("/currentApartment")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Apartment currentApartment(@Context HttpServletRequest request) {
+		ApartmentDAO apartments = (ApartmentDAO) ctx.getAttribute("apartments");
+		Apartment apartmentFound = (Apartment) request.getSession().getAttribute("apartment");
+		System.out.println(apartmentFound.getId());
+		return apartmentFound;
+	}
+	
+	
+	
+	
+	@PUT
+	@Path("/setApartment")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response setApartment(Apartment apartment, @Context HttpServletRequest request) {
+		ApartmentDAO apartments = (ApartmentDAO) ctx.getAttribute("apartments");
+		
+		Apartment a = apartments.find(apartment.getId());
+		if(a == null) 
+			return Response.status(400).entity("Id shouldn't be changed!").build();
+		
+		apartments.set(apartment);
 		return Response.status(200).build();
 	}
 }

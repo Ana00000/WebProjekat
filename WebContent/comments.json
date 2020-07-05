@@ -1,42 +1,40 @@
 [
       {
-        "id": 1056,
+        "id": "1056",
         "guest": {
-			"username": "Ana123",
-			"password": "aaaaaa",
-			"name": "Ana",
-			"surname": "Atanackovic",
-			"gender": "FEMALE",
-			"role": "GUEST",
-			"rented": [{
-				        "id": 1098}],
-			"reservations":[{
-				"id": 1085}]
-		},
-		"apartment": {
-		        "id": 1098},
+            "username": "Ana123",
+            "password": "aaaaaa",
+            "name": "Ana",
+            "surname": "Atanackovic",
+            "gender": "FEMALE",
+            "role": "GUEST",
+            "rented": [{
+                        "id": "1098"}],
+            "reservations":[{
+                "id": "1085"}]
+        },
+        "apartment": {
+                "id": "1098"},
         "text": "good stuff",
         "grade": 5.0
       },
             {
-        "id": 1065,
+        "id": "1065",
         "guest": {
-			"username": "Ana123",
-			"password": "aaaaaa",
-			"name": "Ana",
-			"surname": "Atanackovic",
-			"gender": "FEMALE",
-			"role": "GUEST",
-			"rented": [{
-				        "id": 1098}],
-			"reservations":[{
-				"id": 1085}]
-		},
-		"apartment": {
-		        "id": 1098},
+            "username": "Ana123",
+            "password": "aaaaaa",
+            "name": "Ana",
+            "surname": "Atanackovic",
+            "gender": "FEMALE",
+            "role": "GUEST",
+            "rented": [{
+                        "id": "1098"}],
+            "reservations":[{
+                "id": "1085"}]
+        },
+        "apartment": {
+                "id": "1098"},
         "text": "good stuff",
         "grade": 5.0
       }
 ]
-
- 

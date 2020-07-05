@@ -20,7 +20,7 @@ function addApp(apartment){
 	let nbrGuests = $('<td>'+apartment.nbrGuests+'</td>');
 	let pricePerNight = $('<td>'+apartment.pricePerNight+'</td>');
 	let status = $('<td>'+apartment.status+'</td>');
-	let btnSelect =$('<td><button class="btnSelectApp">Edit</button>   <button class="btnSelectApp">Delete</button></td>');
+	let btnSelect =$('<td><button id="btnSelectChange">Edit</button>   <button id="btnSelectDelete">Delete</button></td>');
 
 	tr.append(id).append(type).append(nbrRooms).append(nbrGuests).append(pricePerNight).append(status).append(btnSelect);
 	$('#ApartmentsTable tbody').append(tr);
@@ -63,12 +63,13 @@ var oneComment;
 function getComments(id) {
 	oneComment = "no comment";
 	$.each(comments, function(i,comment){
-	   	if(comment.id == id)
+	   	if(comment.id.localeCompare(id))
 	   		oneComment = comment.text;
    	});
 }
 
 $(document).ready(function() {
+	
 	    $.getJSON("users.json", function (data) {
 	        allQuestions = data;
 		    })
@@ -127,12 +128,35 @@ $(document).ready(function() {
 	         alert(col1);
 	    });
 	    
-	    $("#ApartmentsTable").on('click','.btnSelectApp',function(){
+	    
+	    $("#ApartmentsTable").on('click','#btnSelectDelete',function(){
 	         var currentRow=$(this).closest("tr"); 
 	         
 	         var col1=currentRow.find("td:eq(0)").text();
 	         
 	         alert(col1);
+	    });
+	    
+	    
+	    $("#ApartmentsTable").on('click','#btnSelectChange',function(){
+	         var currentRow=$(this).closest("tr"); 
+	         
+	         var idApp=currentRow.find("td:eq(0)").text();
+	         
+	       $.ajax({
+ 		    url: 'rest/selectedApartment',
+ 		    data: JSON.stringify(idApp),
+			contentType: 'application/json',
+			type:'PUT',
+ 		    success: function() {
+ 		    	console.log("App set");
+ 		    	window.location.href= 'apartmentChange.html';
+ 		    },
+         	error: function(){
+         		console.log("App not set");
+         	} 		
+	 		});
+
 	    });
 });
 

@@ -22,7 +22,7 @@ var oneApartment;
 function getApartments(id) {
 	oneApartment = "";
 	$.each( allApartments, function(i,apartment){
-	   	if(apartment.id == id)
+	   	if(apartment.id.localeCompare(id))
 	   		oneApartment = apartment.host.username;
    	});
 }

@@ -4,8 +4,8 @@ import java.time.Instant;
 import java.util.Date;
 
 public class Reservation {
-	private int id;
-	private int rented;
+	private String id;
+	private String rented;
 	private Date startReservation;
 	private int overnightStay;
 	private int fullPrice;
@@ -15,8 +15,8 @@ public class Reservation {
 	
 	public Reservation() {
 		super();
-		this.id = 0;
-		this.rented = 0;
+		this.id = "";
+		this.rented = "";
 		this.startReservation = Date.from(Instant.now());
 		this.overnightStay = 15;
 		this.fullPrice = 150;
@@ -25,7 +25,7 @@ public class Reservation {
 		this.status = StatusReservation.CREATED;
 	}
 	
-	public Reservation(int id, int rented, Date startReservation, int overnightStay, int fullPrice, String welcomeMessage,
+	public Reservation(String id, String rented, Date startReservation, int overnightStay, int fullPrice, String welcomeMessage,
 			Guest guest, StatusReservation status) {
 		super();
 		this.id = id;
@@ -45,19 +45,19 @@ public class Reservation {
 				+ ", guest=" + guest + ", status=" + status + "]";
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
-	public int getRented() {
+	public String getRented() {
 		return rented;
 	}
 
-	public void setRented(int rented) {
+	public void setRented(String rented) {
 		this.rented = rented;
 	}
 

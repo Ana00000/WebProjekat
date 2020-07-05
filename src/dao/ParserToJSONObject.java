@@ -1,5 +1,7 @@
 package dao;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -12,6 +14,10 @@ import beans.Reservation;
 import beans.User;
 
 public class ParserToJSONObject {
+	
+	
+	DateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+	SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
 	
 	@SuppressWarnings("unchecked")
 	public JSONObject userToJSONObject(User u) {
@@ -54,6 +60,7 @@ public class ParserToJSONObject {
 		address.put("street", a.getLocation().getAddress().getStreet());
 		address.put("place", a.getLocation().getAddress().getPlace());
 		address.put("postalCode", a.getLocation().getAddress().getPostalCode());
+		address.put("country", a.getLocation().getAddress().getCountry());
 		location.put("address", address);
 			
 		apartment.put("location", location);
@@ -62,7 +69,7 @@ public class ParserToJSONObject {
 		for(Date date : a.getForRent())
 			{
 				JSONObject object=new JSONObject();
-				object.put("date", date);
+				object.put("date", format.format(date));
 				forRent.add(object);
 			}
 		
@@ -72,34 +79,37 @@ public class ParserToJSONObject {
 			for(Date date : a.getAvailability() )
 				{
 					JSONObject object=new JSONObject();
-					object.put("date", date);
+					object.put("date", format.format(date));
 					availability.add(object);
 				}
 		apartment.put("availability", availability);
 		apartment.put("host", hostToJSONObject(a.getHost()));	
 		
 		
-		JSONArray comments=new JSONArray();
-		for(Integer comment : a.getComment())
-		{
-			JSONObject object=new JSONObject();
-			object.put("pic", comment);
-			comments.add(object);
-		}	
-		apartment.put("comment", comments);
-		
-		
 		JSONArray pictures=new JSONArray();
-			for(String picture : a.getPictures())
-				{
-					JSONObject object=new JSONObject();
-					object.put("pic", picture);
-					pictures.add(object);
-				}	
+		for(String picture : a.getPictures())
+			{
+				JSONObject object=new JSONObject();
+				object.put("pic", picture);
+				pictures.add(object);
+			}	
+		
+		apartment.put("pictures", pictures);
+		
+		
+		JSONArray comments=new JSONArray();
+		for(String com : a.getComment())
+			{
+				JSONObject object=new JSONObject();
+				object.put("id", com);
+				comments.add(object);
+			}	
+		
+		apartment.put("comments", comments);
 		
 		apartment.put("pricePerNight", a.getPricePerNight());
-		apartment.put("forLogIn", a.getForLogIn());
-		apartment.put("forLogOff", a.getForLogOff());
+		apartment.put("forLogIn", simpleDateFormat.format(a.getForLogIn()));
+		apartment.put("forLogOff", simpleDateFormat.format(a.getForLogOff()));
 		apartment.put("status", a.getStatus().toString());
 		
 		JSONArray amenities=new JSONArray();
@@ -110,7 +120,7 @@ public class ParserToJSONObject {
 		
 
 		JSONArray reservations=new JSONArray();
-		for(Integer reservation : a.getReservations())
+		for(String reservation : a.getReservations())
 		{
 			JSONObject object=new JSONObject();
 			object.put("id", reservation);
@@ -145,7 +155,7 @@ public class ParserToJSONObject {
 		JSONObject reservation = new JSONObject();
 		reservation.put("id", r.getId());
 		reservation.put("rented", r.getRented());
-		reservation.put("startReservation",r.getStartReservation().toString());
+		reservation.put("startReservation", format.format(r.getStartReservation().toString()));
 		reservation.put("overnightStay", r.getOvernightStay());
 		reservation.put("fullPrice", r.getFullPrice());
 		reservation.put("welcomeMessage", r.getWelcomeMessage());
@@ -168,7 +178,7 @@ public class ParserToJSONObject {
         guest.put("role", g.getRole().toString());
         
 		JSONArray apartments=new JSONArray();
-		for(Integer	apartment: g.getRented())
+		for(String	apartment: g.getRented())
 		{
 			JSONObject object=new JSONObject();
 			object.put("id", apartment);
@@ -177,7 +187,7 @@ public class ParserToJSONObject {
 		guest.put("rented", apartments);
 		
 		JSONArray reservations=new JSONArray();
-		for(Integer reservation : g.getReservations())
+		for(String reservation : g.getReservations())
 		{
 			JSONObject object=new JSONObject();
 			object.put("id", reservation);
@@ -201,7 +211,7 @@ public class ParserToJSONObject {
         host.put("role", h.getRole().toString());
         
 		JSONArray apartments=new JSONArray();
-		for(Integer	apartment: h.getForRent())
+		for(String	apartment: h.getForRent())
 		{
 			JSONObject object=new JSONObject();
 			object.put("id", apartment);
