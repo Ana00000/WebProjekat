@@ -12,6 +12,7 @@ public class Reservation {
 	private String welcomeMessage;
 	private Guest guest;
 	private StatusReservation status;
+	private Boolean alive;
 	
 	public Reservation() {
 		super();
@@ -23,6 +24,7 @@ public class Reservation {
 		this.welcomeMessage = "";
 		this.guest = new Guest();
 		this.status = StatusReservation.CREATED;
+		this.alive = true;
 	}
 	
 	public Reservation(String id, String rented, Date startReservation, int overnightStay, int fullPrice, String welcomeMessage,
@@ -36,13 +38,28 @@ public class Reservation {
 		this.welcomeMessage = welcomeMessage;
 		this.guest = guest;
 		this.status = status;
+		this.alive = true;
+	}
+	
+	public Reservation(String id, String rented, Date startReservation, int overnightStay, int fullPrice, String welcomeMessage,
+			Guest guest, StatusReservation status, Boolean alive) {
+		super();
+		this.id = id;
+		this.rented = rented;
+		this.startReservation = startReservation;
+		this.overnightStay = overnightStay;
+		this.fullPrice = fullPrice;
+		this.welcomeMessage = welcomeMessage;
+		this.guest = guest;
+		this.status = status;
+		this.alive = alive;
 	}
 	
 	@Override
 	public String toString() {
 		return "Reservation [id=" + id + ", rented=" + rented + ", startReservation=" + startReservation
 				+ ", overnightStay=" + overnightStay + ", fullPrice=" + fullPrice + ", welcomeMessage=" + welcomeMessage
-				+ ", guest=" + guest + ", status=" + status + "]";
+				+ ", guest=" + guest + ", status=" + status + ", alive=" + alive + "]";
 	}
 
 	public String getId() {
@@ -107,5 +124,13 @@ public class Reservation {
 
 	public void setStatus(StatusReservation status) {
 		this.status = status;
+	}
+
+	public Boolean getAlive() {
+		return alive;
+	}
+
+	public void setAlive(Boolean alive) {
+		this.alive = alive;
 	}
 }

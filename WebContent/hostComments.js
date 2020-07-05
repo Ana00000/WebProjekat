@@ -44,7 +44,7 @@ $(document).ready(function() {
 		.done(function() {
 		    console.log( "Another JSON loaded!" );
 		    $.each( allComments, function(b,apartment){
-	        	if(!apartment.host.username.localeCompare(host.username)){
+	        	if(!apartment.host.username.localeCompare(host.username) && ! apartment.alive.localeCompare("true")){
 		        	 $.each(apartment.comments, function(a, comment){
 		        		 	getComments(comment.id);
 		        			if (oneComment.localeCompare("no comment")) 

@@ -34,13 +34,14 @@ function getComments(id) {
 
 $(document).ready(function() {
 	    $.getJSON("apartments.json", function (data) {
+	    	
 	        allQuestions = data;
 	  
 		    })
 		    .done(function() {
 		        console.log( "JSON loaded!" );
 		        $.each( allQuestions, function(i,user){
-		        	if(!user.status.localeCompare("ACTIVE"))
+		        	if(!user.status.localeCompare("ACTIVE") && !user.alive.localeCompare("true"))
 		        		addAcc(user);
 		        	});
 		        
@@ -56,7 +57,7 @@ $(document).ready(function() {
 		    .done(function() {
 		        console.log( "Another JSON loaded!" );
 		        $.each(allComments, function(i,apartment){
-		        	if(!apartment.status.localeCompare("ACTIVE")) {
+		        	if(!apartment.status.localeCompare("ACTIVE") && !apartment.alive.localeCompare("true")) {
 			        	 $.each(apartment.comments, function(i, comment){
 			        		 	getComments(comment.id);
 			        			if (oneComment.localeCompare("no comment")) 

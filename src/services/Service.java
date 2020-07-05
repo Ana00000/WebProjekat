@@ -208,9 +208,9 @@ public class Service {
 	@PUT
 	@Path("/selectedApartment")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response selectedApartment(String id, @Context HttpServletRequest request) {
+	public Response selectedApartment(Apartment id, @Context HttpServletRequest request) {
 		ApartmentDAO apartments = (ApartmentDAO) ctx.getAttribute("apartments");
-		Apartment a = apartments.find("1098");
+		Apartment a = apartments.find(id.getId());
 
 		if(a == null) 
 			return Response.status(400).entity("Apartment with this id doesn't exists!").build();
@@ -219,20 +219,25 @@ public class Service {
 		return Response.status(200).build();
 	}
 	
+	@DELETE
+	@Path("/deleteApartment")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response deleteApartment(Apartment id, @Context HttpServletRequest request) {
+		ApartmentDAO apartments = (ApartmentDAO) ctx.getAttribute("apartments");
+		Apartment ap = apartments.find(id.getId());
+		apartments.remove(ap);
+		return Response.status(200).build();
+	}
 	
 	
 	@GET
 	@Path("/currentApartment")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Apartment currentApartment(@Context HttpServletRequest request) {
-		ApartmentDAO apartments = (ApartmentDAO) ctx.getAttribute("apartments");
 		Apartment apartmentFound = (Apartment) request.getSession().getAttribute("apartment");
-		System.out.println(apartmentFound.getId());
 		return apartmentFound;
 	}
-	
-	
-	
 	
 	@PUT
 	@Path("/setApartment")

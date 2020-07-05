@@ -59,7 +59,9 @@ public class ParserFromJSONObject {
 		if(reservationObject.get("guest")!=null)
 			guest = parseGuestObject((JSONObject)reservationObject.get("guest"));
 		StatusReservation status = StatusReservation.valueOf(jsonToStr(reservationObject, "status"));
-		Reservation reservation = new Reservation(id, rented, startReservation, overnightStay, fullPrice, welcomeMessage, guest, status);
+		Boolean alive = Boolean.parseBoolean(jsonToStr(reservationObject, "alive"));
+		
+		Reservation reservation = new Reservation(id, rented, startReservation, overnightStay, fullPrice, welcomeMessage, guest, status, alive);
 		return reservation;
 	}
 	
@@ -71,7 +73,10 @@ public class ParserFromJSONObject {
 		String apartment = jsonToStr(commentObject, "apartment");   
 		String text = jsonToStr(commentObject, "text");
 		double grade = Double.parseDouble(jsonToStr(commentObject, "grade")); 
-		Comment comment = new Comment(id, guest, apartment, text, grade);
+		Boolean alive = Boolean.parseBoolean(jsonToStr(commentObject, "alive"));
+		Boolean visible = Boolean.parseBoolean(jsonToStr(commentObject, "visible"));
+		
+		Comment comment = new Comment(id, guest, apartment, text, grade, alive, visible);
 		return comment;
 	}
 	
@@ -169,8 +174,10 @@ public class ParserFromJSONObject {
 	        }
 		}
 		
+		Boolean alive = Boolean.parseBoolean(jsonToStr(apartmentObject, "alive"));
+		
 		Apartment a=new Apartment(id, type, nbrRooms, nbrGuests, location , forRent, availability, host,
-				pictures, comments , pricePerNight, forLogIn, forLogOff, status, amenities, reservations);
+				pictures, comments , pricePerNight, forLogIn, forLogOff, status, amenities, reservations, alive);
 		
 		return a;
 	}
@@ -237,7 +244,8 @@ public class ParserFromJSONObject {
 	public Amenity parseAmenitiesObject(JSONObject amenity) {
 		int id = Integer.parseInt(jsonToStr(amenity, "id"));    
         String name = jsonToStr(amenity, "name"); 
-        Amenity a = new Amenity(id, name);
+        Boolean alive = Boolean.parseBoolean(jsonToStr(amenity, "alive"));
+        Amenity a = new Amenity(id, name, alive);
         
         return a;
 	}

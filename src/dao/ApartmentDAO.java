@@ -14,13 +14,11 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import beans.Amenity;
 import beans.Apartment;
 import beans.Host;
 import beans.Location;
 import beans.StatusApartment;
 import beans.Type;
-import beans.User;
 
 public class ApartmentDAO {
 
@@ -135,5 +133,10 @@ public class ApartmentDAO {
 		writeInFile();
 		
 	}
-	
+
+	public void remove(Apartment apartment) {
+		apartment.setAlive(false);
+		apartments.put(apartment.getId(), apartment);
+		writeInFile();
+	}
 }

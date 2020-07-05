@@ -67,11 +67,13 @@
     "amenities": [
       {
         "id": 1011,
-        "name": "Chair"
+        "name": "Chair",
+          "alive": "true"
       },
       {
         "id": 1012,
-        "name": "Bed"
+        "name": "Bed",
+          "alive": "true"
       }
     ],
     "reservations": [
@@ -81,7 +83,8 @@
       {
         "id": "1096"
       }
-    ]
+    ],
+     "alive": "true"
   },
   {
     "id": "1100",
@@ -150,18 +153,21 @@
     "amenities": [
       {
         "id": 1011,
-        "name": "Chair"
+        "name": "Chair",
+          "alive": "true"
       },
       {
         "id": 1012,
-        "name": "Bed"
+        "name": "Bed",
+          "alive": "true"
       }
     ],
     "reservations": [
       {
         "id": "1085"
       }
-    ]
+    ],
+      "alive": "true"
   },
   {
     "id": "1203",
@@ -230,17 +236,20 @@
     "amenities": [
       {
         "id": 1011,
-        "name": "Chair"
+        "name": "Chair",
+          "alive": "true"
       },
       {
         "id": 1012,
-        "name": "Bed"
+        "name": "Bed",
+          "alive": "true"
       }
     ],
     "reservations": [
       {
         "id": "1085"
       }
-    ]
+    ],
+      "alive": "true"
   }
 ]

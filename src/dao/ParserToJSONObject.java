@@ -40,6 +40,7 @@ public class ParserToJSONObject {
         JSONObject amenity = new JSONObject();
         amenity.put("id", a.getId());
         amenity.put("name", a.getName());
+        amenity.put("alive", a.getAlive().toString());
 		return amenity;
 	}
 	
@@ -98,7 +99,7 @@ public class ParserToJSONObject {
 		
 		
 		JSONArray comments=new JSONArray();
-		for(String com : a.getComment())
+		for(String com : a.getComments())
 			{
 				JSONObject object=new JSONObject();
 				object.put("id", com);
@@ -128,6 +129,7 @@ public class ParserToJSONObject {
 		}	
 		
 		apartment.put("reservations", reservations);
+		apartment.put("alive", a.getAlive().toString());
 		
 		return apartment;
 	}
@@ -143,6 +145,8 @@ public class ParserToJSONObject {
 		comment.put("id", c.getId());
 		comment.put("text", c.getText());
 		comment.put("grade", c.getGrade());
+		comment.put("alive", c.getAlive());
+		comment.put("visible", c.getVisible());
 		
 		return comment;
 	}
@@ -161,6 +165,7 @@ public class ParserToJSONObject {
 		reservation.put("welcomeMessage", r.getWelcomeMessage());
 		reservation.put("guest", guestToJSONObject(r.getGuest()));
 		reservation.put("status", r.getStatus().toString());
+		reservation.put("alive", r.getAlive().toString());
 		
 		return reservation;
 	}

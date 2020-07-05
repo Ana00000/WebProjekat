@@ -19,7 +19,7 @@ function addApInactive(inactive){
 	let nbrGuests = $('<td>'+inactive.nbrGuests+'</td>');
 	let pricePerNight = $('<td>'+inactive.pricePerNight+'</td>');
 	let status = $('<td>'+inactive.status+'</td>');
-	let btnSelect =$('<td><button class="btnSelect">Edit</button>   <button class="btnSelect">Delete</button></td>');	
+	let btnSelect =$('<td><button class="btnSelectChange">Edit</button>   <button class="btnSelectDelete">Delete</button></td>');	
 	
 	tr.append(id).append(type).append(nbrRooms).append(nbrGuests).append(pricePerNight).append(status).append(btnSelect);
 	$('#ApartmentsInactiveTable tbody').append(tr);
@@ -33,7 +33,7 @@ function addApActive(active){
 	let nbrGuests = $('<td>'+active.nbrGuests+'</td>');
 	let pricePerNight = $('<td>'+active.pricePerNight+'</td>');
 	let status = $('<td>'+active.status+'</td>');
-	let btnSelect =$('<td><button class="btnSelect">Edit</button>   <button class="btnSelect">Delete</button></td>');	
+	let btnSelect =$('<td><button class="btnSelectChange">Edit</button>   <button class="btnSelectDelete">Delete</button></td>');	
 	
 	tr.append(id).append(type).append(nbrRooms).append(nbrGuests).append(pricePerNight).append(status).append(btnSelect);
 	$('#ApartmentsActiveTable tbody').append(tr);
@@ -68,7 +68,7 @@ $(document).ready(function() {
 		    .done(function() {
 		        console.log( "JSON loaded!" );
 		        $.each( allActive, function(i,active){
-		        	if(!active.status.localeCompare("ACTIVE"))
+		        	if(!active.status.localeCompare("ACTIVE") && !active.alive.localeCompare("true"))
 		        		addApActive(active);
 		        	});
 		        
@@ -81,7 +81,7 @@ $(document).ready(function() {
 		        console.log( "JSON loaded!" );
 		        $.each( allQuestions, function(i,account){
 		        	getApartments(account.rented);
-		        	if(!oneApartment.localeCompare(host.username))
+		        	if(!oneApartment.localeCompare(host.username) && !account.alive.localeCompare("true"))
 		        		addAcc(account);
 		        	});
 		        
@@ -93,27 +93,100 @@ $(document).ready(function() {
 		    .done(function() {
 		        console.log( "JSON loaded!" );
 		        $.each( allInactive, function(i,inactive){
-		        	if(!inactive.status.localeCompare("INACTIVE"))
+		        	if(!inactive.status.localeCompare("INACTIVE") && !inactive.alive.localeCompare("true"))
 		        		addApInactive(inactive);
 		        	});
 		        
 		    });
 	    
-	    $("#ApartmentsInactiveTable").on('click','.btnSelect',function(){
+	    $("#ApartmentsInactiveTable").on('click','.btnSelectDelete',function(){
 	         var currentRow=$(this).closest("tr"); 
 	         
-	         var col1=currentRow.find("td:eq(0)").text();
+	         var id=currentRow.find("td:eq(0)").text();
 	         
-	         alert(col1);
+	         $.ajax({
+	 			url: 'rest/deleteApartment',
+	 			data: JSON.stringify({id: id}),
+	 			contentType: 'application/json',
+	 			type:'DELETE',
+	 			success: function() {
+	 				alert("Apartment successfully removed!");
+	 				window.location.href= 'pagehost.html';
+	 			},
+	 			error: function(message){
+	 				let name = message.responseText;
+	 				$('p#error').text(name);
+	 				$('p#error').css('color','red');
+	 			}
+	 		});
 	    });
 	    
-	    $("#ApartmentsActiveTable").on('click','.btnSelect',function(){
+	    $("#ApartmentsInactiveTable").on('click','.btnSelectChange',function(){
 	         var currentRow=$(this).closest("tr"); 
 	         
-	         var col1=currentRow.find("td:eq(0)").text();
+	         var id=currentRow.find("td:eq(0)").text();
 	         
-	         alert(col1);
+	       $.ajax({
+		    url: 'rest/selectedApartment',
+		    data: JSON.stringify({id: id}),
+			contentType: 'application/json',
+			type:'PUT',
+		    success: function() {
+		    	console.log("App set");
+		    	window.location.href= 'apartmentChange.html';
+		    },
+        	error: function(){
+        		console.log("App not set");
+        	} 		
+	 		});
+
 	    });
+	    
+	    $("#ApartmentsActiveTable").on('click','.btnSelectDelete',function(){
+	         var currentRow=$(this).closest("tr"); 
+	         
+	         var id=currentRow.find("td:eq(0)").text();
+	         
+	         $.ajax({
+	 			url: 'rest/deleteApartment',
+	 			data: JSON.stringify({id: id}),
+	 			contentType: 'application/json',
+	 			type:'DELETE',
+	 			success: function() {
+	 				alert("Apartment successfully removed!");
+	 				window.location.href= 'pagehost.html';
+	 			},
+	 			error: function(message){
+	 				let name = message.responseText;
+	 				$('p#error').text(name);
+	 				$('p#error').css('color','red');
+	 			}
+	 		});
+	    });
+	    
+	    $("#ApartmentsActiveTable").on('click','.btnSelectChange',function(){
+	         var currentRow=$(this).closest("tr"); 
+	         
+	         var id=currentRow.find("td:eq(0)").text();
+	         
+	       $.ajax({
+		    url: 'rest/selectedApartment',
+		    data: JSON.stringify({id: id}),
+			contentType: 'application/json',
+			type:'PUT',
+		    success: function() {
+		    	console.log("App set");
+		    	window.location.href= 'apartmentChange.html';
+		    },
+       	error: function(){
+       		console.log("App not set");
+       	} 		
+	 		});
+
+	    });
+	    
+	   
+
 	    
 });
 

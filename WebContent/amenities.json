@@ -1,10 +1,12 @@
 [
       {
         "id": 1011,
-        "name": "Chair"
+        "name": "Chair",
+          "alive": "true"
       },
       {
         "id": 1012,
-        "name": "Bed"
+        "name": "Bed",
+          "alive": "true"
       }
 ]

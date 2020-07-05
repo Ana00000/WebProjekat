@@ -34,7 +34,7 @@ $(document).ready(function() {
 		    .done(function() {
 		        console.log( "JSON loaded!" );
 		        $.each( allReservation, function(i,reservation){
-			       if(!reservation.guest.username.localeCompare(guest.username))
+			       if(!reservation.guest.username.localeCompare(guest.username) && !reservation.alive.localeCompare("true"))
 			    	   addRes(reservation);
 		        	});
 		    });

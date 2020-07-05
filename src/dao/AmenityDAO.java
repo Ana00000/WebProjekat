@@ -126,7 +126,8 @@ public class AmenityDAO {
 	}
 
 	public void remove(Amenity amenity) {
-		amenities.remove(amenity.getId());
+		amenity.setAlive(false);
+		amenities.put(amenity.getId(), amenity);
 		writeInFile();
 	}
 }

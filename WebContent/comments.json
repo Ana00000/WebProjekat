@@ -16,7 +16,9 @@
         "apartment": {
                 "id": "1098"},
         "text": "good stuff",
-        "grade": 5.0
+        "grade": 5.0,
+        "alive": "true",
+        "visible": "true"
       },
             {
         "id": "1065",
@@ -35,6 +37,8 @@
         "apartment": {
                 "id": "1098"},
         "text": "good stuff",
-        "grade": 5.0
+        "grade": 5.0,
+        "alive": "true",
+        "visible": "true"
       }
 ]

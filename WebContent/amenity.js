@@ -19,7 +19,8 @@ $(document).ready(function() {
 	    .done(function() {
 	        console.log( "JSON loaded!" );
 	        $.each( allAmenities, function(i,amenity){
-	        		addAmenity(amenity);
+	        		if(!amenity.alive.localeCompare("true"))
+	        			addAmenity(amenity);
 	        	});
 	        
 	    });

@@ -91,7 +91,8 @@ $(document).ready(function() {
 		    .done(function() {
 		        console.log( "JSON loaded!" );
 		        $.each( allApartments, function(i,apartment){
-		        	addApp(apartment);
+		        	if(!apartment.alive.localeCompare("true"))
+		        		addApp(apartment);
 		        	});
 		        
 		    });
@@ -102,7 +103,8 @@ $(document).ready(function() {
 		    .done(function() {
 		        console.log( "JSON loaded!" );
 		        $.each( allReservation, function(i,reservation){
-			    	   addRes(reservation);
+		        		if(!reservation.alive.localeCompare("true"))
+		        			addRes(reservation);
 		        	});
 		    });
 	    
@@ -114,7 +116,7 @@ $(document).ready(function() {
 		        $.each(allComments, function(i,apartment){
 			        	 $.each(apartment.comments, function(i, comment){
 			        		 	getComments(comment.id);
-			        			if (oneComment.localeCompare("no comment")) 
+			        			if (oneComment.localeCompare("no comment") && !apartment.alive.localeCompare("true")) 
 			        				addComment(oneComment, apartment.id);
 					        });
 		        	});
@@ -132,20 +134,34 @@ $(document).ready(function() {
 	    $("#ApartmentsTable").on('click','#btnSelectDelete',function(){
 	         var currentRow=$(this).closest("tr"); 
 	         
-	         var col1=currentRow.find("td:eq(0)").text();
+	         var id=currentRow.find("td:eq(0)").text();
 	         
-	         alert(col1);
+	         $.ajax({
+	 			url: 'rest/deleteApartment',
+	 			data: JSON.stringify({id: id}),
+	 			contentType: 'application/json',
+	 			type:'DELETE',
+	 			success: function() {
+	 				alert("Apartment successfully removed!");
+	 				window.location.href= 'pageadmin.html';
+	 			},
+	 			error: function(message){
+	 				let name = message.responseText;
+	 				$('p#error').text(name);
+	 				$('p#error').css('color','red');
+	 			}
+	 		});
 	    });
 	    
 	    
 	    $("#ApartmentsTable").on('click','#btnSelectChange',function(){
 	         var currentRow=$(this).closest("tr"); 
 	         
-	         var idApp=currentRow.find("td:eq(0)").text();
+	         var id=currentRow.find("td:eq(0)").text();
 	         
 	       $.ajax({
  		    url: 'rest/selectedApartment',
- 		    data: JSON.stringify(idApp),
+ 		    data: JSON.stringify({id: id}),
 			contentType: 'application/json',
 			type:'PUT',
  		    success: function() {

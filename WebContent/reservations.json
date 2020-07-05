@@ -18,7 +18,8 @@
 			"reservations": [
 				{"id": "1085"}]
 		},
-		"status": "REJECTED"
+		"status": "REJECTED",
+		"alive": "true"
 	},
 	{
 		"id": "1075",
@@ -41,7 +42,8 @@
 					{
 			        "id": "1075"}]
 		},
-		"status": "ACCEPTED"
+		"status": "ACCEPTED",
+			"alive": "true"
 	},
 	{
 		"id": "1095",
@@ -61,7 +63,8 @@
 			        "id": "1111"}],
 			"reservations":[{ "id":"1095"}]
 		},
-		"status": "CANCELLED"
+		"status": "CANCELLED",
+			"alive": "true"
 	},
 	{
 		"id": "1122",
@@ -81,7 +84,8 @@
 			        "id": "1010"}],
 			"reservations": [{ "id":"1122"}]
 		},
-		"status": "CREATED"
+		"status": "CREATED",
+			"alive": "true"
 	},
 	{
 		"id": "1112",
@@ -101,6 +105,7 @@
 			        "id": "1098"}],
 			"reservations":  [{ "id":"1112"}]
 		},
-		"status": "FINISHED"
+		"status": "FINISHED",
+			"alive": "true"
 	}
 ]

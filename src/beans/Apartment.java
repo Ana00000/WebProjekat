@@ -21,6 +21,7 @@ public class Apartment {
 	private StatusApartment status;
 	private List<Amenity> amenities = new ArrayList<Amenity>();
 	private List<String> reservations = new ArrayList<String>();
+	private Boolean alive;
 	
 	public Apartment() {
 		super();
@@ -36,8 +37,13 @@ public class Apartment {
 		this.forLogIn = Date.from(Instant.now());
 		this.forLogOff = Date.from(Instant.now());
 		this.status = StatusApartment.INACTIVE ;
+		this.alive = true;
 	}
 	
+	public Apartment(String id) {
+		super();
+		this.id = id;
+	}
 	
 	public Apartment(String id, Type type, int nbrRooms, int nbrGuests,double pricePerNight,StatusApartment status) {
 		super();
@@ -54,14 +60,13 @@ public class Apartment {
 		this.pricePerNight = 0;
 		this.forLogIn = Date.from(Instant.now());
 		this.forLogOff = Date.from(Instant.now());
-
+		this.alive = true;
 	}
-	
 	
 	public Apartment(String id, Type type, int nbrRooms, int nbrGuests, Location location, List<Date> forRent,
 			List<Date> availability, Host host, List<String> pictures , List<String> comments, double pricePerNight,
 			Date forLogIn, Date forLogOff, StatusApartment status, List<Amenity> amenities,
-			List<String> reservations) {
+			List<String> reservations, Boolean alive) {
 			super();
 			this.id = id;
 			this.type = type;
@@ -79,6 +84,7 @@ public class Apartment {
 			this.status = status;
 			this.amenities = amenities;
 			this.reservations = reservations;
+			this.alive = alive;
 	}
 	
 	
@@ -103,15 +109,16 @@ public class Apartment {
 		this.status = status;
 		this.amenities = new ArrayList<Amenity>();
 		this.reservations =  new ArrayList<String>();
+		this.alive = true;
 	}
 	
 	@Override
 	public String toString() {
 		return "Apartment [id=" + id + ", type=" + type + ", nbrRooms=" + nbrRooms + ", nbrGuests=" + nbrGuests
 				+ ", location=" + location + ", forRent=" + forRent + ", availability=" + availability + ", host="
-				+ host + ", comment=" + comments+   ", pictures=" + pictures + ", pricePerNight=" + pricePerNight
+				+ host + ", pictures=" + pictures + ", comments=" + comments + ", pricePerNight=" + pricePerNight
 				+ ", forLogIn=" + forLogIn + ", forLogOff=" + forLogOff + ", status=" + status + ", amenities="
-				+ amenities + ", reservations=" + reservations + "]";
+				+ amenities + ", reservations=" + reservations + ", alive=" + alive + "]";
 	}
 
 	public String getId() {
@@ -178,14 +185,15 @@ public class Apartment {
 		this.host = host;
 	}
 	
-	public List<String> getComment() {
+	public List<String> getComments() {
 		return comments;
 	}
-	
-	public void setComment(List<String> comments) {
+
+	public void setComments(List<String> comments) {
 		this.comments = comments;
 	}
-	
+
+
 	public List<String> getPictures() {
 		return pictures;
 	}
@@ -240,5 +248,15 @@ public class Apartment {
 	
 	public void setReservations(List<String> reservations) {
 		this.reservations = reservations;
+	}
+
+
+	public Boolean getAlive() {
+		return alive;
+	}
+
+
+	public void setAlive(Boolean alive) {
+		this.alive = alive;
 	}
 }

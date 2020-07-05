@@ -47,7 +47,7 @@ $(document).ready(function() {
 		        console.log( "JSON loaded!" );
 		        $.each( allReservation, function(i,reservation){
 		        	getApartments(reservation.rented);
-		        	if(!oneApartment.localeCompare(host.username))
+		        	if(!oneApartment.localeCompare(host.username) && !reservation.alive.localeCompare("true"))
 		        		addRes(reservation);
 		        	});
 		    });
