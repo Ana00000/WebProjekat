@@ -19,14 +19,12 @@ var guest;
 
 $(document).ready(function() {
 		
-	$.get({
-		    url: 'rest/loggedUser',
-		    success: function(user) {
-		    	guest = user;
-		    }
-		});
-	
-	
+		$.get({
+			    url: 'rest/loggedUser',
+			    success: function(user) {
+			    	guest = user;
+			    }
+			});
 	
 	    $.getJSON("reservations.json", function (data) {
 	    	allReservation = data;

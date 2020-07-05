@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="newApartment.js"></script>
+<link rel="stylesheet" type="text/css" href="basic.css">
+	<title>New apartment</title>
+</head>
+<body>
+	<div class="classy">
+	<h2><font color="#82CAFA"><b>New apartment</b></font></h2>
+	<table>
+	<tr>
+		<td><label><b>Id:</b></label></td>
+		<td> <input type="text" id="id" name="id" size="20" required ></td>
+	</tr>
+	<tr>
+		<td><label for="type"><b>Apartment type:</b></label></td>
+		<td>
+			<select name="type" id="type">
+				<option value="ROOM">ROOM</option>
+				<option value="WHOLE_APARTMENT">WHOLE_APARTMENT</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td><label><b>Number of rooms:</b></label></td>
+		<td> <input type="text" id="nbrRooms" name="nbrRooms" required size="20"></td>
+	</tr>
+	<tr>
+		<td><label><b>Number of guests:</b></label></td>
+		<td> <input type="text" id="nbrGuests" name="nbrGuests"  required size="20"></td>
+	</tr>
+	<tr>
+		<td><label><b>Price per night:</b></label></td>
+		<td> <input type="text" id="pricePerNight" name="pricePerNight"  required size="20"></td>
+	</tr>
+		<tr>
+		<td><label for="status"><b>Apartment status:</b></label></td>
+		<td>
+			<select name="status" id="status" disabled>
+				<option value="INACTIVE">INACTIVE</option>
+				<option value="ACTIVE">ACTIVE</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td align="right"><label><b> </b></label></td>
+		<td><button id="addAp" style="width:140px" style="text-align:right;">Add</button></td>
+	</tr>
+	</table>
+	<p id="error" hidden="true"></p>
+	<br/>
+	<br/>
+	<br/>
+	<a href="pagehost.html">Go back</a>
+	<br/>
+	<br/>
+	<br/>
+	</div>
+</body>
+</html>

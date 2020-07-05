@@ -43,7 +43,7 @@ $(document).ready(function() {
         name = col2;
         
         $.ajax({
-			url: 'rest/deleteAmenity',
+			url: 'rest/amenities/deleteAmenity',
 			data: JSON.stringify({id: id, name: name}),
 			contentType: 'application/json',
 			type:'DELETE',
@@ -101,7 +101,7 @@ $(document).ready(function() {
 		
 		if(flag){
 			$.ajax({
-				url: 'rest/addAmenity',
+				url: 'rest/amenities/addAmenity',
 				data: JSON.stringify({id: id, name: name}),
 				contentType: 'application/json',
 				type:'PUT',
@@ -162,7 +162,7 @@ $(document).ready(function() {
 		
 		if(flag){
 			$.ajax({
-				url: 'rest/setAmenity',
+				url: 'rest/amenities/setAmenity',
 				data: JSON.stringify({id: id, name: name}),
 				contentType: 'application/json',
 				type:'PUT',

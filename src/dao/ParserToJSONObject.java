@@ -16,7 +16,7 @@ import beans.User;
 public class ParserToJSONObject {
 	
 	
-	DateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+	DateFormat format = new SimpleDateFormat("MM/dd/yyyy");
 	SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
 	
 	@SuppressWarnings("unchecked")

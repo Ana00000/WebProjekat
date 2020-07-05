@@ -139,4 +139,14 @@ public class ApartmentDAO {
 		apartments.put(apartment.getId(), apartment);
 		writeInFile();
 	}
+
+	public void add(String id, Type type, int nbrRooms, int nbrGuests, Host host, double pricePerNight,
+			StatusApartment status) {
+		Apartment a = apartments.get(id);
+		if(a == null) {
+			a = new Apartment(id,type,nbrRooms,nbrGuests,host,pricePerNight,status);
+			apartments.put(id, a);
+			writeInFile();
+		}
+	}
 }

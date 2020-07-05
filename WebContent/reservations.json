@@ -2,7 +2,7 @@
 	{
 		"id": "1085",
 		"rented": "1098",
-		"startReservation": "25-11-1998",
+		"startReservation": "11/25/1998",
 		"overnightStay": 7,
 		"fullPrice": 400,
 		"welcomeMessage": "sup",
@@ -24,7 +24,7 @@
 	{
 		"id": "1075",
 		"rented":"1095",
-		"startReservation": "01-01-2021",
+		"startReservation": "01/01/2021",
 		"overnightStay": 3,
 		"fullPrice": 150,
 		"welcomeMessage": "Enjoy",
@@ -48,7 +48,7 @@
 	{
 		"id": "1095",
 		"rented": "1111",
-		"startReservation": "15-10-2020",
+		"startReservation": "10/05/2020",
 		"overnightStay": 10,
 		"fullPrice": 550,
 		"welcomeMessage": "hello",
@@ -69,7 +69,7 @@
 	{
 		"id": "1122",
 		"rented": "1203",
-		"startReservation": "30-10-2020",
+		"startReservation": "10/30/2020",
 		"overnightStay": 9,
 		"fullPrice": 500,
 		"welcomeMessage": "sup dude",
@@ -90,7 +90,7 @@
 	{
 		"id": "1112",
 		"rented":"1100",
-		"startReservation": "26-11-2020",
+		"startReservation": "11/26/2020",
 		"overnightStay": 5,
 		"fullPrice": 300,
 		"welcomeMessage": "sup bro",

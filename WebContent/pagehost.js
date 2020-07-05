@@ -105,7 +105,7 @@ $(document).ready(function() {
 	         var id=currentRow.find("td:eq(0)").text();
 	         
 	         $.ajax({
-	 			url: 'rest/deleteApartment',
+	 			url: 'rest/apartments/deleteApartment',
 	 			data: JSON.stringify({id: id}),
 	 			contentType: 'application/json',
 	 			type:'DELETE',
@@ -127,7 +127,7 @@ $(document).ready(function() {
 	         var id=currentRow.find("td:eq(0)").text();
 	         
 	       $.ajax({
-		    url: 'rest/selectedApartment',
+		    url: 'rest/apartments/selectedApartment',
 		    data: JSON.stringify({id: id}),
 			contentType: 'application/json',
 			type:'PUT',
@@ -148,7 +148,7 @@ $(document).ready(function() {
 	         var id=currentRow.find("td:eq(0)").text();
 	         
 	         $.ajax({
-	 			url: 'rest/deleteApartment',
+	 			url: 'rest/apartments/deleteApartment',
 	 			data: JSON.stringify({id: id}),
 	 			contentType: 'application/json',
 	 			type:'DELETE',
@@ -170,7 +170,7 @@ $(document).ready(function() {
 	         var id=currentRow.find("td:eq(0)").text();
 	         
 	       $.ajax({
-		    url: 'rest/selectedApartment',
+		    url: 'rest/apartments/selectedApartment',
 		    data: JSON.stringify({id: id}),
 			contentType: 'application/json',
 			type:'PUT',

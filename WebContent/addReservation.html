@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="addReservation.js"></script>
+<style type="text/css">
+table{
+	width:90%;
+	}
+input{
+	size:50;
+}
+</style>
+	<title>New reservation page</title>
+	<link rel="stylesheet" type="text/css" href="basic.css">
+</head>
+<body>
+	<div class="classy">
+	<h2><font color="#82CAFA"><b>Guest registration</b></font></h2>
+	<table>
+	<tr>
+		<td><label><b>Id:</b></label></td>
+		<td> <input type="text" id="id" name="id" size="20" required></td>
+	</tr>
+	<tr>
+		<td><label><b>Start of reservation:</b></label></td>
+		<td> <input type="text" id="startReservation" name="startReservation"  size="20" required></td>
+	</tr>
+	<tr>
+		<td><label><b>Overnight stay:</b></label></td>
+		<td> <input type="text" id="overnightStay" name="overnightStay" required  size="20"></td>
+	</tr>
+	<tr>
+		<td><label><b>Welcome message:</b></label></td>
+		<td> <input type="text" id="welcomeMessage" name="welcomeMessage" required size="20"></td>
+	</tr>
+	<tr>
+		<td align="right"><label><b> </b></label></td>
+		<td><button id="adding" style="width:140px" style="text-align:right;">Add</button></td>
+	</tr>
+	</table>
+	<p id="error" hidden="true" ></p>
+	<br/>
+	<br/>
+	<br/>
+	<a href="apartments.html">Cancel</a>
+	<br/>
+	<br/>
+	</div>
+</body>
+</html>

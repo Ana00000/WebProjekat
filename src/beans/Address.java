@@ -10,6 +10,10 @@ public class Address {
 	
 	public Address() {
 		super();
+		this.street="";
+		this.place="";
+		this.postalCode=0;
+		this.country="";
 	}
 
 	public Address(String street, String place, int postalCode, String country) {

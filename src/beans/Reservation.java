@@ -1,5 +1,8 @@
 package beans;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.Date;
 
@@ -14,6 +17,8 @@ public class Reservation {
 	private StatusReservation status;
 	private Boolean alive;
 	
+	private DateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+	
 	public Reservation() {
 		super();
 		this.id = "";
@@ -27,12 +32,26 @@ public class Reservation {
 		this.alive = true;
 	}
 	
-	public Reservation(String id, String rented, Date startReservation, int overnightStay, int fullPrice, String welcomeMessage,
+	public Reservation(String id, String rented, Date startReservation, int overnightStay, String welcomeMessage,
 			Guest guest, StatusReservation status) {
 		super();
 		this.id = id;
 		this.rented = rented;
 		this.startReservation = startReservation;
+		this.overnightStay = overnightStay;
+		this.fullPrice = 0;
+		this.welcomeMessage = welcomeMessage;
+		this.guest = guest;
+		this.status = status;
+		this.alive = true;
+	}
+
+	public Reservation(String id, String rented, String startReservation, int overnightStay, int fullPrice, String welcomeMessage,
+			Guest guest, StatusReservation status) throws ParseException {
+		super();
+		this.id = id;
+		this.rented = rented;
+		this.startReservation = format.parse(startReservation);
 		this.overnightStay = overnightStay;
 		this.fullPrice = fullPrice;
 		this.welcomeMessage = welcomeMessage;

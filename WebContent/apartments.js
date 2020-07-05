@@ -65,6 +65,27 @@ $(document).ready(function() {
 					        });
 		        }});
 		    });
+	    
+	    $("#ApartmentsTable").on('click','.btnSelect',function(){
+            var currentRow=$(this).closest("tr"); 
+
+            var id=currentRow.find("td:eq(0)").text();
+
+          $.ajax({
+           url: 'rest/apartments/selectedApartment',
+           data: JSON.stringify({id: id}),
+           contentType: 'application/json',
+           type:'PUT',
+           success: function() {
+               console.log("App set");
+               window.location.href= 'addReservation.html';
+           },
+           error: function(){
+               console.log("App not set");
+           }
+            });
+
+       });
 });
 
 function sortTable(n) {

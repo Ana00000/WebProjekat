@@ -6,7 +6,7 @@ function addAcc(account){
 	let role = $('<td>'+account.role+'</td>');
 	let gender = $('<td>'+account.gender+'</td>');
 	let password = $('<td>'+account.password+'</td>');
-	let btnSelect =$('<td><button class="btnSelect">Edit</button>   <button class="btnSelect">Delete</button></td>');
+	let btnSelect =$('<td><button class="btnSelect">Edit</button></td>');
 
 	tr.append(username).append(name).append(surname).append(role).append(gender).append(password).append(btnSelect);
 	$('#UsersTable tbody').append(tr);
@@ -137,7 +137,7 @@ $(document).ready(function() {
 	         var id=currentRow.find("td:eq(0)").text();
 	         
 	         $.ajax({
-	 			url: 'rest/deleteApartment',
+	 			url: 'rest/apartments/deleteApartment',
 	 			data: JSON.stringify({id: id}),
 	 			contentType: 'application/json',
 	 			type:'DELETE',
@@ -160,7 +160,7 @@ $(document).ready(function() {
 	         var id=currentRow.find("td:eq(0)").text();
 	         
 	       $.ajax({
- 		    url: 'rest/selectedApartment',
+ 		    url: 'rest/apartments/selectedApartment',
  		    data: JSON.stringify({id: id}),
 			contentType: 'application/json',
 			type:'PUT',

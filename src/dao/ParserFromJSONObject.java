@@ -27,7 +27,7 @@ import beans.User;
 
 public class ParserFromJSONObject {
 
-	DateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+	DateFormat format = new SimpleDateFormat("MM/dd/yyyy");
 	SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
 
 	public User parseUsersObject(JSONObject userObject) {
@@ -200,8 +200,8 @@ public class ParserFromJSONObject {
 		
 		double width = Double.parseDouble(jsonToStr(locationObject, "width"));
 		double height =  Double.parseDouble(jsonToStr(locationObject, "height"));
-		Address address= parseAddressesObject((JSONObject)locationObject.get("address"));;
-
+		Address address= parseAddressesObject((JSONObject)locationObject.get("address"));
+		
 		return new Location(width, height, address);
 	}
 	

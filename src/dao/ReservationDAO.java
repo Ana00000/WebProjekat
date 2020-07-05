@@ -45,8 +45,8 @@ public class ReservationDAO {
 		return null;
 	}
 	
-	public void add(String id, String rented, Date startReservation, int overnightStay, int fullPrice, String welcomeMessage,
-			Guest guest, StatusReservation status) {
+	public void add(String id, String rented, String startReservation, int overnightStay, int fullPrice, String welcomeMessage,
+			Guest guest, StatusReservation status) throws java.text.ParseException {
 		Reservation r = reservations.get(id);
 		if(r == null) {
 			r = new Reservation(id, rented, startReservation, overnightStay, fullPrice, welcomeMessage, guest, status);
@@ -106,5 +106,24 @@ public class ReservationDAO {
             e.printStackTrace();
         }
 	}
+
+	public Reservation find(String id) {
+		if (!reservations.containsKey(id)) {
+			return null;
+		}
 		
+		Reservation reservation = reservations.get(id);
+		
+		return reservation;
+	}
+
+	public void add(String id, String rented, Date startReservation, int overnightStay, String welcomeMessage,
+			Guest guest, StatusReservation status) {
+		Reservation r = reservations.get(id);
+		if(r == null) {
+			r = new Reservation(id,rented,startReservation,overnightStay,welcomeMessage,guest,status);
+			reservations.put(id, r);
+			writeInFile();
+		}
+	}
 }

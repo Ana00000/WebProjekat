@@ -112,6 +112,30 @@ public class Apartment {
 		this.alive = true;
 	}
 	
+	
+	
+	public Apartment(String id, Type type, int nbrRooms, int nbrGuests, Host host, double pricePerNight,
+			StatusApartment status) {
+		super();
+		this.id = id;
+		this.type = type;
+		this.nbrRooms = nbrRooms;
+		this.nbrGuests = nbrGuests;
+		this.location = new Location();
+		this.forRent = new ArrayList<Date>();
+		this.availability =  new ArrayList<Date>();
+		this.host = host;
+		this.pictures = new ArrayList<String>();
+		this.comments =  new ArrayList<String>();
+		this.pricePerNight = pricePerNight;
+		this.forLogIn =  Date.from(Instant.now());
+		this.forLogOff =  Date.from(Instant.now());
+		this.status = status;
+		this.amenities = new ArrayList<Amenity>();
+		this.reservations =  new ArrayList<String>();
+		this.alive = true;
+	}
+
 	@Override
 	public String toString() {
 		return "Apartment [id=" + id + ", type=" + type + ", nbrRooms=" + nbrRooms + ", nbrGuests=" + nbrGuests

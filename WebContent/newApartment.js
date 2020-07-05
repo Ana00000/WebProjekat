@@ -1,21 +1,15 @@
-$(document).ready(function() {
-	 $.get({
-	        url: 'rest/apartments/currentApartment',
-	        success: function(apartment) {
-	        	
-	        	console.log(apartment);
+var host;
 
-	        	$("#id").val(apartment.id);
-	        	$("#type").val(apartment.type.toString());
-	        	$("#nbrRooms").val(apartment.nbrRooms);
-	        	$("#nbrGuests").val(apartment.nbrGuests);
-	        	$("#pricePerNight").val(apartment.pricePerNight);
-	        	$("#status").val(apartment.status.toString());
-		           
-	        }
-	    });
+$(document).ready(function() {
 	
-	$('button#changeAp').click(function() {
+	$.get({
+	    url: 'rest/loggedUser',
+	    success: function(user) {
+	    	host = user;
+	    }
+	});
+	
+	$('button#addAp').click(function() {
 		
 		let flag = true;
 		let id=$('input[name=id]').val();
@@ -23,7 +17,8 @@ $(document).ready(function() {
 		let nbrRooms=$('input[name=nbrRooms]').val();
 		let nbrGuests=$('input[name=nbrGuests]').val();
 		let pricePerNight=$('input[name=pricePerNight]').val();
-		let status=$("select#status option:checked" ).val();
+		let status="INACTIVE";
+		
 		
 		for (i = 0; i < $('table tbody tr').length; i++) {
 			let tr = $($('table tbody tr')[i]);
@@ -59,20 +54,19 @@ $(document).ready(function() {
 		}
 
 		
-		
 		if(flag){
 			$.ajax({
-				url: 'rest/apartments/setApartment',
-				data: JSON.stringify({id: id, type: type, nbrRooms: nbrRooms, nbrGuests: nbrGuests, pricePerNight: pricePerNight, status: status}),
+				url: 'rest/apartments/addApartment',
+				data: JSON.stringify({id: id, type: type, nbrRooms: nbrRooms, nbrGuests: nbrGuests, host: host, pricePerNight: pricePerNight, status: status}),
 				contentType: 'application/json',
 				type:'PUT',
 				success: function() {
-					alert("Apartment successfully changed!");
-					window.location.href= 'apartmentChange.html';
+					alert("Apartment successfully added!");
+					window.location.href= 'pagehost.html';
 				},
 				error: function(message){
 					if(message.status==400)
-						alert("Id shouldn't be changed!");
+						alert("Unsuccessful adding, id is not unique!");
 					let name = message.responseText;
 					$('p#error').text(name);
 					$('p#error').css('color','red');

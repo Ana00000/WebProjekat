@@ -5,7 +5,6 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -15,11 +14,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import beans.Amenity;
-import beans.Apartment;
 import beans.User;
-import dao.AmenityDAO;
-import dao.ApartmentDAO;
 import dao.UserDAO;
 
 @Path("")
@@ -38,16 +33,6 @@ public class Service {
 			String contextPath = ctx.getRealPath("");
 			UserDAO users = new UserDAO(contextPath);
 			ctx.setAttribute("users", users);
-		}else if(ctx.getAttribute("amenities") == null) {
-			String contextPath = ctx.getRealPath("");
-			AmenityDAO amenities = new AmenityDAO(contextPath);
-			ctx.setAttribute("amenities", amenities);
-			System.out.println(amenities);
-		}
-		else if(ctx.getAttribute("apartments") == null) {
-			String contextPath = ctx.getRealPath("");
-			ApartmentDAO apartments = new ApartmentDAO(contextPath);
-			ctx.setAttribute("apartments", apartments);
 		}
 	}
 
@@ -165,91 +150,6 @@ public class Service {
 	}
 	
 	
-	@PUT
-	@Path("/addAmenity")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response addAmenity(Amenity amenity, @Context HttpServletRequest request) {
-		AmenityDAO amenities = (AmenityDAO) ctx.getAttribute("amenities");
-		
-		Amenity ame = amenities.find(amenity.getId());
-		if(ame != null) {
-			return Response.status(400).entity("Id of an amenity already exists!").build();
-		}
-		amenities.add(amenity.getId(), amenity.getName());
-		return Response.status(200).build();
-	}
-	
-	@PUT
-	@Path("/setAmenity")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response setAmenity(Amenity amenity, @Context HttpServletRequest request) {
-		AmenityDAO amenities = (AmenityDAO) ctx.getAttribute("amenities");
-		
-		Amenity ame = amenities.find(amenity.getId());
-		if(ame == null) 
-			return Response.status(400).entity("Id shouldn't be changed!").build();
-		
-		amenities.set(amenity.getId(), amenity.getName());
-		return Response.status(200).build();
-	}
-	
-	@DELETE
-	@Path("/deleteAmenity")
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response deleteAmenity(Amenity amenity, @Context HttpServletRequest request) {
-		AmenityDAO amenities = (AmenityDAO) ctx.getAttribute("amenities");
-		amenities.remove(amenity);
-		return Response.status(200).build();
-	}
 	
 	
-
-	@PUT
-	@Path("/selectedApartment")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response selectedApartment(Apartment id, @Context HttpServletRequest request) {
-		ApartmentDAO apartments = (ApartmentDAO) ctx.getAttribute("apartments");
-		Apartment a = apartments.find(id.getId());
-
-		if(a == null) 
-			return Response.status(400).entity("Apartment with this id doesn't exists!").build();
-		
-		request.getSession().setAttribute("apartment", a);
-		return Response.status(200).build();
-	}
-	
-	@DELETE
-	@Path("/deleteApartment")
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response deleteApartment(Apartment id, @Context HttpServletRequest request) {
-		ApartmentDAO apartments = (ApartmentDAO) ctx.getAttribute("apartments");
-		Apartment ap = apartments.find(id.getId());
-		apartments.remove(ap);
-		return Response.status(200).build();
-	}
-	
-	
-	@GET
-	@Path("/currentApartment")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Apartment currentApartment(@Context HttpServletRequest request) {
-		Apartment apartmentFound = (Apartment) request.getSession().getAttribute("apartment");
-		return apartmentFound;
-	}
-	
-	@PUT
-	@Path("/setApartment")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response setApartment(Apartment apartment, @Context HttpServletRequest request) {
-		ApartmentDAO apartments = (ApartmentDAO) ctx.getAttribute("apartments");
-		
-		Apartment a = apartments.find(apartment.getId());
-		if(a == null) 
-			return Response.status(400).entity("Id shouldn't be changed!").build();
-		
-		apartments.set(apartment);
-		return Response.status(200).build();
-	}
 }
