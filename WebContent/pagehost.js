@@ -7,6 +7,7 @@ function addAcc(account){
 	let gender = $('<td>'+account.guest.gender+'</td>');
 	let password = $('<td>'+account.guest.password+'</td>');
 	
+	
 	tr.append(username).append(name).append(surname).append(role).append(gender).append(password);
 	$('#UsersTable tbody').append(tr);
 }
@@ -19,9 +20,22 @@ function addApInactive(inactive){
 	let nbrGuests = $('<td>'+inactive.nbrGuests+'</td>');
 	let pricePerNight = $('<td>'+inactive.pricePerNight+'</td>');
 	let status = $('<td>'+inactive.status+'</td>');
+	let location = $('<td>' + inactive.location.address.street + ', ' + inactive.location.address.place + ', ' + inactive.location.address.country + '</td>');
+	let forLogIn = $('<td>'+inactive.forLogIn+'</td>');
+	let forLogOff = $('<td>'+inactive.forLogOff+'</td>');
+	let allAmenities = [];
+	allAmenities = $('<td></td>');
+	
+	
+	$.each(inactive.amenities, function(i,amenity){
+		if(!amenity.alive.localeCompare("true"))
+			allAmenities.append(amenity.name);
+		
+		allAmenities.append(" ");
+   	});
 	let btnSelect =$('<td><button class="btnSelectChange">Edit</button>   <button class="btnSelectDelete">Delete</button></td>');	
 	
-	tr.append(id).append(type).append(nbrRooms).append(nbrGuests).append(pricePerNight).append(status).append(btnSelect);
+	tr.append(id).append(type).append(nbrRooms).append(nbrGuests).append(pricePerNight).append(status).append(location).append(forLogIn).append(forLogOff).append(allAmenities).append(btnSelect);
 	$('#ApartmentsInactiveTable tbody').append(tr);
 }
 
@@ -33,9 +47,22 @@ function addApActive(active){
 	let nbrGuests = $('<td>'+active.nbrGuests+'</td>');
 	let pricePerNight = $('<td>'+active.pricePerNight+'</td>');
 	let status = $('<td>'+active.status+'</td>');
+	let location = $('<td>' + active.location.address.street + ', ' + active.location.address.place + ', ' + active.location.address.country + '</td>');
+	let forLogIn = $('<td>'+active.forLogIn+'</td>');
+	let forLogOff = $('<td>'+active.forLogOff+'</td>');
+	let allAmenities = [];
+	allAmenities = $('<td></td>');
+	
+	
+	$.each(active.amenities, function(i,amenity){
+		if(!amenity.alive.localeCompare("true"))
+			allAmenities.append(amenity.name);
+		
+		allAmenities.append(" ");
+   	});
 	let btnSelect =$('<td><button class="btnSelectChange">Edit</button>   <button class="btnSelectDelete">Delete</button></td>');	
 	
-	tr.append(id).append(type).append(nbrRooms).append(nbrGuests).append(pricePerNight).append(status).append(btnSelect);
+	tr.append(id).append(type).append(nbrRooms).append(nbrGuests).append(pricePerNight).append(status).append(location).append(forLogIn).append(forLogOff).append(allAmenities).append(btnSelect);
 	$('#ApartmentsActiveTable tbody').append(tr);
 }
 
@@ -450,5 +477,67 @@ function myFunctionGender() {
   }
 }
 
+
+
+function myFunctionAmenities() {
+	  var input, filter, table, tr, td, i, txtValue;
+	  input = document.getElementById("myInputAmenities");
+	  filter = input.value.toUpperCase();
+	  table = document.getElementById("ApartmentsActiveTable");
+	  tr = table.getElementsByTagName("tr");
+
+	  for (i = 0; i < tr.length; i++) {
+	    td = tr[i].getElementsByTagName("td")[8];
+	    if (td) {
+	      txtValue = td.textContent || td.innerText;
+	      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+	        tr[i].style.display = "";
+	      } else {
+	        tr[i].style.display = "none";
+	      }
+	    }
+	  }
+}
+
+function myFunctionDateIn() {
+	  var input, filter, table, tr, td, i, txtValue;
+	  input = document.getElementById("myInputDateIn");
+	  filter = input.value.toUpperCase();
+	  table = document.getElementById("ApartmentsActiveTable");
+	  tr = table.getElementsByTagName("tr");
+
+	  for (i = 0; i < tr.length; i++) {
+	    td = tr[i].getElementsByTagName("td")[6];
+	    if (td) {
+	      txtValue = td.textContent || td.innerText;
+	      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+	        tr[i].style.display = "";
+	      } else {
+	        tr[i].style.display = "none";
+	      }
+	    }
+	  }
+}
+
+
+function myFunctionDateOff() {
+	  var input, filter, table, tr, td, i, txtValue;
+	  input = document.getElementById("myInputDateOff");
+	  filter = input.value.toUpperCase();
+	  table = document.getElementById("ApartmentsActiveTable");
+	  tr = table.getElementsByTagName("tr");
+
+	  for (i = 0; i < tr.length; i++) {
+	    td = tr[i].getElementsByTagName("td")[7];
+	    if (td) {
+	      txtValue = td.textContent || td.innerText;
+	      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+	        tr[i].style.display = "";
+	      } else {
+	        tr[i].style.display = "none";
+	      }
+	    }
+	  }
+}
 
 

@@ -1,4 +1,7 @@
 package beans;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
@@ -22,6 +25,9 @@ public class Apartment {
 	private List<Amenity> amenities = new ArrayList<Amenity>();
 	private List<String> reservations = new ArrayList<String>();
 	private Boolean alive;
+	
+	DateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+	SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
 	
 	public Apartment() {
 		super();
@@ -52,7 +58,7 @@ public class Apartment {
 		this.comments = comments;
 	}
 
-	public Apartment(String id, Type type, int nbrRooms, int nbrGuests,double pricePerNight,StatusApartment status) {
+	public Apartment(String id, Type type, int nbrRooms, int nbrGuests,double pricePerNight,StatusApartment status) throws ParseException {
 		super();
 		this.id = id;
 		this.type = type;
@@ -65,7 +71,7 @@ public class Apartment {
 		this.pictures= new ArrayList<String>();
 		this.comments = new ArrayList<String>();
 		this.pricePerNight = 0;
-		this.forLogIn = Date.from(Instant.now());
+		this.forLogIn = Date.from(Instant.now()) ;
 		this.forLogOff = Date.from(Instant.now());
 		this.alive = true;
 	}

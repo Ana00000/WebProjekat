@@ -1,17 +1,21 @@
+var app;
 $(document).ready(function() {
 	 $.get({
 	        url: 'rest/apartments/currentApartment',
 	        success: function(apartment) {
 	        	
 	        	console.log(apartment);
-
+	        	app=apartment;
 	        	$("#id").val(apartment.id);
 	        	$("#type").val(apartment.type.toString());
 	        	$("#nbrRooms").val(apartment.nbrRooms);
 	        	$("#nbrGuests").val(apartment.nbrGuests);
 	        	$("#pricePerNight").val(apartment.pricePerNight);
 	        	$("#status").val(apartment.status.toString());
-		           
+	        	$("#street").val(apartment.location.address.street);
+	        	$("#place").val(apartment.location.address.place);
+	        	$("#country").val(apartment.location.address.country);
+		        
 	        }
 	    });
 	
@@ -23,11 +27,14 @@ $(document).ready(function() {
 		let nbrRooms=$('input[name=nbrRooms]').val();
 		let nbrGuests=$('input[name=nbrGuests]').val();
 		let pricePerNight=$('input[name=pricePerNight]').val();
+		let street=$('input[name=street]').val();
+		let place=$('input[name=place]').val();
+		let country=$('input[name=country]').val();
 		let status=$("select#status option:checked" ).val();
 		
 		for (i = 0; i < $('table tbody tr').length; i++) {
 			let tr = $($('table tbody tr')[i]);
-			$(tr.children()[6]).remove();
+			$(tr.children()[9]).remove();
 		}
 		
 		if (id == null || id === "") {
@@ -58,12 +65,12 @@ $(document).ready(function() {
 			flag = false;
 		}
 
-		
-		
+
+
 		if(flag){
 			$.ajax({
 				url: 'rest/apartments/setApartment',
-				data: JSON.stringify({id: id, type: type, nbrRooms: nbrRooms, nbrGuests: nbrGuests, pricePerNight: pricePerNight, status: status}),
+				data: JSON.stringify({id: id, type: type, nbrRooms: nbrRooms, nbrGuests: nbrGuests, pricePerNight: pricePerNight , status: status}),
 				contentType: 'application/json',
 				type:'PUT',
 				success: function() {

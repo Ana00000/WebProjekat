@@ -39,8 +39,7 @@ setAmenity(selectedApartment.amenities);
 		contentType: 'application/json',
 		type:'PUT',
 		success: function() {
-			alert("Apartment successfully updated!");
-			window.location.href= 'apartments.html';
+			window.location.href= 'amenity.html';
 		},
 		error: function(message){
 			if(message.status==400)

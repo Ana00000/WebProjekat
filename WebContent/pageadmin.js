@@ -19,9 +19,22 @@ function addApp(apartment){
 	let nbrGuests = $('<td>'+apartment.nbrGuests+'</td>');
 	let pricePerNight = $('<td>'+apartment.pricePerNight+'</td>');
 	let status = $('<td>'+apartment.status+'</td>');
+	let location = $('<td>' + apartment.location.address.street + ', ' +apartment.location.address.place + ', ' +apartment.location.address.country + '</td>');
+	let forLogIn = $('<td>'+apartment.forLogIn+'</td>');
+	let forLogOff = $('<td>'+apartment.forLogOff+'</td>');
+	let allAmenities = [];
+	allAmenities = $('<td></td>');
+	
+	
+	$.each(apartment.amenities, function(i,amenity){
+		if(!amenity.alive.localeCompare("true"))
+			allAmenities.append(amenity.name);
+		
+		allAmenities.append(" ");
+   	});
 	let btnSelect =$('<td><button id="btnSelectChange">Edit</button>   <button id="btnSelectDelete">Delete</button></td>');
 
-	tr.append(id).append(type).append(nbrRooms).append(nbrGuests).append(pricePerNight).append(status).append(btnSelect);
+	tr.append(id).append(type).append(nbrRooms).append(nbrGuests).append(pricePerNight).append(status).append(location).append(forLogIn).append(forLogOff).append(allAmenities).append(btnSelect);
 	$('#ApartmentsTable tbody').append(tr);
 }
 
@@ -489,3 +502,63 @@ function myFunctionGuest() {
 
 
 
+function myFunctionAmenities() {
+	  var input, filter, table, tr, td, i, txtValue;
+	  input = document.getElementById("myInputAmenities");
+	  filter = input.value.toUpperCase();
+	  table = document.getElementById("ApartmentsTable");
+	  tr = table.getElementsByTagName("tr");
+
+	  for (i = 0; i < tr.length; i++) {
+	    td = tr[i].getElementsByTagName("td")[8];
+	    if (td) {
+	      txtValue = td.textContent || td.innerText;
+	      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+	        tr[i].style.display = "";
+	      } else {
+	        tr[i].style.display = "none";
+	      }
+	    }
+	  }
+}
+
+function myFunctionDateIn() {
+	  var input, filter, table, tr, td, i, txtValue;
+	  input = document.getElementById("myInputDateIn");
+	  filter = input.value.toUpperCase();
+	  table = document.getElementById("ApartmentsTable");
+	  tr = table.getElementsByTagName("tr");
+
+	  for (i = 0; i < tr.length; i++) {
+	    td = tr[i].getElementsByTagName("td")[6];
+	    if (td) {
+	      txtValue = td.textContent || td.innerText;
+	      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+	        tr[i].style.display = "";
+	      } else {
+	        tr[i].style.display = "none";
+	      }
+	    }
+	  }
+}
+
+
+function myFunctionDateOff() {
+	  var input, filter, table, tr, td, i, txtValue;
+	  input = document.getElementById("myInputDateOff");
+	  filter = input.value.toUpperCase();
+	  table = document.getElementById("ApartmentsTable");
+	  tr = table.getElementsByTagName("tr");
+
+	  for (i = 0; i < tr.length; i++) {
+	    td = tr[i].getElementsByTagName("td")[7];
+	    if (td) {
+	      txtValue = td.textContent || td.innerText;
+	      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+	        tr[i].style.display = "";
+	      } else {
+	        tr[i].style.display = "none";
+	      }
+	    }
+	  }
+}

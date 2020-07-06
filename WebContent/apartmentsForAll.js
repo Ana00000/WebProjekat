@@ -8,9 +8,19 @@ function addAcc(account){
 	let location = $('<td>' + account.location.address.street + ', ' + account.location.address.place + ', ' + account.location.address.country + '</td>');
 	let forLogIn = $('<td>'+account.forLogIn+'</td>');
 	let forLogOff = $('<td>'+account.forLogOff+'</td>');
+	let allAmenities = [];
+	allAmenities = $('<td></td>');
 	
 	
-	tr.append(id).append(type).append(nbrRooms).append(nbrGuests).append(pricePerNight).append(location).append(forLogIn).append(forLogOff);
+	$.each(account.amenities, function(i,amenity){
+		if(!amenity.alive.localeCompare("true"))
+			allAmenities.append(amenity.name);
+		
+		allAmenities.append(" ");
+   	});
+	
+	
+	tr.append(id).append(type).append(nbrRooms).append(nbrGuests).append(pricePerNight).append(location).append(forLogIn).append(forLogOff).append(allAmenities);
 	$('#ApartmentsTable tbody').append(tr);
 }
 
@@ -275,3 +285,22 @@ function myFunctionDateOff() {
 	  }
 }
 
+function myFunctionAmenities() {
+	  var input, filter, table, tr, td, i, txtValue;
+	  input = document.getElementById("myInputAmenities");
+	  filter = input.value.toUpperCase();
+	  table = document.getElementById("ApartmentsTable");
+	  tr = table.getElementsByTagName("tr");
+
+	  for (i = 0; i < tr.length; i++) {
+	    td = tr[i].getElementsByTagName("td")[8];
+	    if (td) {
+	      txtValue = td.textContent || td.innerText;
+	      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+	        tr[i].style.display = "";
+	      } else {
+	        tr[i].style.display = "none";
+	      }
+	    }
+	  }
+}
