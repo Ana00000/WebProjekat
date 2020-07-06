@@ -15,6 +15,7 @@ import org.json.simple.parser.ParseException;
 
 import beans.Comment;
 import beans.Guest;
+import beans.Reservation;
 
 public class CommentDAO {
 	private Map<String, Comment> comments = new HashMap<String, Comment>();
@@ -32,13 +33,13 @@ public class CommentDAO {
 	}
 
 	public Comment find(Comment c) {
-		for(Comment comment: comments.values())
-		{
-			if(c.getId() == (comment.getId()))
-				return comment;
+		if (!comments.containsKey(c.getId())) {
+			return null;
 		}
 		
-		return null;
+		Comment comment = comments.get(c.getId());
+		
+		return comment;
 	}
 	
 	public void add(String id, Guest guest, String apartment, String text, double grade) {

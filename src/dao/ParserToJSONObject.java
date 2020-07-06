@@ -159,7 +159,7 @@ public class ParserToJSONObject {
 		JSONObject reservation = new JSONObject();
 		reservation.put("id", r.getId());
 		reservation.put("rented", r.getRented());
-		reservation.put("startReservation", format.format(r.getStartReservation().toString()));
+		reservation.put("startReservation", format.format(r.getStartReservation()));
 		reservation.put("overnightStay", r.getOvernightStay());
 		reservation.put("fullPrice", r.getFullPrice());
 		reservation.put("welcomeMessage", r.getWelcomeMessage());

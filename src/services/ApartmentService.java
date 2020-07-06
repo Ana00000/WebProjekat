@@ -84,6 +84,20 @@ public class ApartmentService {
 	}
 	
 	@PUT
+	@Path("/updateApartmentComments")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response updateApartmentComments(Apartment apartment, @Context HttpServletRequest request) {
+		ApartmentDAO apartments = (ApartmentDAO) ctx.getAttribute("apartments");
+		
+		Apartment a = apartments.find(apartment.getId());
+		if(a == null) 
+			return Response.status(400).entity("IUpdate was unsuccessful!").build();
+		
+		apartments.updateApartmentComments(apartment);
+		return Response.status(200).build();
+	}
+	
+	@PUT
 	@Path("/addApartment")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response addApartment(Apartment apartment, @Context HttpServletRequest request) {

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="addComment.js"></script>
+<style type="text/css">
+input{
+	size:50;
+}
+</style>
+	<title>New comment page</title>
+	<link rel="stylesheet" type="text/css" href="basic.css">
+</head>
+<body>
+	<div class="classy">
+	<h2><font color="#82CAFA"><b>New comment</b></font></h2>
+	<table>
+	<tr>
+		<td><label><b>Id:</b></label></td>
+		<td> <input type="text" id="id" name="id" size="20" required></td>
+	</tr>
+	<tr>
+		<td><label><b>Comment:</b></label></td>
+		<td> <input type="text" id="text" name="text"  size="20" required></td>
+	</tr>
+	<tr>
+		<td><label><b>Rating:</b></label></td>
+		<td> <input type="number" id="grade" name="grade" min="1" max="5" required  size="20"></td>
+	</tr>
+	<tr>
+		<td align="right"><label><b> </b></label></td>
+		<td><button id="addingCom" style="width:140px" style="text-align:right;">Add</button></td>
+	</tr>
+	</table>
+	<p id="error" hidden="true" ></p>
+	<br/>
+	<br/>
+	<br/>
+	<a href="apartments.html">Cancel</a>
+	<br/>
+	<br/>
+	</div>
+</body>
+</html>

@@ -18,7 +18,13 @@ public class Reservation {
 	private Boolean alive;
 	
 	private DateFormat format = new SimpleDateFormat("MM/dd/yyyy");
-	
+
+	public Reservation(String id,StatusReservation status) {
+		super();
+		this.id = id;
+		this.status = status;
+	}
+
 	public Reservation() {
 		super();
 		this.id = "";
@@ -46,6 +52,7 @@ public class Reservation {
 		this.alive = true;
 	}
 
+	
 	public Reservation(String id, String rented, String startReservation, int overnightStay, int fullPrice, String welcomeMessage,
 			Guest guest, StatusReservation status) throws ParseException {
 		super();

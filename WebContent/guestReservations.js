@@ -7,10 +7,22 @@ function addRes(reservation){
 	let fullPrice = $('<td>'+reservation.fullPrice+'</td>');
 	let welcomeMessage = $('<td>'+reservation.welcomeMessage+'</td>');
 	let status = $('<td>'+reservation.status+'</td>');
-	let btnSelect =$('<td><button class="btnSelect">Cancel</button></td>');
+	
 
-	tr.append(id).append(rented).append(startReservation).append(overnightStay).append(fullPrice).append(welcomeMessage).append(status).append(btnSelect);
-	$('#ReservationsTable tbody').append(tr);
+	if(!reservation.status.localeCompare("CREATED") || !reservation.status.localeCompare("ACCEPTED"))
+	{
+		let btnSelect =$('<td><button id="btnCancel">Cancel</button></td>');
+		tr.append(id).append(rented).append(startReservation).append(overnightStay).append(fullPrice).append(welcomeMessage).append(status).append(guest).append(btnSelect);
+		$('#ReservationsTable tbody').append(tr);
+	}
+	else
+	{
+		tr.append(id).append(rented).append(startReservation).append(overnightStay).append(fullPrice).append(welcomeMessage).append(status);
+		$('#ReservationsTable tbody').append(tr);
+	}
+	
+	
+	
 }
 
 
@@ -38,12 +50,34 @@ $(document).ready(function() {
 		    });
 	    
 	    
-	    $("#ReservationsTable").on('click','.btnSelect',function(){
+	    $("#ReservationsTable").on('click','#btnCancel',function(){
 	         var currentRow=$(this).closest("tr"); 
 	         
-	         var col1=currentRow.find("td:eq(0)").text();
-	         
-	         alert(col1);
+	         var id=currentRow.find("td:eq(0)").text();
+	         var status=currentRow.find("td:eq(6)").text();
+	         if(!status.localeCompare("CREATED") || !status.localeCompare("ACCEPTED"))
+	        	 {
+	     		
+			     		status="CANCELLED";
+	     			$.ajax({
+	     				url: 'rest/reservations/setReservationGuest',
+	     				data: JSON.stringify({id: id,status:status}),
+	     				contentType: 'application/json',
+	     				type:'PUT',
+	     				success: function() {
+	     					alert("Change was successful!");
+	     					window.location.href= 'guestReservations.html';
+	     				},
+	     				error: function(message){
+	     					if(message.status==400)
+	     						alert("Change was unsuccessful!");
+	     					let name = message.responseText;
+	     					$('p#error').text(name);
+	     					$('p#error').css('color','red');
+	     				}
+	     			});
+	     		
+	        	 }
 	    });
 });
 

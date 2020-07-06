@@ -26,12 +26,17 @@ $(document).ready(function() {
 		let startReservation=$('input[name=startReservation]').val();
 		let overnightStay=$('input[name=overnightStay]').val();
 		let welcomeMessage=$('input[name=welcomeMessage]').val();
-		let guest = "Ana123";
+		let guest = guestCurrent;
 		let status="CREATED";
-		welcomeMessage = "safsa";
-		overnightStay = 3;
-		startReservation = "11/11/2020";
-		rented = "1098";
+
+		
+		console.log(id);
+		console.log(rented);
+		console.log(startReservation);
+		console.log(overnightStay);
+		console.log(welcomeMessage);
+		console.log(guestCurrent);
+		
 		for (i = 0; i < $('table tbody tr').length; i++) {
 			let tr = $($('table tbody tr')[i]);
 			$(tr.children()[4]).remove();
@@ -82,7 +87,7 @@ $(document).ready(function() {
 				contentType: 'application/json',
 				type:'PUT',
 				success: function() {
-					window.location.href= 'apartments.html';
+					window.location.href= 'guestReservations.html';
 				},
 				error: function(message){
 					if(message.status==400)

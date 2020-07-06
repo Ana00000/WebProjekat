@@ -44,7 +44,14 @@ public class Apartment {
 		super();
 		this.id = id;
 	}
+
 	
+	public Apartment(String id, List<String> comments) {
+		super();
+		this.id = id;
+		this.comments = comments;
+	}
+
 	public Apartment(String id, Type type, int nbrRooms, int nbrGuests,double pricePerNight,StatusApartment status) {
 		super();
 		this.id = id;

@@ -8,10 +8,25 @@ function addRes(reservation){
 	let welcomeMessage = $('<td>'+reservation.welcomeMessage+'</td>');
 	let status = $('<td>'+reservation.status+'</td>');
 	let guest = $('<td>'+reservation.guest.username+'</td>');
-	let btnSelect =$('<td><button class="btnSelect">Cancel</button></td>');
+	
+	if(!reservation.status.localeCompare("CREATED"))
+	{
+		let btnSelect =$('<td><button class="btnAccept">Accept</button><button class="btnCancel">Cancel</button></td>');
+		tr.append(id).append(rented).append(startReservation).append(overnightStay).append(fullPrice).append(welcomeMessage).append(status).append(guest).append(btnSelect);
+		$('#ReservationsTable tbody').append(tr);
+	}
+	
+	else if(!reservation.status.localeCompare("ACCEPTED"))
+		{
+			let btnSelect =$('<td><button class="btnCancel">Cancel</button></td>');
+			tr.append(id).append(rented).append(startReservation).append(overnightStay).append(fullPrice).append(welcomeMessage).append(status).append(guest).append(btnSelect);
+			$('#ReservationsTable tbody').append(tr);
+		}
+	else{
+		tr.append(id).append(rented).append(startReservation).append(overnightStay).append(fullPrice).append(welcomeMessage).append(status).append(guest);
+		$('#ReservationsTable tbody').append(tr);
+	}
 
-	tr.append(id).append(rented).append(startReservation).append(overnightStay).append(fullPrice).append(welcomeMessage).append(status).append(guest).append(btnSelect);
-	$('#ReservationsTable tbody').append(tr);
 }
 
 var allReservation = new Array();
@@ -22,7 +37,7 @@ var oneApartment;
 function getApartments(id) {
 	oneApartment = "";
 	$.each( allApartments, function(i,apartment){
-	   	if(apartment.id.localeCompare(id))
+	   	if(!apartment.id.localeCompare(id))
 	   		oneApartment = apartment.host.username;
    	});
 }
@@ -59,6 +74,70 @@ $(document).ready(function() {
 	         
 	         alert(col1);
 	    });
+	    
+	    
+	    
+	    $("#ReservationsTable").on('click','.btnCancel',function(){
+	         var currentRow=$(this).closest("tr"); 
+	         
+	         var id=currentRow.find("td:eq(0)").text();
+	         var status=currentRow.find("td:eq(6)").text();
+	         if(!status.localeCompare("CREATED") || !status.localeCompare("ACCEPTED"))
+	        	 {
+	     		
+	        	 	status="CANCELLED";
+		     			$.ajax({
+		     				url: 'rest/reservations/setReservationGuest',
+		     				data: JSON.stringify({id: id,status:status}),
+		     				contentType: 'application/json',
+		     				type:'PUT',
+		     				success: function() {
+		     					alert("Change was successful!");
+		     					window.location.href= 'hostReservations.html';
+		     				},
+		     				error: function(message){
+		     					if(message.status==400)
+		     						alert("Change was unsuccessful!");
+		     					let name = message.responseText;
+		     					$('p#error').text(name);
+		     					$('p#error').css('color','red');
+		     				}
+		     			});
+	     		
+	        	 }
+	    });
+	    
+	    $("#ReservationsTable").on('click','.btnAccept',function(){
+	         var currentRow=$(this).closest("tr"); 
+	         
+	         var id=currentRow.find("td:eq(0)").text();
+	         var status=currentRow.find("td:eq(6)").text();
+	         if(!status.localeCompare("CREATED"))
+	        	 {
+	     		
+	        	 status="ACCEPTED";
+	     			$.ajax({
+	     				url: 'rest/reservations/setReservationGuest',
+	     				data: JSON.stringify({id: id,status:status}),
+	     				contentType: 'application/json',
+	     				type:'PUT',
+	     				success: function() {
+	     					alert("Change was successful!");
+	     					window.location.href= 'hostReservations.html';
+	     				},
+	     				error: function(message){
+	     					if(message.status==400)
+	     						alert("Change was unsuccessful!");
+	     					let name = message.responseText;
+	     					$('p#error').text(name);
+	     					$('p#error').css('color','red');
+	     				}
+	     			});
+	     		
+	        	 }
+	    });
+	    
+	    
 });
 
 function sortTable(n) {

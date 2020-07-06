@@ -36,17 +36,31 @@ public class ReservationService {
 	@Path("/addReservation")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response addReservation(Reservation reservation, @Context HttpServletRequest request) {
-		System.out.println("usao");
 		ReservationDAO reservations = (ReservationDAO) ctx.getAttribute("reservations");
 		
 		Reservation r = reservations.find(reservation.getId());
 		
 		if(r != null) {
-			return Response.status(400).entity("Reservation already h!").build();
+			return Response.status(400).entity("Reservation already exists!!").build();
 		}
 		reservations.add(reservation.getId(), reservation.getRented(), reservation.getStartReservation(), reservation.getOvernightStay(), 
 				reservation.getWelcomeMessage(), reservation.getGuest(), reservation.getStatus());
 		
+		return Response.status(200).build();
+	}
+	
+	@PUT
+	@Path("/setReservationGuest")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response setReservationGuest(Reservation reservation, @Context HttpServletRequest request) {
+		ReservationDAO reservations = (ReservationDAO) ctx.getAttribute("reservations");
+		
+		Reservation r= reservations.find(reservation.getId());
+		if(r == null) 
+			return Response.status(400).entity("Change was unsuccessful!").build();
+		
+		reservations.set(reservation);
+		ctx.setAttribute("reservations", reservations);
 		return Response.status(200).build();
 	}
 }

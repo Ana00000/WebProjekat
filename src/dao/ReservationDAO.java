@@ -126,4 +126,12 @@ public class ReservationDAO {
 			writeInFile();
 		}
 	}
+
+	public void set(Reservation reservation) {
+		Reservation reservationOld=reservations.get(reservation.getId());
+		reservationOld.setStatus(reservation.getStatus());
+		reservations.put(reservation.getId(), reservationOld);
+		writeInFile();
+		
+	}
 }

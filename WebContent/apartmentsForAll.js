@@ -8,43 +8,21 @@ function addAcc(account){
 	let location = $('<td>' + account.location.address.street + ', ' + account.location.address.place + ', ' + account.location.address.country + '</td>');
 	let forLogIn = $('<td>'+account.forLogIn+'</td>');
 	let forLogOff = $('<td>'+account.forLogOff+'</td>');
-	let btnSelect =$('<td><button class="btnSelect">Make a reservation</button></td>');
-	getReservation(account.id);
-	console.log(oneReservation+" one");
-	if(!oneReservation.localeCompare("REJECTED"))
-		{
-			let btnComment =$('<td><button class="btnComment">Make a comment</button></td>');
-			tr.append(id).append(type).append(nbrRooms).append(nbrGuests).append(pricePerNight).append(location).append(forLogIn).append(forLogOff).append(btnSelect).append(btnComment);
-			$('#ApartmentsTable tbody').append(tr);
-	}
-	else if(!oneReservation.localeCompare("FINISHED"))
-	{
-		let btnComment =$('<td><button class="btnComment">Make a comment</button></td>');
-		tr.append(id).append(type).append(nbrRooms).append(nbrGuests).append(pricePerNight).append(location).append(forLogIn).append(forLogOff).append(btnSelect).append(btnComment);
-		$('#ApartmentsTable tbody').append(tr);
-	}	
-	else{
-		tr.append(id).append(type).append(nbrRooms).append(nbrGuests).append(pricePerNight).append(location).append(forLogIn).append(forLogOff).append(btnSelect);
-		$('#ApartmentsTable tbody').append(tr);
-	}
 	
+	
+	tr.append(id).append(type).append(nbrRooms).append(nbrGuests).append(pricePerNight).append(location).append(forLogIn).append(forLogOff);
+	$('#ApartmentsTable tbody').append(tr);
 }
-	
-	
 
 function addComment(com, id){
 	let c = $('<li> Apartment with id ' + id + ' has comment: ' + com + '</li>');
 	$('#listComments').append(c);
 }
 
-
-
 var allQuestions = new Array();
 var allComments = new Array();
 var oneComment;
-var allReservations = new Array();
 var comments = new Array();
-var oneReservation;
 
 function getComments(id) {
 	oneComment = "no comment";
@@ -54,25 +32,7 @@ function getComments(id) {
    	});
 }
 
-function getReservation(id) {
-	oneReservation = "no comment";
-	$.each(allReservations, function(i,reservation){
-		console.log(reservation +"pre ifa");
-	   	if(!reservation.rented.localeCompare(id))
-	   		{
-	   			console.log(reservation.rented +"id ap");
-	   			oneReservation = reservation.status;
-	   		}
-	   	
-	   	
-   	});
-}
-
 $(document).ready(function() {
-	
-	    $.getJSON("reservations.json", function (data) {
-	    	allReservations = data;
-		});
 	    $.getJSON("apartments.json", function (data) {
 	    	
 	        allQuestions = data;
@@ -91,8 +51,6 @@ $(document).ready(function() {
 	    	comments = data;
 		});
 	    
-
-	    
 	    $.getJSON("apartments.json", function (data) {
 	    	allComments  = data;
 		    })
@@ -107,50 +65,7 @@ $(document).ready(function() {
 					        });
 		        }});
 		    });
-	    
-	    $("#ApartmentsTable").on('click','.btnSelect',function(){
-            var currentRow=$(this).closest("tr"); 
-
-            var id=currentRow.find("td:eq(0)").text();
-
-          $.ajax({
-           url: 'rest/apartments/selectedApartment',
-           data: JSON.stringify({id: id}),
-           contentType: 'application/json',
-           type:'PUT',
-           success: function() {
-               console.log("App set");
-               window.location.href= 'addReservation.html';
-           },
-           error: function(){
-               console.log("App not set");
-           }
-            });
-
-       });
-	    
-	    
-	    $("#ApartmentsTable").on('click','.btnComment',function(){
-            var currentRow=$(this).closest("tr"); 
-
-            var id=currentRow.find("td:eq(0)").text();
-            
-            $.ajax({
-                url: 'rest/apartments/selectedApartment',
-                data: JSON.stringify({id: id}),
-                contentType: 'application/json',
-                type:'PUT',
-                success: function() {
-                    console.log("App set");
-                    window.location.href= 'addComment.html';
-                },
-                error: function(){
-                    console.log("App not set");
-                }
-                 });
-
-
-       });
+	   
 });
 
 function sortTable(n) {

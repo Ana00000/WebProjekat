@@ -48,7 +48,7 @@ var oneApartment;
 function getApartments(id) {
 	oneApartment = "";
 	$.each(allActive, function(i,apartment){
-	   	if(apartment.id.localeCompare(id))
+	   	if(!apartment.id.localeCompare(id))
 	   		oneApartment = apartment.host.username;
    	});
 }
