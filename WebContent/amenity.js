@@ -13,6 +13,46 @@ var id;
 var name;
 var amenityList=new Array();
 var allApartments=new Array();
+var selectedApartment;
+
+
+function setAmenity(amenities) {
+	$.each(amenities, function(i,amenity)
+  {
+		if(!amenity.alive.localeCompare("true") && amenity.id==id)
+			{
+				amenity.alive="false";
+				amenityList.push(amenity);
+			}
+		else
+			amenityList.push(amenity);
+  });
+}
+
+function addAliveAmenity(){
+	amenityList=[];
+setAmenity(selectedApartment.amenities);
+	console.log(selectedApartment.amenities[0].alive);
+	$.ajax({
+		url: 'rest/apartments/updateApartmentAmenities',
+		data: JSON.stringify({id: selectedApartment.id,amenities:amenityList}),
+		contentType: 'application/json',
+		type:'PUT',
+		success: function() {
+			alert("Apartment successfully updated!");
+			window.location.href= 'apartments.html';
+		},
+		error: function(message){
+			if(message.status==400)
+				alert("Update was unsuccessful!");
+			let name = message.responseText;
+			$('p#error').text(name);
+			$('p#error').css('color','red');
+		}
+	});
+
+}
+
 
 $(document).ready(function() {
     $.getJSON("amenities.json", function (data) {
@@ -21,7 +61,7 @@ $(document).ready(function() {
 	    .done(function() {
 	        console.log( "JSON loaded!" );
 	        $.each( allAmenities, function(i,amenity){
-	        		if(amenity.alive)
+	        		if(!amenity.alive.localeCompare("true"))
 	        			addAmenity(amenity);
 	        	});
 	        
@@ -50,20 +90,20 @@ $(document).ready(function() {
 			contentType: 'application/json',
 			type:'DELETE',
 			success: function() {
-				alert("Amenity successfully removed!");
-				window.location.href= 'amenity.html';
-				
 				 $.getJSON("apartments.json", function (data) {
 				    	
 				    	allApartments = data;
 				  
 					    })
 					    .done(function() {
-					        console.log( "JSON loaded!" );
+					        console.log( "JSON klsfhuosdfkludgxju!" );
 					        $.each(allApartments, function(i,apartment){
-					  	        		addAliveAmenity(apartment.amenities);
+					        			selectedApartment=apartment;
+					  	        		addAliveAmenity();
 					        	});
 					 });
+				 alert("Amenity successfully removed!");
+				 
 			},
 			error: function(message){
 				let name = message.responseText;
@@ -134,37 +174,7 @@ $(document).ready(function() {
 		}
 	});
     
-    function addAliveAmenity(){
-		function setAmenity(amenities) {
-			$.each(amenities, function(i,amenity)
-		  {
-				if(amenity.alive)
-					amenityList.push(amenity);
-		  });
-	}
-	setAmenity(selectedApartment.comments);
-	selectedApartment.comments=comList;
-	
-		$.ajax({
-			url: 'rest/apartments/updateApartmentComments',
-			data: JSON.stringify({id: selectedApartment.id,comments:selectedApartment.comments}),
-			contentType: 'application/json',
-			type:'PUT',
-			success: function() {
-				alert("Apartment successfully updated!");
-				window.location.href= 'apartments.html';
-			},
-			error: function(message){
-				if(message.status==400)
-					alert("Update was unsuccessful!");
-				let name = message.responseText;
-				$('p#error').text(name);
-				$('p#error').css('color','red');
-			}
-		});
-
-}
-    
+        
     $('button#setAmenity').click(function() {
 		
 		let flag = true;

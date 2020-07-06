@@ -118,7 +118,7 @@ public class ParserToJSONObject {
 		{
 			amenities.add(amenityToJSONObject(amenity));
 		}	
-		
+		apartment.put("amenities", amenities);
 
 		JSONArray reservations=new JSONArray();
 		for(String reservation : a.getReservations())

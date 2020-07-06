@@ -13,7 +13,7 @@ function addAcc(account){
 	
 	
 	$.each(account.amenities, function(i,amenity){
-		if(amenity.alive)
+		if(!amenity.alive.localeCompare("true"))
 			allAmenities.append(amenity.name);
 		
 		allAmenities.append(" ");
