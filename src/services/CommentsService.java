@@ -47,4 +47,18 @@ public class CommentsService {
 		
 		return Response.status(200).build();
 	}
+	
+	@PUT
+	@Path("/approvalComment")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response approvalComment(Comment comment, @Context HttpServletRequest request) {
+		CommentDAO comments = (CommentDAO) ctx.getAttribute("comments");
+		
+		Comment c = comments.find(comment);
+		if(c == null) 
+			return Response.status(400).entity("Comment unsuccessfully approved!").build();
+		
+		comments.approval(comment);
+		return Response.status(200).build();
+	}
 }

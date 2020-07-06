@@ -15,7 +15,6 @@ import org.json.simple.parser.ParseException;
 
 import beans.Comment;
 import beans.Guest;
-import beans.Reservation;
 
 public class CommentDAO {
 	private Map<String, Comment> comments = new HashMap<String, Comment>();
@@ -101,6 +100,13 @@ public class CommentDAO {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+	}
+
+	public void approval(Comment comment) {
+		Comment commentOld=comments.get(comment.getId());
+		commentOld.setVisible(comment.getVisible());
+		comments.put(comment.getId(), commentOld);
+		writeInFile();
 	}
 
 }

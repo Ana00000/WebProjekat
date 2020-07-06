@@ -29,7 +29,7 @@
   		   background-color:lightBlue;
   		   color:black;
 		  	padding:5px;
-		  	border: 2px solid gray;
+		  	border: 2px solid black;
 		  	width:200px;
 			
 		  	
@@ -49,7 +49,7 @@
 			 display: inline-block;
 		 	background-color:lightBlue;
 		 	padding:10px;
-		 	border: 1px solid darkBlue;
+		 	border: 1px solid black;
 		}
 		
 		ul.listComments {
@@ -60,11 +60,11 @@
 		  	 text-align: left;
 		}
 		
-		#guestReservations,#infoHost,#infoAdmin{
+		#guestReservations,#infoHost,#infoAdmin,#apartmentGo{
 			background-color:lightBlue;
 			width:200px;
 			padding:5px;
-			border: 2px solid gray;
+			border: 2px solid black;
 		}
 
 		

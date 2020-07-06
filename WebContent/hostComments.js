@@ -1,5 +1,5 @@
-function addComment(com, id, apId){
-	let c = $('<li><p> Apartment with id ' + apId + ' has comment: ' + com+'   <button class="btnSelect" onclick="funkcija('+id+')">Approve</button></p></li>' );
+function addComment(com, idComment, apId){
+	let c = $('<li><p> Apartment with id ' + apId + ' has comment: ' + com+'   <button class="btnSelect" onclick="funkcija('+idComment+')">Disapprove</button></p></li>' );
 	$('#listCommentsHost').append(c);
 }
 
@@ -8,6 +8,7 @@ var host;
 var comments = new Array();
 var oneComment;
 var oneCommentId;
+var idComment;
 
 function getComments(id) {
 	oneComment = "no comment";
@@ -22,7 +23,25 @@ function getComments(id) {
 
 function funkcija(id)
 {
-	alert(id);
+	idComment = id;
+	
+	$.ajax({
+		url: 'rest/comments/approvalComment',
+		data: JSON.stringify({id: idComment, visible: "false"}),
+		contentType: 'application/json',
+		type:'PUT',
+		success: function() {
+			alert("Comment successfully approved!");
+			window.location.href= 'hostComments.html';
+		},
+		error: function(message){
+			if(message.status==400)
+				alert("Comment unsuccessfully approved!");
+			let name = message.responseText;
+			$('p#error').text(name);
+			$('p#error').css('color','red');
+		}
+	});
 }
 
 $(document).ready(function() {
@@ -52,4 +71,5 @@ $(document).ready(function() {
 				        });
 		    	}});
 		});
+		
 });

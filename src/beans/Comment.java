@@ -19,8 +19,14 @@ public class Comment {
         this.alive = true;
         this.visible = true;
     }
+    
+    public Comment(String id, Boolean visible) {
+		super();
+		this.id = id;
+		this.visible = visible;
+	}
 
-    public Comment(String id, Guest guest, String apartment, String text, double grade) {
+	public Comment(String id, Guest guest, String apartment, String text, double grade) {
         super();
         this.id = id;
         this.guest = guest;

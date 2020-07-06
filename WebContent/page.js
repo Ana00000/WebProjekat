@@ -26,6 +26,15 @@ $(document).ready(function() {
         }
     });
     
+    $('button#apartmentGo').click(function() {
+    	
+    	let role=$("select#role option:checked" ).val();
+    	if(!role.localeCompare("GUEST"))
+    		window.location.href= ' apartments.html';
+    	else
+    		alert("Access denied, you are not a guest!");
+	});
+    
     $('button#infoHost').click(function() {
     	
     	let username=$('input[name=username]').val();

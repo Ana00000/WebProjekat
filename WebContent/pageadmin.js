@@ -6,9 +6,8 @@ function addAcc(account){
 	let role = $('<td>'+account.role+'</td>');
 	let gender = $('<td>'+account.gender+'</td>');
 	let password = $('<td>'+account.password+'</td>');
-	let btnSelect =$('<td><button class="btnSelect">Edit</button></td>');
 
-	tr.append(username).append(name).append(surname).append(role).append(gender).append(password).append(btnSelect);
+	tr.append(username).append(name).append(surname).append(role).append(gender).append(password);
 	$('#UsersTable tbody').append(tr);
 }
 

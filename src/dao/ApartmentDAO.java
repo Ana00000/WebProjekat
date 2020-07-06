@@ -140,7 +140,14 @@ public class ApartmentDAO {
 		apartmentOld.setComments(apartment.getComments());
 		apartments.put(apartment.getId(), apartmentOld);
 		writeInFile();
-		
+	}
+	
+	public void updateApartmentAmenities(Apartment apartment) {
+		Apartment apartmentOld=apartments.get(apartment.getId());
+		apartmentOld.setId(apartment.getId());
+		apartmentOld.setAmenities(apartment.getAmenities());
+		apartments.put(apartment.getId(), apartmentOld);
+		writeInFile();
 	}
 
 	public void remove(Apartment apartment) {

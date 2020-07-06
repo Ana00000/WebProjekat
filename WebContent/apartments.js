@@ -8,23 +8,34 @@ function addAcc(account){
 	let location = $('<td>' + account.location.address.street + ', ' + account.location.address.place + ', ' + account.location.address.country + '</td>');
 	let forLogIn = $('<td>'+account.forLogIn+'</td>');
 	let forLogOff = $('<td>'+account.forLogOff+'</td>');
+	let allAmenities = [];
+	allAmenities = $('<td></td>');
+	
+	
+	$.each(account.amenities, function(i,amenity){
+		if(amenity.alive)
+			allAmenities.append(amenity.name);
+		
+		allAmenities.append(" ");
+   	});
+	
 	let btnSelect =$('<td><button class="btnSelect">Make a reservation</button></td>');
 	getReservation(account.id);
-	console.log(oneReservation+" one");
+	
 	if(!oneReservation.localeCompare("REJECTED"))
 		{
 			let btnComment =$('<td><button class="btnComment">Make a comment</button></td>');
-			tr.append(id).append(type).append(nbrRooms).append(nbrGuests).append(pricePerNight).append(location).append(forLogIn).append(forLogOff).append(btnSelect).append(btnComment);
+			tr.append(id).append(type).append(nbrRooms).append(nbrGuests).append(pricePerNight).append(location).append(forLogIn).append(forLogOff).append(allAmenities).append(btnSelect).append(btnComment);
 			$('#ApartmentsTable tbody').append(tr);
 	}
 	else if(!oneReservation.localeCompare("FINISHED"))
 	{
 		let btnComment =$('<td><button class="btnComment">Make a comment</button></td>');
-		tr.append(id).append(type).append(nbrRooms).append(nbrGuests).append(pricePerNight).append(location).append(forLogIn).append(forLogOff).append(btnSelect).append(btnComment);
+		tr.append(id).append(type).append(nbrRooms).append(nbrGuests).append(pricePerNight).append(location).append(forLogIn).append(forLogOff).append(allAmenities).append(btnSelect).append(btnComment);
 		$('#ApartmentsTable tbody').append(tr);
 	}	
 	else{
-		tr.append(id).append(type).append(nbrRooms).append(nbrGuests).append(pricePerNight).append(location).append(forLogIn).append(forLogOff).append(btnSelect);
+		tr.append(id).append(type).append(nbrRooms).append(nbrGuests).append(pricePerNight).append(location).append(forLogIn).append(forLogOff).append(allAmenities).append(btnSelect);
 		$('#ApartmentsTable tbody').append(tr);
 	}
 	
@@ -50,17 +61,15 @@ function getComments(id) {
 	oneComment = "no comment";
 	$.each(comments, function(i,comment){
 	   	if(!comment.id.localeCompare(id))
-	   		oneComment = comment.text;
+	   		oneComment = comment;
    	});
 }
 
 function getReservation(id) {
 	oneReservation = "no comment";
 	$.each(allReservations, function(i,reservation){
-		console.log(reservation +"pre ifa");
 	   	if(!reservation.rented.localeCompare(id))
 	   		{
-	   			console.log(reservation.rented +"id ap");
 	   			oneReservation = reservation.status;
 	   		}
 	   	
@@ -102,8 +111,9 @@ $(document).ready(function() {
 		        	if(!apartment.status.localeCompare("ACTIVE") && !apartment.alive.localeCompare("true")) {
 			        	 $.each(apartment.comments, function(i, comment){
 			        		 	getComments(comment.id);
-			        			if (oneComment.localeCompare("no comment")) 
-			        				addComment(oneComment, apartment.id);
+			        			if (oneComment.text.localeCompare("no comment")) 
+			        				if(oneComment.visible)
+			        					addComment(oneComment.text, apartment.id);
 					        });
 		        }});
 		    });
@@ -360,3 +370,22 @@ function myFunctionDateOff() {
 	  }
 }
 
+function myFunctionAmenities() {
+	  var input, filter, table, tr, td, i, txtValue;
+	  input = document.getElementById("myInputAmenities");
+	  filter = input.value.toUpperCase();
+	  table = document.getElementById("ApartmentsTable");
+	  tr = table.getElementsByTagName("tr");
+
+	  for (i = 0; i < tr.length; i++) {
+	    td = tr[i].getElementsByTagName("td")[8];
+	    if (td) {
+	      txtValue = td.textContent || td.innerText;
+	      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+	        tr[i].style.display = "";
+	      } else {
+	        tr[i].style.display = "none";
+	      }
+	    }
+	  }
+}

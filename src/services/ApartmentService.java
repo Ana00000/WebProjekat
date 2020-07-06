@@ -91,9 +91,23 @@ public class ApartmentService {
 		
 		Apartment a = apartments.find(apartment.getId());
 		if(a == null) 
-			return Response.status(400).entity("IUpdate was unsuccessful!").build();
+			return Response.status(400).entity("Update was unsuccessful!").build();
 		
 		apartments.updateApartmentComments(apartment);
+		return Response.status(200).build();
+	}
+	
+	@PUT
+	@Path("/updateApartmentAmenities")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response updateApartmentAmenities(Apartment apartment, @Context HttpServletRequest request) {
+		ApartmentDAO apartments = (ApartmentDAO) ctx.getAttribute("apartments");
+		
+		Apartment a = apartments.find(apartment.getId());
+		if(a == null) 
+			return Response.status(400).entity("Update was unsuccessful!").build();
+		
+		apartments.updateApartmentAmenities(apartment);
 		return Response.status(200).build();
 	}
 	
